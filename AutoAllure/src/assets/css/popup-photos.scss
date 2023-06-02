@@ -1,0 +1,32 @@
+
+.swiper {
+    width: 50%;
+    max-height: 294px;
+
+    border-radius: 20px;
+  &-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right;
+      }
+    
+    }
+      
+}
+.swiper-button-next, .swiper-button-prev{
+    color: orange !important;
+}
