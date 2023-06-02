@@ -1,0 +1,73 @@
+@import "_mixins";
+@import "./btn.scss";
+
+
+.carList{
+    margin: auto;
+    display: flex;
+    width: 70%;
+    justify-content: center;
+    flex-wrap: wrap;
+    grid-gap: 30px;    
+    font-size: 15px;    
+    &_item{
+
+        background-color: white;
+        border-radius: 5px;
+
+
+        position: relative;
+        overflow: hidden;
+
+        width: 280px;
+        height: 300px;
+        min-width: 280px;
+        min-height: 300px;
+
+        &-additionalInfo{
+            
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            grid-gap: 30px;
+            font-size: 18px;
+            padding: 8px;
+           
+        }
+
+        &-monthPrice{
+            position: relative;
+            display: inline-block;
+            width: 100%;   
+            text-align: center;
+            p{
+                font-size: 18px;
+                display: inline-block;
+                span{
+                    opacity: 20%;
+                }
+            }
+            
+        }
+
+        &-info{
+
+        }
+
+        &-img {
+            width: 100%;
+            height: 150px;
+            display: block;
+        }
+        p{
+            font-weight: bold;
+            padding-bottom: 5px;
+            span{
+                opacity: 20%;
+                display: block;
+    
+            }
+        }
+    }
+  
+}

@@ -1,0 +1,37 @@
+@import url("./reset.scss");
+@import url("./normalize.scss");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+// body{
+//   background-color: #f5efef;
+// }
+
+// a{
+//     text-decoration:none
+// }
+// .header{
+//   position:relative;
+//   overflow:hidden;
+//   display:flex;
+//   flex-wrap: wrap;
+//   min-height:400px;
+//   max-height:550px;
+//   min-width:300px;
+//   color:#eee;
+//   background:#1B2030 url(https://auto-allure.com/assets/images/background1.png) 50% 0 no-repeat;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: right;
+  
+//   a{
+//     color: white;
+//   }
+  
+//   &_links{
+//     font-size: 17px;
+//     width: 100%;
+//     background-color: black;
+//     vertical-align: center;
+//   }
+// }
