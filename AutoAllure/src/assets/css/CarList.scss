@@ -1,7 +1,6 @@
 @import "_mixins";
 @import "./btn.scss";
-
-
+@import url("./calendar.scss");
 .carList{
     margin: auto;
     display: flex;
@@ -21,17 +20,22 @@
 
         width: 280px;
         height: 300px;
-        min-width: 280px;
-        min-height: 300px;
-
+        height: 320px;
+        min-width: 284px;
+        min-height: 320px;
+        border: 2px solid #222;
         &-additionalInfo{
             
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             grid-gap: 30px;
-            font-size: 18px;
+            font-size: 16px;
             padding: 8px;
+            img{
+                width: 30px;
+                margin: auto;
+            }
            
         }
 

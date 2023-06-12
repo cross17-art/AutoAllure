@@ -1,12 +1,16 @@
 @import url("./reset.scss");
 @import url("./normalize.scss");
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-// body{
-//   background-color: #f5efef;
-// }
+// @import "rsuite/dist/rsuite.css";
 
+
+
+body{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.w-60{
+    width: 60%;
+}
 // a{
 //     text-decoration:none
 // }

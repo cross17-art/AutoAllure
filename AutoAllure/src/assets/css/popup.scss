@@ -1,6 +1,16 @@
 @import './popup-photos.scss';
 @import "swiper/css";
 @import "swiper/css/navigation";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.testCar{
+  z-index: 1000;
+}
+.popup-overlay{
+  background: linear-gradient(90deg, rgba(34,34,34,0.541036482952556) 100%, rgba(255,166,0,0) 100%);
+}
 .modal {
     width: 800px;
     height: 700px;

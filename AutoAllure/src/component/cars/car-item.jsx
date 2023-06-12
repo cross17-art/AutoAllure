@@ -16,15 +16,24 @@ const carItem = ({carData}) => {
           <img className="carList_item-img" alt={carData.fullName} src={carData.thumbnail}/>
 
         <div className="carList_item-additionalInfo">
-            <p><span>{carData.fuel}</span></p>
-            <p><span>{carData.transmission.split(" ")[0]}</span></p>
-            <p><span>{carData.number_seats} seats</span></p>
+          <div>
+            <img src="./gas.png"></img><span>{carData.fuel}</span>
+          </div>
+          <div>
+            <img src="./manual-transmission.png"></img>
+            <span>{carData.transmission.split(" ")[0]}</span>
+          </div>
+          <div>
+            <img src="./car-seat.png"></img>
+            <span>{carData.number_seats} seats</span>
+          </div>
+        
 
         </div>
         
         <div className="carList_item-monthPrice">
           <p>€{carData.monthPrice}/<spna>month</spna></p>
-          <Popup modal trigger={<button className="btn">Rent Now</button>}>
+          <Popup modal trigger={<button className="btn btn-orange">Rent Now</button>}>
                 {close => <Content close={close} carData={carData} />}
           </Popup>
           

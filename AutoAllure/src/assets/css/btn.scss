@@ -1,21 +1,33 @@
+
+@import "./colors";
 // Basic button styles
 .btn {
-    background: orange;
-    border: 2px solid;
-    font: inherit;
+    border: none;
     line-height: 1;
     margin: 0.5em;
     padding: 1em 2em;
-    color: white;
-    transition: 0.25s;
+    transition: all 300ms linear 0ms;
     border-radius: 8px;
 
+   
+    &-black{
+        color: $wheat;
+        background-color: $black;
+
+    }
+    &-orange{
+        color: $black;
+        background-color: $orange;
+    }
     &:hover,
     &:focus {
-        box-shadow: inset 6.5em 0 0 0 black;
+        transform: scale(1.1);
+        // background-color:  black;
         cursor: pointer;
 
     }
+
+
 
 }
 
