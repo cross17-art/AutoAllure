@@ -2,6 +2,7 @@ import React from "react";
 import '../../assets/css/popup.scss'
 import CarSlider from './car-sliderPhotose'
 import CarSpecifications from './car-specifications'
+import CarDatePicker from "./car-calendar";
 
 export default ({ close, carData }) => (
     <div className="modal">
@@ -9,9 +10,7 @@ export default ({ close, carData }) => (
             &times;
         </a>
         <div className="modal_bookingDates">
-            date selaction
-
-            calendar
+            <CarDatePicker />
         </div>
         <div className="modal_information">
             <div className="modal_information-side">
