@@ -17,6 +17,11 @@
   &_item {
     margin: 10px;
 
+    span {
+        font-weight: bold;
+        margin-right: 4px;
+    }
+
     &-link {
       &:hover {
         color: white;

@@ -24,14 +24,13 @@ function Footer() {
         <div className="information_row">
           <div className="footerContact_list">
             <p className="footerContact_item">
-              Phone:{" "}
+              <span>Phone:</span>
               <a className="footerContact_item-link" href="tel: +35799667777">
-                {" "}
-                +357&nbsp;9966&&nbsp;7777
+                +357&nbsp;996&nbsp;7777
               </a>
             </p>
             <p className="footerContact_item">
-              Email:{" "}
+              <span>Email:</span>
               <a
                 className="footerContact_item-link"
                 href="mailto: autoallure@protonmail.com"
@@ -40,7 +39,7 @@ function Footer() {
               </a>
             </p>
             <p className="footerContact_item">
-              Address:{" "}
+              <span>Address:</span>
               <a
                 className="footerContact_item-link"
                 href="https://goo.gl/maps/1zUCBWxVqK5apxuB7"
