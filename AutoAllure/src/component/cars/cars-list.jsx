@@ -36,7 +36,7 @@ function cars() {
       return <div>Loading...</div>;
     } else {
       return (<>
-     <CarDatePicker/>
+      <CarDatePicker key={'mainCarDatePicker'} locations={items.Test[1].locations }/>
       <div className='carList'>
 
          {items.Test.map((element)=>{

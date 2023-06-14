@@ -1,45 +1,47 @@
 import React from "react";
+import { useState } from "react";
 
-import '../../assets/css/Dropdown.scss'
-
-const Icon = () => {
+const Dropdown = ({ locationsDelivery }) => {
+  const [isActive, setIsActive] = useState(false);
+  const [selected, setIsSelected] = useState("Choose one ...");
+  function handleBlur(e) {
+    console.log(e);
+  }
   return (
-    <svg height="20" width="20" viewBox="0 0 20 20">
-      <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
-    </svg>
-  );
-};
+      <div className="dropdown">
+        <div
+          onClick={(e) => {
+            setIsActive(!isActive);
+          }}
+          className="dropdown-btn"
+        >
+          {selected}
+          <span
+            className={isActive ? "fas fa-caret-up" : "fas fa-caret-down"}
+          />
+        </div>
+        <div
+          className="dropdown_content"
+          style={{ display: isActive ? "block" : "none" }}
+        >
+         {locationsDelivery.map((element)=>{
+           return ( 
+              <div
+              onClick={(e) => {
+                setIsSelected(e.target.textContent);
+                setIsActive(!isActive);
+              }}
+              className="dropdown_content-item"
+            >
+              {element.name}
+            </div>
+           )
+         })}
 
-const Dropdown = ({ placeHolder }) => {
-  const getDisplay = () => {
-    return placeHolder;
-  };
-
-  return (
-    <div className="dropdown-container">
-      <div className="dropdown-input">
-        <div className="dropdown-selected-value">{getDisplay()}</div>
-        <div className="dropdown-tools">
-          <div className="dropdown-tool">
-            <Icon />
-          </div>
+         
+    
         </div>
       </div>
-      <div className="dropdown-menu"> 
-            <div>
-                a
-            </div>
-            <div>
-                a
-            </div>
-            <div>
-                a
-            </div>
-            <div>
-                a
-            </div>
-      </div>
-    </div>
   );
 };
 

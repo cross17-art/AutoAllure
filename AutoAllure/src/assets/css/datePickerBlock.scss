@@ -1,0 +1,34 @@
+
+.positionation{
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.dropdown{
+    display: flex;
+    background: white;
+    height: 40px;
+    width: 300px;
+    border: 1px solid #222;
+    border-radius: 10px;
+    align-items: center;
+    margin: 1em;
+    &_content{
+        background-color: red;
+        position: fixed;
+        width: 286px;   
+        margin-top: 70px;
+        z-index: 100;
+        border: 1px solid #222;
+        border-radius: 10px;
+        background-color: #f2f2f2;
+        &-item:hover{
+            background-color: #cecdcd;
+        }
+    }
+}
+.relative.w-full.text-gray-700{
+    width: 60%;
+
+}
