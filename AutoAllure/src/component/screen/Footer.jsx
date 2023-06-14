@@ -50,6 +50,7 @@ function Footer() {
             </p>
           </div>
         </div>
+        <p className="footerContact_copyright">© 2023 Auto Allure</p>
       </div>
     </>
   );

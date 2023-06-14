@@ -28,7 +28,9 @@
             margin: 0 5px 10px;
             position: relative;
             flex-basis: 20%;
-            height: 190px;
+            // @todo check 
+            //height: 190px;
+            min-height: 190px;
             text-align: center;
             font-size: 18px;
             img{
