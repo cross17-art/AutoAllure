@@ -13,7 +13,7 @@ function App() {
     <>
     <Header />
  
-    <CarsList />
+    <CarsList datePicker={"str9061"}/>
     
     <Information />
     <Footer />
