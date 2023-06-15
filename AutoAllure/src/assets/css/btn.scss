@@ -6,7 +6,8 @@
     line-height: 1;
     margin: 0.5em;
     padding: 1em 2em;
-    transition: all 300ms linear 0ms;
+    // @todo fix that transform doesnt skew the text
+    transition: transform 300ms linear 0ms;
     border-radius: 8px;
 
    
