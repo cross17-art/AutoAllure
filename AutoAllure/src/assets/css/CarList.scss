@@ -1,77 +1,84 @@
 @import "_mixins";
+@import "_media";
 @import "./btn.scss";
 @import url("./calendar.scss");
-.carList{
-    margin: auto;
-    display: flex;
-    width: 70%;
-    justify-content: center;
-    flex-wrap: wrap;
-    grid-gap: 30px;    
-    font-size: 15px;    
-    &_item{
+.carList {
+  margin: auto;
+  display: flex;
+  width: 70%;
+  justify-content: center;
+  flex-wrap: wrap;
+  grid-gap: 30px;
+  font-size: 15px;
 
-        background-color: white;
-        border-radius: 5px;
+  @include tablet() {
+    width: 90%;
+  }
 
+  &_item {
+    background-color: white;
+    border-radius: 5px;
 
-        position: relative;
-        overflow: hidden;
+    position: relative;
+    overflow: hidden;
 
-        width: 280px;
-        height: 300px;
-        height: 320px;
-        min-width: 284px;
-        min-height: 320px;
-        border: 2px solid #ffecde;
-        &-additionalInfo{
-            
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            grid-gap: 30px;
-            font-size: 16px;
-            padding: 8px;
-            img{
-                width: 30px;
-                margin: auto;
-            }
-           
-        }
+    width: 280px;
+    height: 330px;
+    min-width: 284px;
+    min-height: 320px;
+    border: 2px solid #ffecde;
+    padding: 12px;
 
-        &-monthPrice{
-            position: relative;
-            display: inline-block;
-            width: 100%;   
-            text-align: center;
-            p{
-                font-size: 18px;
-                display: inline-block;
-                span{
-                    opacity: 20%;
-                }
-            }
-            
-        }
-
-        &-info{
-
-        }
-
-        &-img {
-            width: 100%;
-            height: 150px;
-            display: block;
-        }
-        p{
-            font-weight: bold;
-            padding-bottom: 5px;
-            span{
-                opacity: 20%;
-                display: block;
-    
-            }
-        }
+    @include tablet() {
+      width: 300px;
     }
-  
+
+    &-img {
+      width: 100%;
+      height: 150px;
+      display: block;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+
+    &-additionalInfo {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      grid-gap: 30px;
+      font-size: 16px;
+      padding: 8px;
+      img {
+        width: 20px;
+        margin: auto;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+
+    &-monthPrice {
+      position: relative;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      p {
+        font-size: 18px;
+        display: inline-block;
+        span {
+          opacity: 20%;
+        }
+      }
+    }
+
+    &-info {
+      font-weight: bold;
+      padding: 5px 0;
+      span {
+        opacity: 20%;
+        display: block;
+      }
+    }
+  }
 }

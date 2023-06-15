@@ -1,22 +1,32 @@
 @mixin colors($colors) {
-    $randomDigit: random(length($colors));
-    @debug "digit=>" #{$randomDigit};
-    background-color: nth($colors, $randomDigit);
+  $randomDigit: random(length($colors));
+  @debug "digit=>" #{$randomDigit};
+  background-color: nth($colors, $randomDigit);
 }
 
 @mixin random-bgr() {
-    background: rgb(random(255), random(255), random(255));
+  background: rgb(random(255), random(255), random(255));
 }
 
 @mixin reset-btn() {
-    background-color: transparent;
-    border-width: 0;
-    padding: 0;
-    outline: none;
+  background-color: transparent;
+  border-width: 0;
+  padding: 0;
+  outline: none;
 }
 
 @mixin text-overflow() {
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+//animations
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
