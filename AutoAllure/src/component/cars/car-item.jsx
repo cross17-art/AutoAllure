@@ -32,7 +32,7 @@ const carItem = ({carData}) => {
         </div>
         
         <div className="carList_item-monthPrice">
-          <p>€{carData.monthPrice}/<spna>month</spna></p>
+          <p>€{carData.monthPrice}/<span>month</span></p>
           <Popup modal trigger={<button className="btn btn-orange">Rent Now</button>}>
                 {close => <Content close={close} carData={carData} />}
           </Popup>

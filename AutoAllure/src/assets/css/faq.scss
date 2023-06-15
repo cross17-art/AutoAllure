@@ -1,0 +1,15 @@
+.faq {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    //@ todo requires design
+    &_title {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    &_content {
+        padding: 20px;
+    }
+}
