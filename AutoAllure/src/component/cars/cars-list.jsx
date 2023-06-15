@@ -4,7 +4,7 @@ import '../../assets/css/CarList.scss'
 import CarItem from './car-item';
 import CarDatePicker from "./car-calendar";
 
-function cars() {
+function cars({datePicker}) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -12,7 +12,8 @@ function cars() {
     // Note: the empty deps array [] means
     // this useEffect will run once
     // similar to componentDidMount()
-    useEffect(() => {
+    useEffect((datePicker) => {
+      console.log(datePicker)
       fetch("https://auto-allure.com:2053/cars")
         .then(res => res.json())
         .then(
@@ -28,7 +29,7 @@ function cars() {
             setError(error);
           }
         )
-    }, [])
+    }, [datePicker])
   
     if (error) {
       return <div>Error: {error}</div>;
