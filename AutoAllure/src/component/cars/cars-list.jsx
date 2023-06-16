@@ -4,7 +4,12 @@ import '../../assets/css/CarList.scss'
 import CarItem from './car-item';
 import CarDatePicker from "./car-calendar";
 
-function cars({datePicker}) {
+import { useParams } from 'react-router-dom';
+
+import Cookies from 'js-cookie';
+
+function cars() {
+    const {dates} = useParams();
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -12,8 +17,34 @@ function cars({datePicker}) {
     // Note: the empty deps array [] means
     // this useEffect will run once
     // similar to componentDidMount()
-    useEffect((datePicker) => {
-      console.log(datePicker)
+    useEffect(() => {
+      if(dates!=null){
+        console.log("only dates")
+
+        let url = `https://auto-allure.com:2053/cars`
+        fetch("https://auto-allure.com:2054/cars_dates/V2")
+          .then(res => res.json())
+          .then(
+            (result) => {
+              setIsLoaded(true);
+              setItems(result);
+              Cookies.remove('dateStart');
+              Cookies.remove('dateEnd');
+              Cookies.remove('location');
+            },
+            (error) => {
+              setIsLoaded(true);
+              setError(error);
+              Cookies.remove('dateStart');
+              Cookies.remove('dateEnd');
+              Cookies.remove('location');
+            }
+          )
+      }
+    }, [dates])
+
+    useEffect(() => {
+      console.log("only list")
       fetch("https://auto-allure.com:2053/cars")
         .then(res => res.json())
         .then(
@@ -21,15 +52,12 @@ function cars({datePicker}) {
             setIsLoaded(true);
             setItems(result);
           },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
           (error) => {
             setIsLoaded(true);
             setError(error);
           }
         )
-    }, [datePicker])
+    },[])
   
     if (error) {
       return <div>Error: {error}</div>;

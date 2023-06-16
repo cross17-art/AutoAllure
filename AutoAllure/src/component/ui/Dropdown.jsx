@@ -13,7 +13,7 @@ const Dropdown = ({ locationsDelivery }) => {
           onClick={(e) => {
             setIsActive(!isActive);
           }}
-          className="dropdown-btn"
+          className="dropdown-btn" name='dropdownText'
         >
           {selected}
           <span
