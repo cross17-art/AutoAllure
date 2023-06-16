@@ -12,17 +12,21 @@
   "dependencies": {
     "dayjs": "^1.11.8",
     "google-map-react": "^2.2.1",
+    "js-cookie": "^3.0.5",
     "node-fetch": "^3.3.1",
     "react": "^18.2.0",
     "react-datepicker": "^4.12.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.13.0",
     "react-slick": "^0.29.0",
     "react-swipe": "^6.0.4",
     "react-tailwindcss-datepicker": "^1.6.1",
+    "react-tailwindcss-datetimepicker": "^1.0.5",
     "reactjs-popup": "^2.0.5",
     "rsuite": "^5.35.0",
     "swiper": "^9.3.2",
-    "tw-daterange": "^1.1.24"
+    "tw-daterange": "^1.1.24",
+    "universal-cookie": "^4.0.4"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",

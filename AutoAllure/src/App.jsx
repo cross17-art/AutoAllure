@@ -4,7 +4,7 @@ import Header from './component/screen/Header'
 import Footer from './component/screen/Footer'
 import Information from './component/information/information'
 import './assets/css/Main.scss'
-
+import {Routes,Route,Link} from 'react-router-dom'
 
 
 function App() {
@@ -12,11 +12,14 @@ function App() {
   return (
     <>
     <Header />
- 
-    <CarsList datePicker={"str9061"}/>
+    <Routes>
+        <Route path="/" element={<CarsList/>}/>
+        <Route path="dates/:dates" element={<CarsList/>}/>
+    </Routes>
     
     <Information />
     <Footer />
+
     </>
   )
 }
