@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import CarsList from './component/cars/cars-list'
+import CarsDateList from './component/cars/carDates-list'
 import Header from './component/screen/Header'
 import Footer from './component/screen/Footer'
 import Information from './component/information/information'
@@ -12,9 +13,10 @@ function App() {
   return (
     <>
     <Header />
+
     <Routes>
         <Route path="/" element={<CarsList/>}/>
-        <Route path="dates/:dates" element={<CarsList/>}/>
+        <Route path="dates/:dates" element={<CarsDateList/>}/>
     </Routes>
     
     <Information />

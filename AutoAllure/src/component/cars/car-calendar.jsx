@@ -12,17 +12,25 @@ const carDatePicker = ({locations}) => {
     const navigate = useNavigate()
     const [search,setSearch] = useState(null)
     
+
+    let date = new Date();
+    date.setDate(date.getDate() - 1);
+
     useEffect(()=>{
         
        
         if(search!=null){
             if(search.startDate!=null){
                 // startDate = search.toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ search.toLocaleDateString("en-US", { month: 'numeric' })+ "-" + search.toLocaleDateString("en-US", { year: 'numeric' })
-                let location = document.querySelector('[name=dropdownText]').textContent
-                Cookies.set('dateStart', search.startDate, { expires: 7 });
-                Cookies.set('dateEnd', search.endDate, { expires: 7 });
-                Cookies.set('location', location, { expires: 7 });
-                navigate(`/dates/${search.startDate} ${search.endDate}`)
+                let locationGet = document.querySelector('[name=first] [name=dropdownTextLocation]').textContent
+                let locationReturn = document.querySelector('[name=second] [name=dropdownTextLocation]').textContent
+                let timeGet = document.querySelector('[name=first] [name=dropdownTextTime]').textContent
+                let timeReturn = document.querySelector('[name=second] [name=dropdownTextTime]').textContent
+
+                let dates = search.startDate+' '+timeGet + ' - ' + search.endDate+' '+timeReturn
+                Cookies.set('locationGet', locationGet, { expires: 7 });
+                Cookies.set('locationReturn', locationReturn, { expires: 7 });
+                navigate(`/dates/${dates}`)
             }
         }
     },[search])
@@ -53,16 +61,18 @@ const carDatePicker = ({locations}) => {
 // https://react-tailwindcss-datepicker.vercel.app/props#displayFormat
     return (<>
     <div className="positionation">
-
             <Datepicker key={'datePicker'}
                 primaryColor={"orange"}
                 value={value}
                 onChange={handleValueChange} 
-                showTimeInput
-            />
-            <Dropdown key={locations[0][0].id+"dropdonw"} locationsDelivery={locations[0]} placeHolder={"Select ..."}/>
-            <Dropdown key={locations[0][0].id+"dropdonw"} locationsDelivery={locations[0]} placeHolder={"Select ..."}/>
+                minDate={date} 
+                startFrom="2023-01-01" 
+                
+            ><span id="90617">text</span></Datepicker>
+            <Dropdown key={locations[0].id+"dropdonw9"} locationsDelivery={locations} digit={'first'} placeHolder={"Select ..."}/>
+            <Dropdown key={locations[0].id+"dropdonw7"} locationsDelivery={locations} digit={'second'} placeHolder={"Select ..."}/>
             <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button>
+          
     </div>
    
     </>

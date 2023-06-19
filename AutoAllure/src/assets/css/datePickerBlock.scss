@@ -23,6 +23,13 @@
     color: #777;
     font-weight: 500;
   }
+  &_time{
+    position: absolute;
+    top: 110%;
+    left: 0;
+    width: 100%;
+    text-align: right;
+  }
   &_content {
     position: absolute;
     top: 110%;
@@ -41,6 +48,7 @@
   
     }
 }
+.react-time-picker__clock { display: none; }
 //   button {
 //     z-index: -1;
 //     display: block;
