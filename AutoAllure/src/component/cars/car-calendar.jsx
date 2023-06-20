@@ -68,7 +68,32 @@ const carDatePicker = ({locations}) => {
                 onChange={handleValueChange} 
                 minDate={date} 
                 startFrom="2023-01-01" 
+                configs={
+                    {shortcuts:{
+                        last3Days:{
+                            text:"Last 3 days",
+                            period:{
+                                start:"2023-06-17",
+                                end:"2023-06-19"
+                            },
+                        },
+                        customToday:{
+                            text:"Custom Today",
+                            period:{
+                                start:"2023-06-20",
+                                end:"2023-06-20"
+                            },
+                        },
+                        next8Days:{
+                            text:"Next 8 days",
+                            period:{
+                                start:"2023-06-21",
+                                end:"2023-06-28"
+                            },
+                        }
+                    }
                 
+                }}
             ></Datepicker>
             <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations} digit={'first'} placeHolder={"Select ..."}/>
             <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations} digit={'second'} placeHolder={"Select ..."}/>
