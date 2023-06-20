@@ -22,7 +22,8 @@ function cars() {
         let locationGet=Cookies.get('locationGet') === undefined ? '':Cookies.get('locationGet')
         let locationReturn=Cookies.get('locationReturn') === undefined ? '':Cookies.get('locationReturn')
 
-        let url = `https://auto-allure.com:2053/cars`
+        setIsLoaded(false);
+
         fetch(`https://auto-allure.com:2053/cars_dates/V2?dates=${dates}&locationGet=${locationGet}&locationReturn=${locationReturn}`)
           .then(res => res.json())
           .then(
@@ -53,7 +54,7 @@ function cars() {
     if (error) {
       return <div>Error: {error}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     } else {
       return (<>
       <CarDatePicker key={'CarListDatePicker'} locations={items.locations }/>

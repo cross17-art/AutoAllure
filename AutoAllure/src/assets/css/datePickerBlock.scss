@@ -9,6 +9,7 @@
     z-index: 10000;
     width: 300px;
     position: relative;
+    padding: 5px;
 
   &_btn {
     cursor: pointer;
@@ -26,9 +27,14 @@
   &_time{
     position: absolute;
     top: 110%;
-    left: 0;
-    width: 100%;
-    text-align: right;
+    text-align: center;
+    align-self: flex-end;
+    background-color: white;
+    width: 30%;
+    right: 0%;
+    height: 300px;
+    overflow: scroll;
+    border:2px solid black
   }
   &_content {
     position: absolute;
@@ -46,7 +52,8 @@
         background: #fcfcfc;
     }
   
-    }
+  }
+ 
 }
 .react-time-picker__clock { display: none; }
 //   button {

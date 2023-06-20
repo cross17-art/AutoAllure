@@ -9,6 +9,7 @@ import Datepicker from "react-tailwindcss-datepicker"
 import Dropdown from "../ui/Dropdown";
 
 const carDatePicker = ({locations}) => {
+
     const navigate = useNavigate()
     const [search,setSearch] = useState(null)
     
@@ -22,10 +23,10 @@ const carDatePicker = ({locations}) => {
         if(search!=null){
             if(search.startDate!=null){
                 // startDate = search.toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ search.toLocaleDateString("en-US", { month: 'numeric' })+ "-" + search.toLocaleDateString("en-US", { year: 'numeric' })
-                let locationGet = document.querySelector('[name=first] [name=dropdownTextLocation]').textContent
-                let locationReturn = document.querySelector('[name=second] [name=dropdownTextLocation]').textContent
-                let timeGet = document.querySelector('[name=first] [name=dropdownTextTime]').textContent
-                let timeReturn = document.querySelector('[name=second] [name=dropdownTextTime]').textContent
+                let locationGet = document.querySelector('[name=first] [name=dropdownTextLocationGet]').textContent
+                let locationReturn = document.querySelector('[name=second] [name=dropdownTextLocationReturn]').textContent
+                let timeGet = document.querySelector('[name=first] [name=dropdownTextTimeGet]').textContent
+                let timeReturn = document.querySelector('[name=second] [name=dropdownTextTimeReturn]').textContent
 
                 let dates = search.startDate+' '+timeGet + ' - ' + search.endDate+' '+timeReturn
                 Cookies.set('locationGet', locationGet, { expires: 7 });
@@ -68,9 +69,9 @@ const carDatePicker = ({locations}) => {
                 minDate={date} 
                 startFrom="2023-01-01" 
                 
-            ><span id="90617">text</span></Datepicker>
-            <Dropdown key={locations[0].id+"dropdonw9"} locationsDelivery={locations} digit={'first'} placeHolder={"Select ..."}/>
-            <Dropdown key={locations[0].id+"dropdonw7"} locationsDelivery={locations} digit={'second'} placeHolder={"Select ..."}/>
+            ></Datepicker>
+            <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations} digit={'first'} placeHolder={"Select ..."}/>
+            <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations} digit={'second'} placeHolder={"Select ..."}/>
             <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button>
           
     </div>

@@ -6,7 +6,7 @@ import Content from "./ContentPopup";
 const carItem = ({ carData }) => {
   const url = "http://localhost:5173/"
   return (
-    <div className="carList_item" carId={carData.id}>
+    <div className="carList_item" carid={carData.id}>
       <img
         className="carList_item-img"
         alt={carData.fullName}

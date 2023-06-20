@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react'
 import '../../assets/css/CarList.scss'
+import '../../assets/css/loading.scss'
 
 import CarItem from './car-item';
 import CarDatePicker from "./car-calendar";
@@ -33,7 +34,7 @@ function cars() {
     if (error) {
       return <div>Error: {error}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     } else {
       return (<>
       <CarDatePicker key={'mainCarDatePicker'} locations={items.locations }/>
