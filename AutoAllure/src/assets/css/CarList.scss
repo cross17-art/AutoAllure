@@ -3,16 +3,18 @@
 @import "./btn.scss";
 @import url("./calendar.scss");
 .carList {
-  margin: auto;
-  display: flex;
-  width: 70%;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  display: grid;
   grid-gap: 30px;
   font-size: 15px;
 
-  @include tablet() {
-    width: 90%;
+  @include tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   &_item {
