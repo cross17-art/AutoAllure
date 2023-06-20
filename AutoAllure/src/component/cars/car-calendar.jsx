@@ -9,20 +9,29 @@ import Datepicker from "react-tailwindcss-datepicker"
 import Dropdown from "../ui/Dropdown";
 
 const carDatePicker = ({locations}) => {
+
     const navigate = useNavigate()
     const [search,setSearch] = useState(null)
     
+
+    let date = new Date();
+    date.setDate(date.getDate() - 1);
+
     useEffect(()=>{
         
        
         if(search!=null){
             if(search.startDate!=null){
                 // startDate = search.toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ search.toLocaleDateString("en-US", { month: 'numeric' })+ "-" + search.toLocaleDateString("en-US", { year: 'numeric' })
-                let location = document.querySelector('[name=dropdownText]').textContent
-                Cookies.set('dateStart', search.startDate, { expires: 7 });
-                Cookies.set('dateEnd', search.endDate, { expires: 7 });
-                Cookies.set('location', location, { expires: 7 });
-                navigate(`/dates/${search.startDate} ${search.endDate}`)
+                let locationGet = document.querySelector('[name=first] [name=dropdownTextLocationGet]').textContent
+                let locationReturn = document.querySelector('[name=second] [name=dropdownTextLocationReturn]').textContent
+                let timeGet = document.querySelector('[name=first] [name=dropdownTextTimeGet]').textContent
+                let timeReturn = document.querySelector('[name=second] [name=dropdownTextTimeReturn]').textContent
+
+                let dates = search.startDate+' '+timeGet + ' - ' + search.endDate+' '+timeReturn
+                Cookies.set('locationGet', locationGet, { expires: 7 });
+                Cookies.set('locationReturn', locationReturn, { expires: 7 });
+                navigate(`/dates/${dates}`)
             }
         }
     },[search])
@@ -53,16 +62,43 @@ const carDatePicker = ({locations}) => {
 // https://react-tailwindcss-datepicker.vercel.app/props#displayFormat
     return (<>
     <div className="positionation">
-
             <Datepicker key={'datePicker'}
                 primaryColor={"orange"}
                 value={value}
                 onChange={handleValueChange} 
-                showTimeInput
-            />
-            <Dropdown key={locations[0][0].id+"dropdonw"} locationsDelivery={locations[0]} placeHolder={"Select ..."}/>
-            <Dropdown key={locations[0][0].id+"dropdonw"} locationsDelivery={locations[0]} placeHolder={"Select ..."}/>
+                minDate={date} 
+                startFrom="2023-01-01" 
+                configs={
+                    {shortcuts:{
+                        last3Days:{
+                            text:"Last 3 days",
+                            period:{
+                                start:"2023-06-17",
+                                end:"2023-06-19"
+                            },
+                        },
+                        customToday:{
+                            text:"Custom Today",
+                            period:{
+                                start:"2023-06-20",
+                                end:"2023-06-20"
+                            },
+                        },
+                        next8Days:{
+                            text:"Next 8 days",
+                            period:{
+                                start:"2023-06-21",
+                                end:"2023-06-28"
+                            },
+                        }
+                    }
+                
+                }}
+            ></Datepicker>
+            <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations} digit={'first'} placeHolder={"Select ..."}/>
+            <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations} digit={'second'} placeHolder={"Select ..."}/>
             <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button>
+          
     </div>
    
     </>

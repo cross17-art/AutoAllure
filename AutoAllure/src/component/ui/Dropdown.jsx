@@ -1,54 +1,70 @@
 import React from "react";
-import { useState } from "react";
+import { useState,useRef } from "react";
 
-const Dropdown = ({ locationsDelivery }) => {
+import LocationsList from "./locations-list";
+import TimeList from "./time-list";
+import { useEffect } from "react";
+
+
+const Dropdown = ({ locationType,locationsDelivery,digit }) => {
+  
+
   const [isActive, setIsActive] = useState(false);
   const [selected, setIsSelected] = useState("Choose one ...");
-
+ 
   const [isActiveTime, setIsTimeActive] = useState(false);
-  const [selectedTime, setIsTimeSelected] = useState("Choose one ...");
+  const [selectedTime, setIsTimeSelected] = useState("Time");
+
+
+  const toolTipLocationRef = useRef(null)
+  const toolTipTimeRef = useRef(null)
+
+  useEffect(()=>{
+    if(!isActive)return;
+    const handlerLocationClick = e =>{
+      if(!toolTipLocationRef.current)return
+      if(!toolTipLocationRef.current.contains(e.target) && e.target!=document.querySelector(`[name=dropdownTextLocation${locationType}]`)){
+        setIsActive(!isActive)
+      }
+    }
+
+    document.addEventListener("click",handlerLocationClick)
+    return ()=>{
+      document.removeEventListener("click",handlerLocationClick)
+    }
+
+  },[isActive])
+
+  useEffect(()=>{
+    if(!isActiveTime)return;
+  
+    if(!isActiveTime)return;
+    const handlerTimeClick = e =>{
+      if(!toolTipTimeRef.current)return
+      if(!toolTipTimeRef.current.contains(e.target) && e.target!=document.querySelector(`[name=dropdownTextTime${locationType}]`)){
+        setIsTimeActive(!isActiveTime)
+      }
+    }
+    document.addEventListener("click",handlerTimeClick)
+    return () => {
+      document.removeEventListener("click", handlerTimeClick);
+    }
+  },[isActiveTime])
 
   return (
-      <div className="dropdown">
-        <div className="dropdown_btn" name='dropdownText' onClick={(e) => {setIsActive(!isActive);}} >
-          {selected} 
-          <span
-            className={isActive ? "fas fa-caret-up" : "fas fa-caret-down"}
-          />
-          <div className="dropdown_content" style={{ display: isActive ? "block" : "none" }}>
-            {locationsDelivery.map((element)=>{
-              return ( 
-                  <div onClick={(e) => {
-                    setIsSelected(e.target.textContent);
-                    setIsActive(!isActive);
-                  }}
-                  className="dropdown_content-item"
-                >
-                  {element.name}
-                </div>
-              )
-            })}
-          </div>
-        </div>
-        <div className="dropdown_btn" name='dropdownText' onClick={(e) => {setIsActive(!isActive);}} >
-          {selected} 
-          <span
-            className={isActive ? "fas fa-caret-up" : "fas fa-caret-down"}
-          />
-          <div className="dropdown_content" style={{ display: isActive ? "block" : "none" }}>
-            {locationsDelivery.map((element)=>{
-              return ( 
-                  <div onClick={(e) => {
-                    setIsSelected(e.target.textContent);
-                    setIsActive(!isActive);
-                  }}
-                  className="dropdown_content-item"
-                >
-                  {element.name}
-                </div>
-              )
-            })}
-          </div>
+      <div className="dropdown" name={digit}>
+        <div className="dropdown_btn" name='dropdownText'  >
+          
+          <span name={'dropdownTextLocation'+locationType} onClick={(e) => {setIsActive(!isActive);}}> {selected}</span>
+          <span name={'dropdownTextTime'+locationType} onClick={(e) => {setIsTimeActive(!isActiveTime);}}>{selectedTime}</span>
+
+
+          <div ref={toolTipLocationRef} className="dropdown_content" style={{ display: isActive ? "block" : "none" }}>
+            <LocationsList key={"LocationsList"} locations={locationsDelivery} setIsSelected={setIsSelected} setIsActive={setIsActive} isActive={isActive}  />
+          </div>  
+          <div ref={toolTipTimeRef} className="dropdown_time" style={{ display: isActiveTime ? "block" : "none" }}>
+             <TimeList key={"timeList"} setIsTimeSelected={setIsTimeSelected} setIsTimeActive={setIsTimeActive} isActiveTime={isActiveTime}   />
+          </div>  
         </div>
       </div>
   );

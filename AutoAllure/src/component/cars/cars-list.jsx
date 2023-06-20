@@ -1,5 +1,6 @@
 import { useState,useEffect } from 'react'
 import '../../assets/css/CarList.scss'
+import '../../assets/css/loading.scss'
 
 import CarItem from './car-item';
 import CarDatePicker from "./car-calendar";
@@ -9,39 +10,10 @@ import { useParams } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
 function cars() {
-    const {dates} = useParams();
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
   
-    // Note: the empty deps array [] means
-    // this useEffect will run once
-    // similar to componentDidMount()
-    useEffect(() => {
-      if(dates!=null){
-        console.log("only dates")
-
-        let url = `https://auto-allure.com:2053/cars`
-        fetch("https://auto-allure.com:2054/cars_dates/V2")
-          .then(res => res.json())
-          .then(
-            (result) => {
-              setIsLoaded(true);
-              setItems(result);
-              Cookies.remove('dateStart');
-              Cookies.remove('dateEnd');
-              Cookies.remove('location');
-            },
-            (error) => {
-              setIsLoaded(true);
-              setError(error);
-              Cookies.remove('dateStart');
-              Cookies.remove('dateEnd');
-              Cookies.remove('location');
-            }
-          )
-      }
-    }, [dates])
 
     useEffect(() => {
       console.log("only list")
@@ -62,10 +34,10 @@ function cars() {
     if (error) {
       return <div>Error: {error}</div>;
     } else if (!isLoaded) {
-      return <div>Loading...</div>;
+      return <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     } else {
       return (<>
-      <CarDatePicker key={'mainCarDatePicker'} locations={items.Test[1].locations }/>
+      <CarDatePicker key={'mainCarDatePicker'} locations={items.locations }/>
       <div className='carList'>
 
          {items.Test.map((element)=>{

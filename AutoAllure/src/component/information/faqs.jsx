@@ -3,7 +3,7 @@ import "../../assets/css/Information.scss";
 import "../../assets/css/faq.scss";
 //import Faq from "react-faq-component";
 
-import { faqList } from "../../faq";
+import { faqList } from "../../assets/js/faq";
 
 function FAQS() {
   return (
