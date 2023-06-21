@@ -10,10 +10,10 @@ const Dropdown = ({ locationType,locationsDelivery,digit }) => {
   
 
   const [isActive, setIsActive] = useState(false);
-  const [selected, setIsSelected] = useState("Choose one ...");
+  const [selected, setIsSelected] = useState(locationsDelivery[0].name);
  
   const [isActiveTime, setIsTimeActive] = useState(false);
-  const [selectedTime, setIsTimeSelected] = useState("Time");
+  const [selectedTime, setIsTimeSelected] = useState("10:30");
 
 
   const toolTipLocationRef = useRef(null)

@@ -2,7 +2,7 @@ import { useState,useEffect } from 'react'
 import '../../assets/css/Information.scss'
 
 
-function aboutUs() {
+function aboutUs({url}) {
   
     return(
       <>
@@ -19,7 +19,7 @@ function aboutUs() {
                     </p>
                 </div>
                 <div className='information_row-blockRow'>
-                    <img src='./cabriolet.jpg' alt='cabriolet'></img>
+                    <img src={url+'./cabriolet.jpg'} alt='cabriolet'></img>
                 </div>
             </div>
             
@@ -28,7 +28,7 @@ function aboutUs() {
         <div className='information'>
              <div className='information_row'>
                 <div className='information_row-blockRow'>
-                    <img src='./car-driver.png' alt='car-driver'></img>
+                    <img src={url+'/car-driver.png'} alt='car-driver'></img>
                 </div>
                 
                 <div className='information_row-blockRow'>
