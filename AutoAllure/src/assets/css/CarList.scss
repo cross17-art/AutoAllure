@@ -1,7 +1,7 @@
 @import "_mixins";
 @import "_media";
 @import "./btn.scss";
-@import url("./calendar.scss");
+// @import url("./calendar.scss");
 .carList {
   display: grid;
   grid-template-columns: repeat(1, 1fr);

@@ -8,6 +8,39 @@ import Cookies from 'js-cookie';
 import Datepicker from "react-tailwindcss-datepicker"
 import Dropdown from "../ui/Dropdown";
 
+const DayPropertyse = (type,count)=>{
+    let today = new Date()
+    let tomorrowDay = new Date(today.setDate(today.getDate()+1))
+    
+    let nextDate='';
+    if(type==="month"){
+        nextDate= new Date(tomorrowDay.setMonth(tomorrowDay.getMonth()+count))
+    }else if(type==="day"){
+        nextDate= new Date(tomorrowDay.setDate(tomorrowDay.getDate()+count))
+    }else if(type ==="week"){
+        // day = d.getDay()
+        // d.getDate() + (8-day)
+    }
+
+    today = new Date()
+    tomorrowDay = new Date(today.setDate(today.getDate()+1))
+
+
+
+
+    let day = tomorrowDay.getDate()<10?"0"+tomorrowDay.getDate():tomorrowDay.getDate()
+    let month = tomorrowDay.getMonth()+1<10?"0"+(tomorrowDay.getMonth()+1):tomorrowDay.getMonth()+1
+    let year = tomorrowDay.getFullYear()
+
+    let nextMonth = nextDate.getMonth()+1<10?"0"+(nextDate.getMonth()+1):nextDate.getMonth()+1
+    let nextDay = nextDate.getDate()<10?"0"+nextDate.getDate():nextDate.getDate()
+    let nextYear = nextDate.getFullYear()
+
+
+
+    return ({"today": year+"-"+month+"-"+day,"next": nextYear+"-"+nextMonth+"-"+nextDay})   
+}
+
 const carDatePicker = ({locations}) => {
 
     const navigate = useNavigate()
@@ -36,9 +69,10 @@ const carDatePicker = ({locations}) => {
         }
     },[search])
 
+
     const [value, setValue] = useState({
-        startDate: new Date(),
-        endDate: new Date().setMonth(11)
+        startDate: DayPropertyse("month",0).today,
+        endDate: DayPropertyse("month",1).next
     });
 
 
@@ -67,28 +101,36 @@ const carDatePicker = ({locations}) => {
                 value={value}
                 onChange={handleValueChange} 
                 minDate={date} 
-                startFrom="2023-01-01" 
+                startFrom={date} 
+                showShortcuts={true}
                 configs={
                     {shortcuts:{
-                        last3Days:{
-                            text:"Last 3 days",
+                        Next3days:{
+                            text:"Rent for a 3 days",
+                            period:{
+                                start:DayPropertyse("day",2).today,
+                                end:DayPropertyse("day",2).next
+                            },
+                        },
+                        NextWeek:{
+                            text:"Rent for a next week",
+                            period:{
+                                start:DayPropertyse("day",6).today,
+                                end:DayPropertyse("day",6).next
+                            },
+                        },
+                        NextMonth:{
+                            text:"Rent for a month",
                             period:{
                                 start:"2023-06-17",
                                 end:"2023-06-19"
                             },
                         },
-                        customToday:{
-                            text:"Custom Today",
+                        Next3month:{
+                            text:"Rent for a 3 month",
                             period:{
-                                start:"2023-06-20",
-                                end:"2023-06-20"
-                            },
-                        },
-                        next8Days:{
-                            text:"Next 8 days",
-                            period:{
-                                start:"2023-06-21",
-                                end:"2023-06-28"
+                                start:"2023-06-17",
+                                end:"2023-06-19"
                             },
                         }
                     }
