@@ -28,8 +28,8 @@ $desktop-width: 1024px;
   }
   
   // @todo check if required
-  @mixin big-desktop {
-    @media (min-width: 1800px) {
+  @mixin desktop2 {
+    @media (min-width: 1440px) {
       @content;
     }
   }
