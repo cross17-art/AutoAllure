@@ -7,52 +7,31 @@ import Cookies from 'js-cookie';
 
 import Datepicker from "react-tailwindcss-datepicker"
 import Dropdown from "../ui/Dropdown";
-
-const DayPropertyse = (type,count)=>{
-    let today = new Date()
-    let tomorrowDay = new Date(today.setDate(today.getDate()+1))
-    
-    let nextDate='';
-    if(type==="month"){
-        nextDate= new Date(tomorrowDay.setMonth(tomorrowDay.getMonth()+count))
-    }else if(type==="day"){
-        nextDate= new Date(tomorrowDay.setDate(tomorrowDay.getDate()+count))
-    }else if(type ==="week"){
-        // day = d.getDay()
-        // d.getDate() + (8-day)
-    }
-
-    today = new Date()
-    tomorrowDay = new Date(today.setDate(today.getDate()+1))
-
-
-
-
-    let day = tomorrowDay.getDate()<10?"0"+tomorrowDay.getDate():tomorrowDay.getDate()
-    let month = tomorrowDay.getMonth()+1<10?"0"+(tomorrowDay.getMonth()+1):tomorrowDay.getMonth()+1
-    let year = tomorrowDay.getFullYear()
-
-    let nextMonth = nextDate.getMonth()+1<10?"0"+(nextDate.getMonth()+1):nextDate.getMonth()+1
-    let nextDay = nextDate.getDate()<10?"0"+nextDate.getDate():nextDate.getDate()
-    let nextYear = nextDate.getFullYear()
-
-
-
-    return ({"today": year+"-"+month+"-"+day,"next": nextYear+"-"+nextMonth+"-"+nextDay})   
-}
+import {dayPropertyse} from '../../assets/js/formatedDate'
 
 const carDatePicker = ({locations}) => {
-
+    
     const navigate = useNavigate()
     const [search,setSearch] = useState(null)
-    
+    const [shortCuts,setShortCuts] = useState({
+        next3days: '',
+        nextWeek: '',
+        nextMonth: '',
+        next3Month: '',
+        beforDate:''
+    })
 
-    let date = new Date();
-    date.setDate(date.getDate() - 1);
+    const [value, setValue] = useState({
+        startDate: "",
+        endDate: ""
+    });
 
+    const handleValueChange = (newValue) => {
+        console.log("newValue:", newValue);
+        setValue(newValue);
+    }
+   
     useEffect(()=>{
-        
-       
         if(search!=null){
             if(search.startDate!=null){
                 // startDate = search.toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ search.toLocaleDateString("en-US", { month: 'numeric' })+ "-" + search.toLocaleDateString("en-US", { year: 'numeric' })
@@ -69,18 +48,31 @@ const carDatePicker = ({locations}) => {
         }
     },[search])
 
+    useEffect(()=>{
+        
+        let date = new Date();
+        date.setDate(date.getDate() - 1);
 
-    const [value, setValue] = useState({
-        startDate: DayPropertyse("month",0).today,
-        endDate: DayPropertyse("month",1).next
-    });
+        let next3days = dayPropertyse("day",2)
+        
+        let nextWeek = dayPropertyse("week",6)
+        
+        let nextMonth = dayPropertyse("month",1)
+        
+        let next3Month = dayPropertyse("month",3)
+        
+        handleValueChange({"startDate":nextMonth.today,"endDate":nextMonth.next})
+        setShortCuts({
+            "next3days":next3days,
+            "nextWeek":nextWeek,
+            "nextMonth":nextMonth,
+            "next3Month":next3Month,
+            "beforDate":date
+        })
+    },[])
 
 
-
-    const handleValueChange = (newValue) => {
-        console.log("newValue:", newValue);
-        setValue(newValue);
-    }
+   
     
 
     // disabledDates={[
@@ -100,37 +92,37 @@ const carDatePicker = ({locations}) => {
                 primaryColor={"orange"}
                 value={value}
                 onChange={handleValueChange} 
-                minDate={date} 
-                startFrom={date} 
+                minDate={shortCuts.beforDate} 
+                // startFrom={date} 
                 showShortcuts={true}
                 configs={
                     {shortcuts:{
                         Next3days:{
                             text:"Rent for a 3 days",
                             period:{
-                                start:DayPropertyse("day",2).today,
-                                end:DayPropertyse("day",2).next
+                                start:shortCuts.next3days.today,
+                                end:shortCuts.next3days.next
                             },
                         },
                         NextWeek:{
                             text:"Rent for a next week",
                             period:{
-                                start:DayPropertyse("day",6).today,
-                                end:DayPropertyse("day",6).next
+                                start:shortCuts.nextWeek.today,
+                                end:shortCuts.nextWeek.next
                             },
                         },
                         NextMonth:{
                             text:"Rent for a month",
                             period:{
-                                start:"2023-06-17",
-                                end:"2023-06-19"
+                                start:shortCuts.nextMonth.today,
+                                end:shortCuts.nextMonth.next
                             },
                         },
                         Next3month:{
                             text:"Rent for a 3 month",
                             period:{
-                                start:"2023-06-17",
-                                end:"2023-06-19"
+                                start:shortCuts.next3Month.today,
+                                end:shortCuts.next3Month.next                                
                             },
                         }
                     }

@@ -4,10 +4,10 @@ import Popup from "reactjs-popup";
 import Content from "./ContentPopup";
 import "../../assets/css/carItem.scss";
 
-const CarItemNew = ({ carData }) => {
-  const url = "http://localhost:5173/";
+const CarItemNew = ({ carData,url }) => {
+  // const url = "http://localhost:5173/";
   return (
-    <div className="carItem" carId={carData.id}>
+    <div className="carItem" id={carData.id}>
       <img
         className="carItem_img"
         alt={carData.fullName}

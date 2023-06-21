@@ -8,7 +8,7 @@ import { useParams } from 'react-router-dom';
 
 import Cookies from 'js-cookie';
 
-function cars() {
+function cars({url}) {
     const {dates} = useParams(null);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -70,7 +70,7 @@ function cars() {
            mark = mark.replace(mark[0],mark[0].toUpperCase())
            element.fullName=brand+" "+mark;
 
-           return ( <CarItem key={element.id} carData={element} />)
+           return ( <CarItem key={element.id} carData={element} url={url} />)
          })}
 
       </div>

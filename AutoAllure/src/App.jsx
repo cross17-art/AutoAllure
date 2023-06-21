@@ -8,16 +8,20 @@ import "./assets/css/Main.scss";
 import { Routes, Route, Link } from "react-router-dom";
 
 function App() {
+  const url = "http://localhost:5173/"
+  
   return (
+
     <>
       <Header />
       <div className="wrapper">
+
         <Routes>
-          <Route path="/" element={<CarsList />} />
-          <Route path="dates/:dates" element={<CarsDateList />} />
+          <Route path="/" element={<CarsList url={url} />} />
+          <Route path="dates/:dates" element={<CarsDateList url={url} />} />
         </Routes>
 
-        <Information />
+        <Information url={url} />
       </div>
       <Footer />
     </>
