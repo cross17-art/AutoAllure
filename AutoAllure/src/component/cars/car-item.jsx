@@ -46,14 +46,8 @@ const CarItemNew = ({ carData,url }) => {
             </p>
           )}
 
-          <Popup
-            modal
-            trigger={
-              <button className="carItem_btn btn btn-orange">Rent Now</button>
-            }
-          >
-            {(close) => <Content close={close} carData={carData} />}
-          </Popup>
+          <button className="carItem_btn btn btn-orange">Rent Now</button>
+            
         </div>
       </div>
     </div>
