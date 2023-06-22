@@ -3,14 +3,48 @@
   flex-direction: column;
   width: 100%;
 
+  &_item {
+  }
+
   //@ todo requires design
   &_title {
-    height: 30px;
-    line-height: 30px;
+    position: relative;
+    padding: 14px;
+    font-size: 20px;
+    font-weight: bold;
     cursor: pointer;
+    background-color: white;
+    z-index: 2;
+
+    &.open {
+    }
   }
 
   &_content {
-    padding: 20px;
+    position: relative;
+    max-height: 0;
+    overflow: hidden;
+    z-index: 1;
+    transition-duration: 450ms;
+    transition-property: max-height;
+
+    &.open {
+      max-height: 500px;
+      transition: max-height 450ms ease-in-out;
+    }
+  }
+
+  &_text {
+    opacity: 0;
+    transform: translateY(-1rem);
+    padding: 12px;
+    transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+    transition-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+
+    .open & {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
+    }
   }
 }

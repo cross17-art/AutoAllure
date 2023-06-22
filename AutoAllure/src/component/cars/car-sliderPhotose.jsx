@@ -7,10 +7,10 @@ const carSlider = ({photos}) => {
   return (
     <>
     <Swiper navigation={true} modules={[Navigation]} className="mySwiper modal_information-side">
-        {photos.map((item)=>{
+        {photos.map((item, index)=>{
           return (
             <SwiperSlide>
-                <img src={item} alt={"asd"} />
+                <img src={item} alt={"asd"} key={index} />
             </SwiperSlide>
         )
       })}
