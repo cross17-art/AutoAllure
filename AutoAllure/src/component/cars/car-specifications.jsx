@@ -14,7 +14,7 @@ const carSpecifications = ({carData}) => {
 
          carData.options[0].map((item,index,carData2)=>{
           return(
-            <span>{item.name}{index+1<carData2.length?", ":""}</span>
+            <span key={index}>{item.name}{index+1<carData2.length?", ":""}</span>
           )
          })}
       </div>
