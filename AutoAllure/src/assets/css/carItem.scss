@@ -1,12 +1,11 @@
+@import "_media";
 //colors
-$orange: #ffc107;
+$orange: #fbaf03;
 $brown: #a88d5c;
 $grey: #dfe0df;
 
 .carItem {
-  font-family: "Oswald", sans-serif;
-  background-color: white;
-  border: 1px solid grey;
+  border: 1px solid $grey;
   cursor: pointer;
 
   &_btn {
@@ -23,41 +22,42 @@ $grey: #dfe0df;
   &_info {
     padding: 16px 12px 12px;
 
-    p {
+    &-title {
       font-size: 20px;
       display: flex;
       flex-direction: column;
+    }
 
-      span {
-        font-size: 12px;
-        color: #b0b0b0;
-        margin-top: 4px;
-      }
+    &-subtitle {
+      font-size: 12px;
+      color: #b0b0b0;
+      margin-top: 4px;
     }
   }
 
   &_img {
-    max-height: 200px;
+    max-height: 180px;
     object-fit: contain;
     width: 100%;
   }
 
-  &_periodPrice {
+  &_price {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: center;
     margin-top: 18px;
-    p {
+    &-text {
       display: flex;
       flex-direction: row;
-
-      span {
-        font-size: inherit;
-        color: inherit;
-        margin-top: 0;
-      }
+      font-size: 16px;
     }
+  }
+
+  &_icon {
+    height: 18px;
+    width: 18px;
+    margin-right: 6px;
   }
 
   &_additionalInfo {
@@ -66,91 +66,14 @@ $grey: #dfe0df;
     gap: 10px;
     margin-top: 10px;
 
-    img {
-      height: 12px;
-      width: 12px;
-      margin-right: 6px;
-    }
-
     &-item {
       display: flex;
       flex-direction: row;
       align-items: center;
     }
-  }
-}
 
-.carItem {
-  font-family: "Oswald", sans-serif;
-  background-color: white;
-  border: 1px solid grey;
-  cursor: pointer;
-
-  &_btn {
-    background: $orange;
-    font-weight: bold;
-    margin: 0;
-
-    &:hover {
-      transform: none;
-      background-color: #ffca29;
-    }
-  }
-
-  &_info {
-    padding: 16px 12px 12px;
-
-    p {
-      font-size: 20px;
-      display: flex;
-      flex-direction: column;
-
-      span {
-        font-size: 12px;
-        color: #b0b0b0;
-        margin-top: 4px;
-      }
-    }
-  }
-
-  &_img {
-    max-height: 200px;
-  }
-
-  &_periodPrice {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-top: 18px;
-    p {
-      display: flex;
-      flex-direction: row;
-
-      span {
-        font-size: inherit;
-        color: inherit;
-        margin-top: 0;
-      }
-    }
-  }
-
-  &_additionalInfo {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    margin-top: 10px;
-
-    img {
-      height: 12px;
-      width: 12px;
-      margin-right: 6px;
-    }
-
-    &-item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+    &-text {
+      //
     }
   }
 }
