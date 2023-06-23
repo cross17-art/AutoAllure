@@ -6,13 +6,22 @@ import Cookies from 'js-cookie';
 
 
 import Datepicker from "react-tailwindcss-datepicker"
-import Dropdown from "../ui/Dropdown";
+import Dropdown from "./Dropdown";
 import {dayPropertyse} from '../../assets/js/formatedDate'
+// import { error } from "console";
 
-const carDatePicker = ({locations}) => {
+
+
+
+const carDatePicker = () => {
     
     const navigate = useNavigate()
     const [search,setSearch] = useState(null)
+    
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [items, setItems] = useState([]);
+
     const [shortCuts,setShortCuts] = useState({
         next3days: '',
         nextWeek: '',
@@ -54,11 +63,8 @@ const carDatePicker = ({locations}) => {
         date.setDate(date.getDate() - 1);
 
         let next3days = dayPropertyse("day",2)
-        
         let nextWeek = dayPropertyse("week",6)
-        
         let nextMonth = dayPropertyse("month",1)
-        
         let next3Month = dayPropertyse("month",3)
         
         handleValueChange({"startDate":nextMonth.today,"endDate":nextMonth.next})
@@ -69,6 +75,22 @@ const carDatePicker = ({locations}) => {
             "next3Month":next3Month,
             "beforDate":date
         })
+
+        fetch("https://auto-allure.com:2053/locations/v2/")
+            .then(res => res.json())
+            .then(
+                (result) => {
+                setIsLoaded(true);
+                setItems(result);
+                
+                },
+                (error) => {
+                setIsLoaded(true);
+                setError(error);
+                
+                }
+            )
+            
     },[])
 
 
@@ -86,7 +108,11 @@ const carDatePicker = ({locations}) => {
     //     },]} 
 // https://github.com/onesine/react-tailwindcss-datepicker/issues/71
 // https://react-tailwindcss-datepicker.vercel.app/props#displayFormat
+
+
+    
     return (<>
+    
     <div className="positionation">
             <Datepicker key={'datePicker'}
                 primaryColor={"orange"}
@@ -129,8 +155,8 @@ const carDatePicker = ({locations}) => {
                 
                 }}
             ></Datepicker>
-            <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations} digit={'first'} placeHolder={"Select ..."}/>
-            <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations} digit={'second'} placeHolder={"Select ..."}/>
+            {/* <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations} digit={'first'} placeHolder={"Select ..."}/>
+            <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations} digit={'second'} placeHolder={"Select ..."}/> */}
             <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button>
           
     </div>

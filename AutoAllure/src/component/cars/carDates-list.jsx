@@ -2,7 +2,7 @@ import { useState,useEffect } from 'react'
 import '../../assets/css/CarList.scss'
 
 import CarItem from './car-item';
-import CarDatePicker from "./car-calendar";
+import CarDatePicker from "../ui/calendar";
 
 import { useParams } from 'react-router-dom';
 
@@ -13,6 +13,8 @@ function cars({url}) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
+    const [rentDateInformation,setRentDateInformation] = useState(null)
+
   
     useEffect(() => {
       if(dates!=null){
@@ -30,6 +32,13 @@ function cars({url}) {
             (result) => {
               setIsLoaded(true);
               setItems(result);
+              
+
+              setRentDateInformation({
+                "dates":dates,
+                "locationGet":locationGet,
+                "locationReturn":locationReturn,type
+              })
               Cookies.remove('dateStart');
               Cookies.remove('dateEnd');
   
@@ -70,7 +79,7 @@ function cars({url}) {
            mark = mark.replace(mark[0],mark[0].toUpperCase())
            element.fullName=brand+" "+mark;
 
-           return ( <CarItem key={element.id} carData={element} url={url} />)
+           return ( <CarItem key={element.id} carData={element} url={url} button={rentDateInformation} />)
          })}
 
       </div>

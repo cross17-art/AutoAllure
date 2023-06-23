@@ -3,7 +3,7 @@
 import { useState,useEffect} from 'react'
 import Cookies from 'js-cookie';
 import { useParams } from 'react-router-dom';
-function carPage({url}) {
+function carBook({url}) {
     const {id} = useParams(null);
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -71,4 +71,4 @@ function carPage({url}) {
 
 
 
-export default carPage
+export default carBook

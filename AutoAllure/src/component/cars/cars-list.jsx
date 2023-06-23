@@ -3,7 +3,7 @@ import '../../assets/css/CarList.scss'
 import '../../assets/css/loading.scss'
 
 import CarItem from './car-item';
-import CarDatePicker from "./car-calendar";
+import CarDatePicker from "../ui/calendar";
 
 import { useParams } from 'react-router-dom';
 
@@ -56,7 +56,7 @@ function cars({url}) {
            element.maxDiscount = maxDiscount;
            
            element.monthPrice = (element.price-(element.price*(maxDiscount*-1)/100))*31
-           return ( <CarItem key={element.id} carData={element} url={url} />)
+           return ( <CarItem key={element.id} carData={element} url={url} button="page" />)
          })}
 
       </div>
