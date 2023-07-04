@@ -22,6 +22,8 @@ const carDatePicker = () => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
 
+    const [locations,setLocations] = useState(null)
+
     const [shortCuts,setShortCuts] = useState({
         next3days: '',
         nextWeek: '',
@@ -52,6 +54,7 @@ const carDatePicker = () => {
                 let dates = search.startDate+' '+timeGet + ' - ' + search.endDate+' '+timeReturn
                 Cookies.set('locationGet', locationGet, { expires: 7 });
                 Cookies.set('locationReturn', locationReturn, { expires: 7 });
+                Cookies.set('rentDate', dates, { expires: 7 });
                 navigate(`/dates/${dates}`)
             }
         }
@@ -81,7 +84,7 @@ const carDatePicker = () => {
             .then(
                 (result) => {
                 setIsLoaded(true);
-                setItems(result);
+                setLocations(result);
                 
                 },
                 (error) => {
@@ -109,61 +112,67 @@ const carDatePicker = () => {
 // https://github.com/onesine/react-tailwindcss-datepicker/issues/71
 // https://react-tailwindcss-datepicker.vercel.app/props#displayFormat
 
+if (error) {
+    return <div>Error: {error}</div>;
+  } else if (!isLoaded) {
+    return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
+  } else {
 
-    
     return (<>
     
-    <div className="positionation">
-            <Datepicker key={'datePicker'}
-                primaryColor={"orange"}
-                value={value}
-                onChange={handleValueChange} 
-                minDate={shortCuts.beforDate} 
-                // startFrom={date} 
-                showShortcuts={true}
-                configs={
-                    {shortcuts:{
-                        Next3days:{
-                            text:"Rent for a 3 days",
-                            period:{
-                                start:shortCuts.next3days.today,
-                                end:shortCuts.next3days.next
+        <div className="positionation">
+                <Datepicker key={'datePicker'}
+                    primaryColor={"orange"}
+                    value={value}
+                    onChange={handleValueChange} 
+                    minDate={shortCuts.beforDate} 
+                    // startFrom={date} 
+                    showShortcuts={true}
+                    configs={
+                        {shortcuts:{
+                            Next3days:{
+                                text:"Rent for a 3 days",
+                                period:{
+                                    start:shortCuts.next3days.today,
+                                    end:shortCuts.next3days.next
+                                },
                             },
-                        },
-                        NextWeek:{
-                            text:"Rent for a next week",
-                            period:{
-                                start:shortCuts.nextWeek.today,
-                                end:shortCuts.nextWeek.next
+                            NextWeek:{
+                                text:"Rent for a next week",
+                                period:{
+                                    start:shortCuts.nextWeek.today,
+                                    end:shortCuts.nextWeek.next
+                                },
                             },
-                        },
-                        NextMonth:{
-                            text:"Rent for a month",
-                            period:{
-                                start:shortCuts.nextMonth.today,
-                                end:shortCuts.nextMonth.next
+                            NextMonth:{
+                                text:"Rent for a month",
+                                period:{
+                                    start:shortCuts.nextMonth.today,
+                                    end:shortCuts.nextMonth.next
+                                },
                             },
-                        },
-                        Next3month:{
-                            text:"Rent for a 3 month",
-                            period:{
-                                start:shortCuts.next3Month.today,
-                                end:shortCuts.next3Month.next                                
-                            },
+                            Next3month:{
+                                text:"Rent for a 3 month",
+                                period:{
+                                    start:shortCuts.next3Month.today,
+                                    end:shortCuts.next3Month.next                                
+                                },
+                            }
                         }
-                    }
+                    
+                    }}
+                ></Datepicker>
+                <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations.locations} digit={'first'} placeHolder={"Select ..."}/>
+                <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations.locations} digit={'second'} placeHolder={"Select ..."}/>
                 
-                }}
-            ></Datepicker>
-            {/* <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations} digit={'first'} placeHolder={"Select ..."}/>
-            <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations} digit={'second'} placeHolder={"Select ..."}/> */}
-            <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button>
-          
-    </div>
-   
-    </>
+                <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button>
+            
+        </div>
     
-    );
+    </>);
+  }
+    
+    
 };
 
 export default carDatePicker;

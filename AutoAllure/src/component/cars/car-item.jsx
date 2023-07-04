@@ -7,22 +7,19 @@ import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import "../../assets/css/carItem.scss";
 
-const CarItemNew = ({ carData, url,type }) => {
+const CarItemNew = ({ carData, url, type,button }) => {
   // const url = "http://localhost:5173/";
   const navigate = useNavigate()
   const [request,setRequest] = useState(false)
 
 
   useEffect(()=>{
+    Cookies.set('company', carData.company, { expires: 7 });
+    Cookies.set('carId', carData.id, { expires: 7 });
+    
     if(request==="carPage"){
-      Cookies.set('company', carData.company, { expires: 7 });
       navigate(`/car-page/${carData.id}`)
     }else if(request==="carBook"){
-      Cookies.set('company', carData.company, { expires: 7 });
-      Cookies.set('company', carData.company, { expires: 7 });
-      Cookies.set('company', carData.company, { expires: 7 });
-      Cookies.set('company', carData.company, { expires: 7 });
-
       navigate(`/car-book/${carData.id}`)
     }
     
@@ -70,7 +67,7 @@ const CarItemNew = ({ carData, url,type }) => {
             </p>
           )}
 
-          <button className="carItem_btn btn btn-orange" onClick={()=>type==="page"?setRequest("carBook"):setRequest("carPage")}>Rent Now</button>
+          <button className="carItem_btn btn btn-orange" onClick={()=>type==="page"?setRequest("carPage"):setRequest("carBook")}>Rent Now</button>
         </div>
       </div>
     </div>
