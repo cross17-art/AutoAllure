@@ -1,0 +1,103 @@
+.information{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    
+    &+.footer{
+        background-color: #FBAB7E;
+        background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+        color: black;
+        font-size: 60px;
+    }
+    &+.info{
+        background: #222;
+        color: wheat;
+    }
+   
+    &__row{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+        gap: 30px;
+
+        padding: 20px;
+        line-height: 60%;
+
+        &--block{
+            margin: 0 5px 10px;
+            position: relative;
+            flex-basis: 20%;
+            // @todo check 
+            font-size: 1rem;
+            max-width: 330px;
+            img{
+                width: 100px;
+                margin: auto;
+            }
+        }
+        &-blockRow{
+            margin: 0 5px 10px;
+            position: relative;
+            height: 190px;
+            font-size: 18px;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            img{
+                width: 200px;
+            }
+        }
+        &-blockFooter{
+            font-size: 18px;
+            text-align: center;
+            width: 45%;
+        }
+    }
+    h1{
+        font-size: 2rem;
+        font-weight: bold;
+    }
+}
+
+.footer{
+    background-color: #FBAB7E;
+    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+    color: black;
+    font-size: 60px;
+    margin: auto;
+    
+    // @todo fix: you can have only one h1 title per page, seo recommendation 
+    h1{
+        color: black;
+        position: relative;
+        display: block;
+        width: 100%;
+        margin: 0;
+    }
+}
+
+
+@media only screen and (max-width: 767px) {
+
+  }
+  
+  // Стили для планшетного разрешения
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .information{
+        &__row{
+            flex-direction: row;
+        }
+    }
+  }
+  
+  // Стили для десктопного разрешения
+  @media only screen and (min-width: 1024px) {
+    .information{
+        &__row{
+            flex-direction: row;
+        }
+    }
+  }
+

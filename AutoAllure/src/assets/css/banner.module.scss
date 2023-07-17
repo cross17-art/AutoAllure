@@ -1,0 +1,84 @@
+.banner{
+    background-color: black;
+    height: 100vh;
+    background-image: url("/bg_hat.png");
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-size: contain;
+    background-position-y: center;
+
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    overflow: hidden;
+    
+    &__infromation{
+        color: white;
+        text-align: center;
+        overflow: hidden;
+        width: 100%;
+        line-height: 90%;
+        padding: 20px;
+        margin-bottom: 300px;
+        &--swiper{
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 30px;
+        }
+        h1{
+            font-size: 2rem;
+            margin: 0 ;
+            padding: 0 ;
+            font-weight: bold;
+        }
+        p{
+            line-height: normal;
+            font-size: 1rem;
+        }
+    }
+    
+  
+
+}
+
+.btnBanner{
+    border: none;
+    line-height: 1;
+    transition: transform 300ms linear 0ms;
+
+    &__white{
+        color: white;
+        border: 1px solid white;
+        font-size: 1rem;
+        border-radius: 10px;
+        padding: 5px;
+        width: 130px;
+        align-self: center;
+    }
+    &__white:hover{
+        color: orange;
+        border: 1px solid orange;
+    }
+
+
+}
+
+
+
+@media only screen and (max-width: 767px) {
+    // Ваши стили для мобильного разрешения
+  }
+  
+  // Стили для планшетного разрешения
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    // Ваши стили для планшетного разрешения
+  }
+  
+  // Стили для десктопного разрешения
+  @media only screen and (min-width: 1024px) {
+    // Ваши стили для десктопного разрешения
+  }

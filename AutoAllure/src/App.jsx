@@ -2,6 +2,9 @@ import { useState } from "react";
 import CarsList from "./component/cars/cars-list";
 import CarsDateList from "./component/cars/carDates-list";
 import Header from "./component/screen/Header";
+import BannerBook from "./component/screen/BannerBook";
+import Header2 from "./component/screen/Header2";
+
 import Footer from "./component/screen/Footer";
 import Information from "./component/information/information";
 import "./assets/css/Main.scss";
@@ -13,8 +16,12 @@ function App() {
   return (
 
     <>
-      <Header />
-      <div className="wrapper">
+    <Header2 />
+    <BannerBook/>
+    <Information url={url}/>
+    <Footer />
+      {/* <Header /> */}
+      {/* <div className="wrapper">
 
         <Routes>
           <Route path="/" element={<CarsList url={url} />} />
@@ -23,7 +30,7 @@ function App() {
 
         <Information url={url} />
       </div>
-      <Footer />
+      <Footer /> */}
     </>
   );
 }

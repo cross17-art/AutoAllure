@@ -1,0 +1,27 @@
+
+@import "./colors";
+
+.header{
+    color: white;
+    display: block;
+    width: 100%;
+    background-color: black;
+    font-size: 1.5rem;
+    overflow: hidden;
+    padding: 5px;
+    &__links{
+        text-align: center;
+        a{
+            margin: 4px;
+            text-align: right;
+            text-decoration: none;
+        }
+        a:hover{
+            color: $orange;
+        }
+    }
+
+ 
+
+}
+
