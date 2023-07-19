@@ -1,0 +1,79 @@
+.order{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 2rem;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    gap: 10px;
+    background-color: black;
+    color: white;
+    &__steps{
+        display: flex;
+        justify-content: center;
+        align-self: center;
+        flex-direction: column;
+        
+        &--element{
+            font-size: 1.2rem;
+            border: 2px solid rgb(167, 165, 165);
+            border-radius: 20px;
+            padding: 20px;
+            min-height: 200px;
+            
+            span{
+                line-height: 170%;
+                color: rgb(167, 165, 165);
+            }
+            p{
+                color: rgb(167, 165, 165);
+            }
+            h1{
+                font-size: 1.6rem;
+                padding: 0;
+                margin-bottom: 5px;
+            }
+
+        }  
+    }
+    &__line{
+        border-bottom: 1px solid rgb(167, 165, 165);
+        text-transform: uppercase;
+        color: white;
+        margin-bottom: 0px;
+        a{
+            color: orange;
+            text-decoration: none;
+        }
+    }
+
+}
+section[data='orderSteps']{
+    background-color: black;
+}
+
+@media only screen and (max-width: 767px) {
+
+}
+
+// Стили для планшетного разрешения
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .order{
+    flex-direction: row;
+    flex-wrap: unset;
+  }
+}
+
+// Стили для десктопного разрешения
+@media only screen and (min-width: 1024px) {
+    .order{
+        flex-direction: row;
+        flex-wrap: unset;
+        &__steps{
+            
+        }
+      }
+}

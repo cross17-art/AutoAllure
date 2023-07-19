@@ -24,7 +24,6 @@
 
         padding: 20px;
         line-height: 60%;
-
         &--block{
             margin: 0 5px 10px;
             position: relative;
@@ -49,10 +48,35 @@
                 width: 200px;
             }
         }
-        &-blockFooter{
+        &--blockFooter{
             font-size: 18px;
             text-align: center;
-            width: 45%;
+            width: 100%;
+            max-width: 450px;
+        }
+    }
+
+    &__help{
+        width: 100%;
+        background-color: black;
+        color: white;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+        margin-top: 50px;
+        padding: 40px 20px 40px 20px;
+        gap: 15px;
+
+
+        &--text{
+            width: 100%;
+            p{
+            }
+        }   
+        &--number{
+            width: 100%;
         }
     }
     h1{
@@ -89,6 +113,9 @@
         &__row{
             flex-direction: row;
         }
+        &__help{
+            flex-direction: row;
+        }
     }
   }
   
@@ -96,6 +123,9 @@
   @media only screen and (min-width: 1024px) {
     .information{
         &__row{
+            flex-direction: row;
+        }
+        &__help{
             flex-direction: row;
         }
     }

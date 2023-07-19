@@ -1,0 +1,45 @@
+@import "./media.scss";
+
+.footerContact {
+  background-color: #222;
+  color: wheat;
+  margin: auto;
+  padding-bottom: 10px;
+  font-size: 14px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    @include desktop() {
+      flex-direction: row;
+    }
+  }
+
+  &__item {
+    margin: 10px;
+    line-height: 100%;
+    span {
+      font-weight: bold;
+      margin-right: 4px;
+      color: white;
+    }
+
+    &--link {
+      color: wheat;
+
+      &:hover {
+        color: orange;
+      }
+    }
+  }
+
+  &__copyright {
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+  }
+}
+
+.footerMargin{
+  margin-top: 40px;
+}

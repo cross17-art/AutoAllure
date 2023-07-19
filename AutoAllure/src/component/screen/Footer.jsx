@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import "../../assets/css/Information.module.scss";
-import "../../assets/css/Footer.scss";
+import styleInfromation from "../../assets/css/Information.module.scss";
+import styleFooter from  "../../assets/css/Footer.module.scss";
 
 function Footer() {
   return (
-    <>
-      <div className="information footer">
-        <div className="information_row">
-          <div className="information_row-blockFooter">
+    <footer className={styleFooter.footerMargin}>
+      <div className={`${styleInfromation['information']} ${styleInfromation['footer']}`}>
+        <div className={`${styleInfromation['information__row']}`}>
+          <div className={`${styleInfromation['information__row--blockFooter']}`}>
             <h1>We are always ready to help</h1>
             <p>
               You can always contact us if you need help with a car or housing
@@ -20,28 +20,28 @@ function Footer() {
         </div>
       </div>
 
-      <div className="information footerContact">
-        <div className="information_row">
-          <div className="footerContact_list">
-            <p className="footerContact_item">
+      <div className={`${styleInfromation['information']} ${styleFooter['footerContact']}`}>
+        <div className={`${styleInfromation['information__row']}`}>
+          <div className={`${styleFooter['footerContact__list']}`}>
+            <p className={`${styleFooter['footerContact__item']}`}>
               <span>Phone:</span>
-              <a className="footerContact_item-link" href="tel: +35799667777">
+              <a className={`${styleFooter['footerContact__item--link']}`} href="tel: +35799667777">
                 +357&nbsp;996&nbsp;7777
               </a>
             </p>
-            <p className="footerContact_item">
+            <p className={`${styleFooter['footerContact__item']}`}>
               <span>Email:</span>
               <a
-                className="footerContact_item-link"
+                className={`${styleFooter['footerContact__item--link']}`}
                 href="mailto: autoallure@protonmail.com"
               >
                 autoallure@protonmail.com
               </a>
             </p>
-            <p className="footerContact_item">
+            <p className={`${styleFooter['footerContact__item']}`}>
               <span>Address:</span>
               <a
-                className="footerContact_item-link"
+                className={`${styleFooter['footerContact__item--link']}`}
                 href="https://goo.gl/maps/1zUCBWxVqK5apxuB7"
                 target="_blank"
               >
@@ -50,9 +50,9 @@ function Footer() {
             </p>
           </div>
         </div>
-        <p className="footerContact_copyright">© 2023 Auto Allure</p>
+        <p className={`${styleFooter['footerContact__copyright']}`}>© 2023 Auto Allure</p>
       </div>
-    </>
+    </footer>
   );
 }
 

@@ -3,6 +3,7 @@
   flex-direction: column;
   width: 100%;
 
+  
   &_item {
   }
 
@@ -10,8 +11,8 @@
   &_title {
     position: relative;
     padding: 14px;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 1.5rem;
+    font-weight: 400;
     cursor: pointer;
     background-color: white;
     z-index: 2;
@@ -35,6 +36,8 @@
   }
 
   &_text {
+    font-size: 1.3rem;
+    font-weight: 100;
     opacity: 0;
     transform: translateY(-1rem);
     padding: 12px;
@@ -46,5 +49,25 @@
       transform: translateY(0);
       transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;
     }
+  }
+  h1{
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+
+
+.w-100{
+  width: 100%;
+}
+
+.blockFAQS{
+  width: 80%;
+  margin: auto;
+  h1{
+    font-size:2rem;
+    font-weight:bold;
+    width:100%;
+    text-align:center;
   }
 }
