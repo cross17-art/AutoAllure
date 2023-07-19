@@ -18,19 +18,17 @@ function App() {
     <>
     <Header2 />
     <BannerBook/>
-    <Information url={url}/>
-    <Footer />
       {/* <Header /> */}
-      {/* <div className="wrapper">
+      <div className="wrapper">
 
         <Routes>
           <Route path="/" element={<CarsList url={url} />} />
           <Route path="dates/:dates" element={<CarsDateList url={url} />} />
         </Routes>
 
-        <Information url={url} />
       </div>
-      <Footer /> */}
+    <Information url={url}/>
+    <Footer />
     </>
   );
 }

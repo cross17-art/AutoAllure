@@ -1,9 +1,11 @@
 import React from 'react';
 import { useEffect, useRef } from "react";
 import styleBanner from  '../../assets/css/banner.module.scss'
-// import Logo from "../ui/logo";
+import CarDatePicker from "../../component/ui/calendar";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, Navigation } from "swiper";
+
 function BannerBook() {
 
   return (
@@ -54,6 +56,7 @@ function BannerBook() {
               </Swiper>    
       </div>
 
+      <CarDatePicker key={'CarListDatePicker'}/>    
       
     </div>
 

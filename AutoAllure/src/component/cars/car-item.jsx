@@ -1,14 +1,32 @@
 import { useState, useEffect } from "react";
-import Popup from "reactjs-popup";
+import { useNavigate } from "react-router-dom";
 
-import Content from "./ContentPopup";
+// import Content from "./ContentPopup";
+// import Popup from "reactjs-popup";
+
+import Cookies from 'js-cookie';
 import "../../assets/css/carItem.scss";
 
-const CarItemNew = ({ carData, url }) => {
+const CarItemNew = ({ carData, url, type,button }) => {
   // const url = "http://localhost:5173/";
+  const navigate = useNavigate()
+  const [request,setRequest] = useState(false)
+
+
+  useEffect(()=>{
+    Cookies.set('company', carData.company, { expires: 7 });
+    Cookies.set('carId', carData.id, { expires: 7 });
+    
+    if(request==="carPage"){
+      navigate(`/car-page/${carData.id}`)
+    }else if(request==="carBook"){
+      navigate(`/car-book/${carData.id}`)
+    }
+    
+  },[request])
 
   return (
-    <div className="carItem" id={carData.id}>
+    <div className="carItem" id={carData.id} company={carData.company}>
       <img
         className="carItem_img"
         alt={carData.fullName}
@@ -49,7 +67,7 @@ const CarItemNew = ({ carData, url }) => {
             </p>
           )}
 
-          <button className="carItem_btn btn btn-orange">Rent Now</button>
+          <button className="carItem_btn btn btn-orange" onClick={()=>type==="page"?setRequest("carPage"):setRequest("carBook")}>Rent Now</button>
         </div>
       </div>
     </div>

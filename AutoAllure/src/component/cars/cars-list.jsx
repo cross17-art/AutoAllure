@@ -3,7 +3,7 @@ import '../../assets/css/CarList.scss'
 import '../../assets/css/loading.scss'
 
 import CarItem from './car-item';
-import CarDatePicker from "./car-calendar";
+import CarDatePicker from "../ui/calendar";
 
 import { useParams } from 'react-router-dom';
 
@@ -13,7 +13,6 @@ function cars({url}) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-  
 
     useEffect(() => {
       console.log("only list")
@@ -37,7 +36,7 @@ function cars({url}) {
       return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     } else {
       return (<>
-      <CarDatePicker key={'mainCarDatePicker'} locations={items.locations }/>
+      {/* <CarDatePicker key={'mainCarDatePicker'} locations={items.locations }/> */}
       <div className='carList'>
 
          {items.Test.map((element)=>{
@@ -56,7 +55,7 @@ function cars({url}) {
            element.maxDiscount = maxDiscount;
            
            element.monthPrice = (element.price-(element.price*(maxDiscount*-1)/100))*31
-           return ( <CarItem key={element.id} carData={element} url={url} />)
+           return ( <CarItem key={element.id} carData={element} url={url} type = "page" />)
          })}
 
       </div>
