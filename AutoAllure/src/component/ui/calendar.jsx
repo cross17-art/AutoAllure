@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-import '../../assets/css/popup.scss'
+// import '../../assets/css/popup.scss'
 import '../../assets/css/datePickerBlock.scss'
 import Cookies from 'js-cookie';
 
@@ -9,6 +9,10 @@ import Datepicker from "react-tailwindcss-datepicker"
 import Dropdown from "./Dropdown";
 import {dayPropertyse} from '../../assets/js/formatedDate'
 // import { error } from "console";
+
+
+import styleBanner from  '../../assets/css/banner.module.scss'
+
 
 
 
@@ -123,10 +127,13 @@ if (error) {
         <div className="positionation">
             <div className="positionation__display">
                 <Datepicker key={'datePicker'}
+                        toggleClassName="toogle_calendar absolute rounded-r-lg text-white right-0 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed" 
+                        useRange={false}
                         primaryColor={"orange"}
                         value={value}
                         onChange={handleValueChange} 
                         minDate={shortCuts.beforDate} 
+                        popoverDirection="up" 
                         // startFrom={date} 
                         showShortcuts={true}
                         configs={
@@ -163,10 +170,13 @@ if (error) {
                         
                         }}
                     ></Datepicker>
+         
                     <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations.locations} digit={'first'} placeHolder={"Select ..."}/>
                     <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations.locations} digit={'second'} placeHolder={"Select ..."}/>
-                    
-                    <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button>
+                    <button type='button' className={styleBanner.btnBanner__orange}>
+                            Order now
+                    </button>
+                    {/* <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button> */}
             </div>
                 
             
@@ -179,3 +189,8 @@ if (error) {
 };
 
 export default carDatePicker;
+// transition-all ease-out duration-300 absolute z-10 mt-[1px] text-sm lg:text-xs 2xl:text-sm mb-2.5 block bottom-full translate-y-0 opacity-1
+// transition-all ease-out duration-300 absolute z-10 mt-[1px] text-sm lg:text-xs 2xl:text-sm mb-2.5 mt-2.5 block translate-y-0 opacity-1
+
+
+// transition-all ease-out duration-300 absolute z-10 mt-[1px] text-sm lg:text-xs 2xl:text-sm block translate-y-0 opacity-1
