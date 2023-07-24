@@ -137,6 +137,9 @@
 .positionation__display .relative.w-full.text-gray-700 div{
   text-align: center;
 }
+.positionation.p-hidden .positionation__display .relative.w-full.text-gray-700 div{
+  z-index: 300000;
+}
 .toogle_calendar{
   height: 67px;
 }

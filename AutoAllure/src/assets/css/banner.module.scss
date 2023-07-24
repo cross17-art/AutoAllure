@@ -96,11 +96,30 @@
             // width: 130px;
             overflow: hidden;
             height: 40px;
+            display: flex;
+            
         }        
         &--discount:hover {
             color: white;
             
         }
+
+        &--discount::after{
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            font-size: 18px;
+            transition: all 0.3s ease-in-out;
+          }
+        &--discount:hover::after{
+            right: 5px;
+        }
+        &--discount.active::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+
     }
 
 

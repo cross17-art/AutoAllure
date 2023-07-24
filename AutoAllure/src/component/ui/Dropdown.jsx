@@ -31,9 +31,9 @@ const Dropdown = ({ locationType,locationsDelivery,digit,containerClass }) => {
     }
 
     document.addEventListener("click",handlerLocationClick)
-    return ()=>{
-      document.removeEventListener("click",handlerLocationClick)
-    }
+    // return ()=>{
+    //   document.removeEventListener("click",handlerLocationClick)
+    // }
 
   },[isActive])
 
