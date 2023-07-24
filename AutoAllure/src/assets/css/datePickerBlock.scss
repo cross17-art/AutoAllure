@@ -1,21 +1,55 @@
 
 .positionation{
-    position: absolute;
-    bottom: 0;
+    // position: absolute;
+    bottom: 20%;
     display: flex;
     align-items: center;
     margin: auto;
     width: 100%;
+    z-index: 200000;
     &__display{
+      position: relative;
       width: 100%;  
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns:  minmax(20%,500px) minmax(10px,250px) minmax(10px,250px) 130px;
+      grid-gap: 10px;
+      justify-content: center;
+      align-self: center;
+      text-align: center;
       padding: 10px;
+      &--item_1{
+        grid-column-start: 1;
+        grid-column-end: 5;
+        margin: 0px !important;
+        padding: 0px !important;
+        display: flex;
+        text-align: center;
+        align-content: center;
+        align-items: center;
+      }
+      &--item_2{
+        grid-column-start: 1;
+        grid-column-end: 5;
+        margin: 0px !important;
+        padding: 0px !important;
+      }
+      &--item_3{
+        grid-column-start: 1;
+        grid-column-end: 5;
+        margin: 0px !important;
+        padding: 0px !important;
+      }
+      &--item_4{
+        grid-column-start: 1;
+        grid-column-end: 5;
+        margin: 0px !important;
+        padding: 0px !important;
+      }
     }
 }
 .dropdown {
     // margin: 0 auto;
-    z-index: 10000;
+    // z-index: 10000;
     // width: 300px;
     position: relative;
     padding: 5px;
@@ -34,8 +68,10 @@
     color: #777;
   }
   &_time{
+    z-index: 900;
     position: absolute;
-    top: 110%;
+    min-width: 40%;
+    bottom: 110%;
     text-align: center;
     align-self: flex-end;
     background-color: white;
@@ -44,7 +80,14 @@
     height: 300px;
     overflow-y: scroll;
     overflow-x: hidden;
-    border:2px solid black
+    border:2px solid black;
+    
+    &-item{
+      min-width: 50px;
+            padding: 10px;
+            cursor: pointer;
+        
+    }
   }
 
   &_time::-webkit-scrollbar-track {
@@ -65,7 +108,8 @@
   }
   &_content {
     position: absolute;
-    top: 110%;
+    z-index: 1000;
+    bottom: 110%;
     left: 0;
     min-width: 100%;
     box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.07);
@@ -83,11 +127,79 @@
   }
  
 }
-
+.p-hidden{
+  display: none;
+}
+.p-open{
+  display: unset;
+}
 // верстка под мобильную версию календарь
 .positionation__display .relative.w-full.text-gray-700 div{
   text-align: center;
 }
 .toogle_calendar{
   height: 67px;
+}
+
+
+
+@media only screen and (max-width: 767px) {
+
+}
+
+// Стили для планшетного разрешения
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+  .positionation
+  {
+    &__display{
+      &--item_1{
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+      &--item_2{
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+      &--item_3{
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+      &--item_4{
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+    }
+  }
+}
+
+// Стили для десктопного разрешения
+@media only screen and (min-width: 1024px) {
+  .p-open{
+    display: none;
+  }
+  .p-hidden{
+    display: unset;
+  }
+  .positionation
+  {
+    &__display{
+      &--item_1{
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+      &--item_2{
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+      &--item_3{
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+      &--item_4{
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+    }
+  }
 }

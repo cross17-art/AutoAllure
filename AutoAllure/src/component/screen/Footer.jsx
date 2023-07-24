@@ -4,7 +4,7 @@ import styleFooter from  "../../assets/css/Footer.module.scss";
 
 function Footer() {
   return (
-    <footer className={styleFooter.footerMargin}>
+    <footer className={styleFooter.footerMargin} id = "help">
       <div className={`${styleInfromation['information']} ${styleInfromation['footer']}`}>
         <div className={`${styleInfromation['information__row']}`}>
           <div className={`${styleInfromation['information__row--blockFooter']}`}>

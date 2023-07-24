@@ -8,7 +8,7 @@
   display: grid;
   grid-gap: 30px;
   font-size: 15px;
-
+  
   @include tablet {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -16,6 +16,68 @@
   @include desktop {
     grid-template-columns: repeat(3, 1fr);
   }
+  &__text{
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+   
+    &--line{
+      width: 100px;
+      height: 7px;
+      display: flex;
+      justify-content: center;
+      margin: auto;
+      gap: 5px;
+     
+      &_item1{
+        background: orange;
+        height: 100%;
+        width: 50px;
+        transform: skew(-40deg, 0deg);
+        overflow: hidden; 
+        white-space: nowrap;
+        animation: fadeInText 2s forwards;
+      }
+      &_item2{
+        background: orange;
+        width: 30px;
+        height: 100%;
+        display: inline;
+        transform: skew(-40deg, 0deg);
+        overflow: hidden; 
+        white-space: nowrap;
+        animation: fadeInText2 2s forwards;
+      }
+    }
+
+    h1{
+
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 1.3rem;
+    }
+    p{
+      font-size: 1.3rem;
+      font-weight: 100;
+    }
+    @keyframes fadeInText {
+      from {
+        width: 0; /* Начало анимации, текст невидим */
+      }
+      to {
+        width: 50px; /* Конец анимации, текст полностью видим */
+      }
+    }
+    @keyframes fadeInText2 {
+      from {
+        width: 0; /* Начало анимации, текст невидим */
+      }
+      to {
+        width: 30px; /* Конец анимации, текст полностью видим */
+      }
+    }
+  }
+  
 
   &_item {
     background-color: white;

@@ -1,14 +1,16 @@
 .banner{
     background-color: black;
-    height: 100vh;
+    // // height: 100vh;
     background-image: url("/background/bg_hat.png");
     background-repeat: no-repeat;
     background-position-x: center;
+    background-position-y: top 25%;
     background-size: contain;
-    background-position-y: center;
 
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
+    flex-direction: row;
+
     align-self: center;
     justify-content: center;
     flex-wrap: wrap;
@@ -21,7 +23,7 @@
         width: 100%;
         line-height: 90%;
         padding: 20px;
-        margin-bottom: 300px;
+        // margin-bottom: 280px;
         &--swiper{
             height: 400px;
             display: flex;
@@ -72,14 +74,36 @@
         border-radius: 10px;
         padding: 5px;
         align-self: center;
-        width: 130px;
+        // width: 130px;
         overflow: hidden;
+        height: 40px;
         
     }
 
     &__orange:hover {
-       
+        color: white;
     }
+
+    &__orange {
+        &--discount{
+            position: relative;
+            color: white;
+            border: 1px solid orange;
+            font-size: 1.4rem;
+            border-radius: 10px;
+            padding: 5px;
+            align-self: center;
+            // width: 130px;
+            overflow: hidden;
+            height: 40px;
+        }        
+        &--discount:hover {
+            color: white;
+            
+        }
+    }
+
+
 
 
 }
@@ -92,10 +116,24 @@
   
   // Стили для планшетного разрешения
   @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    // Ваши стили для планшетного разрешения
+    .banner{
+        height: 100vh;
+        background-image: url("/background/bg_hat.png");
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: top 25%;
+        background-size: contain;
+    }
   }
   
   // Стили для десктопного разрешения
   @media only screen and (min-width: 1024px) {
-    // Ваши стили для десктопного разрешения
+    .banner{
+        height: 100vh;
+        background-image: url("/background/bg_hat.png");
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-position-y: top 25%;
+        background-size: contain;
+    }
   }

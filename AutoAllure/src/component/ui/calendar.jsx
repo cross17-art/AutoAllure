@@ -17,8 +17,8 @@ import styleBanner from  '../../assets/css/banner.module.scss'
 
 
 
-const carDatePicker = () => {
-    
+const carDatePicker = ({classContainer}) => {
+
     const navigate = useNavigate()
     const [search,setSearch] = useState(null)
     
@@ -45,7 +45,17 @@ const carDatePicker = () => {
         console.log("newValue:", newValue);
         setValue(newValue);
     }
-   
+
+    const calendarRange = window.innerWidth >= 600
+    // const [shouldSticky, setShouldSticky] = useState(false);
+    // const handleScroll = () => {
+    //     const targetBlock = document.getElementById('allCars');
+    //     console.log("scroll")
+    //     if (targetBlock) {
+    //       const rect = targetBlock.getBoundingClientRect();
+    //       setShouldSticky(window.scrollY > rect.top);
+    //     }
+    // };
     useEffect(()=>{
         if(search!=null){
             if(search.startDate!=null){
@@ -65,7 +75,7 @@ const carDatePicker = () => {
     },[search])
 
     useEffect(()=>{
-        
+
         let date = new Date();
         date.setDate(date.getDate() - 1);
 
@@ -96,8 +106,8 @@ const carDatePicker = () => {
                 setError(error);
                 
                 }
-            )
-            
+        )
+      
     },[])
 
 
@@ -124,11 +134,12 @@ if (error) {
 
     return (<>
     
-        <div className="positionation">
+        <div className={`positionation ${classContainer}`}>
             <div className="positionation__display">
                 <Datepicker key={'datePicker'}
+                        containerClassName="relative w-full text-gray-700 positionation__display--item_1" 
                         toggleClassName="toogle_calendar absolute rounded-r-lg text-white right-0 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed" 
-                        useRange={false}
+                        useRange={calendarRange}
                         primaryColor={"orange"}
                         value={value}
                         onChange={handleValueChange} 
@@ -170,12 +181,12 @@ if (error) {
                         
                         }}
                     ></Datepicker>
-         
-                    <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations.locations} digit={'first'} placeHolder={"Select ..."}/>
-                    <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations.locations} digit={'second'} placeHolder={"Select ..."}/>
-                    <button type='button' className={styleBanner.btnBanner__orange}>
-                            Order now
-                    </button>
+                        <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations.locations} digit={'first'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_2"}/>
+                        <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations.locations} digit={'second'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_3"}/>
+                        <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_4`}  onClick={()=>setSearch(value)} >
+                                Search
+                        </button>    
+                    
                     {/* <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button> */}
             </div>
                 
@@ -189,8 +200,3 @@ if (error) {
 };
 
 export default carDatePicker;
-// transition-all ease-out duration-300 absolute z-10 mt-[1px] text-sm lg:text-xs 2xl:text-sm mb-2.5 block bottom-full translate-y-0 opacity-1
-// transition-all ease-out duration-300 absolute z-10 mt-[1px] text-sm lg:text-xs 2xl:text-sm mb-2.5 mt-2.5 block translate-y-0 opacity-1
-
-
-// transition-all ease-out duration-300 absolute z-10 mt-[1px] text-sm lg:text-xs 2xl:text-sm block translate-y-0 opacity-1

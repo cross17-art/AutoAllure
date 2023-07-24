@@ -4,9 +4,10 @@ import { useState,useRef } from "react";
 import LocationsList from "./locations-list";
 import TimeList from "./time-list";
 import { useEffect } from "react";
+import '../../assets/css/datePickerBlock.scss'
 
 
-const Dropdown = ({ locationType,locationsDelivery,digit }) => {
+const Dropdown = ({ locationType,locationsDelivery,digit,containerClass }) => {
   
 
   const [isActive, setIsActive] = useState(false);
@@ -53,7 +54,7 @@ const Dropdown = ({ locationType,locationsDelivery,digit }) => {
   },[isActiveTime])
 
   return (
-      <div className="dropdown" name={digit}>
+      <div className={`dropdown ${containerClass}`} name={digit}>
         <div className="dropdown_btn" name='dropdownText'  >
           
           <span name={'dropdownTextLocation'+locationType} onClick={(e) => {setIsActive(!isActive);}}> {selected}</span>

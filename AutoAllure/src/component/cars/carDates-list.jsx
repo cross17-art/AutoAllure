@@ -32,7 +32,10 @@ function cars({url}) {
             (result) => {
               setIsLoaded(true);
               setItems(result);
-              
+              const targetElement = document.getElementById('dateCars'); 
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+              }
 
               // setRentDateInformation({
               //   "dates":dates,
@@ -50,13 +53,17 @@ function cars({url}) {
             (error) => {
               setIsLoaded(true);
               setError(error);
-
+              const targetElement = document.getElementById('dateCars'); 
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+              }
               // Cookies.remove('dateStart');
               // Cookies.remove('dateEnd');
           
               // Cookies.remove('locationGet');
               // Cookies.remove('locationReturn');
             }
+            
           )
       }
     }, [dates])
@@ -66,11 +73,21 @@ function cars({url}) {
     if (error) {
       return <div>Error: {error}</div>;
     } else if (!isLoaded) {
-      return <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
+      return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     } else {
       return (<>
       {/* <CarDatePicker key={'CarListDatePicker'} locations={items.locations }/> */}
-      <div className='carList'>
+      <div id="dateCars">
+        <div className='carList__text'>
+                  <h1>TOP CARS</h1>
+                  <div className='carList__text--line'>
+                    <div className='carList__text--line_item1'></div>
+                    <div className='carList__text--line_item2'></div>
+                  </div>
+                  <p>Car rental with driver.</p>
+        </div>
+        </div>
+      <div className='carList' id="">
 
          {items.cars.map((element)=>{
            
