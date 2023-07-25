@@ -83,6 +83,7 @@ function Reviews({url}) {
 
     return(
      <section data="reviews">
+        
         <div className={styleReviews.reviews}>
             <div className={styleReviews['reviews__block']}>
                 <video autoPlay={true} loop={true} muted={true} className={styleReviews['reviews__block--video']}>

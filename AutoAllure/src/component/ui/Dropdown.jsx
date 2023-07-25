@@ -25,7 +25,7 @@ const Dropdown = ({ locationType,locationsDelivery,digit,containerClass }) => {
     if(!isActive)return;
     const handlerLocationClick = e =>{
       if(!toolTipLocationRef.current)return
-      if(!toolTipLocationRef.current.contains(e.target) && e.target!=document.querySelector(`[name=dropdownTextLocation${locationType}]`)){
+      if(!toolTipLocationRef.current.contains(e.target) && e.target!=e.target.parentElement.querySelector(`[name=dropdownTextLocation${locationType}]`)){
         setIsActive(!isActive)
       }
     }
@@ -43,7 +43,7 @@ const Dropdown = ({ locationType,locationsDelivery,digit,containerClass }) => {
     if(!isActiveTime)return;
     const handlerTimeClick = e =>{
       if(!toolTipTimeRef.current)return
-      if(!toolTipTimeRef.current.contains(e.target) && e.target!=document.querySelector(`[name=dropdownTextTime${locationType}]`)){
+      if(!toolTipTimeRef.current.contains(e.target) && e.target!=e.target.parentElement.querySelector(`[name=dropdownTextTime${locationType}]`)){
         setIsTimeActive(!isActiveTime)
       }
     }

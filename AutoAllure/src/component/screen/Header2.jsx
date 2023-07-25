@@ -1,5 +1,7 @@
 import React from 'react';
 import styleHeader from  '../../assets/css/header2.module.scss'
+import '../../assets/css/Header.scss'
+import '../../assets/css/popup.scss'
 function Header2() {
 
   return (

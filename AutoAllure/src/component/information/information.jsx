@@ -14,7 +14,7 @@ function information({url}) {
         <OurService url={url}/>
         <OrderSteps />
 
-        <Reviews />
+        <Reviews url={url}/>
         <HelpPhone />
         <FAQS />
         
