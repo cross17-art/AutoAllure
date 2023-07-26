@@ -2,9 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     flex-wrap: wrap;
-    height: 600px;
-
+    // height: 600px;
+    gap: 50px;
+    margin-top: 60px;
     &__pictures{
         width: 49%;
         height: 100%;
@@ -14,6 +16,7 @@
         width: 320px;
         display: flex;
         flex-direction: column;
+        flex-wrap: wrap;
         // background-color: rgba(19, 0, 0, 0.1);
         &--row{
             font-size: 1.4rem;
@@ -51,6 +54,10 @@
             align-items: center;
 
             background-color: orange;       
+        }
+        &--price{
+            text-align: center;
+            margin-bottom: 2px;
         }
 
     }

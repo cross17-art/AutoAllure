@@ -10,7 +10,9 @@ const carSlider = ({photos}) => {
     {/* mySwiper modal_information-side */}
     <Swiper   navigation={true}
               centeredSlides={true}
-              modules={[Navigation]}
+              pagination={{ clickable: true }}
+              scrollbar={{ draggable: true }}
+              modules={[Navigation, Pagination, Scrollbar, A11y]}
               className={styleReviews['reviews__clients--custom'] } 
     >
         {photos.map((item, index)=>{

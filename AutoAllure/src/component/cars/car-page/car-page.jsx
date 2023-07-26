@@ -44,7 +44,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
             <div className='wrapper'>
           <div className={syleCarPage.carPage}>
               <div className={syleCarPage.carPage__pictures}>
-                {/* <CarSlider key={"carPageSlider"} photos={car.thumbnails}/> */}
+                <CarSlider key={"carPageSlider"} photos={car.thumbnails}/>
               </div>
               <div className={syleCarPage.carPage__text}>
                   <div className={`${syleCarPage["carPage__text--hat"]} hat`}>  
@@ -65,6 +65,9 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
                     <p>Color</p>
                     <span className={`${syleCarPage["carPage__text--row-color"]}`} style={{'backgroundColor':carColor}}></span>
 
+                  </div>
+                  <div className={syleCarPage["carPage__text--price"]}>
+                      <p>You take more you pay less</p>
                   </div>
                   <CalendarPage key={'CarPageDatePicker'} locations={locations} disabledDates={busyDatesCar}/>
                   {/* <CarDatePicker key={'CarPageDatePicker'} classContainer={""}/>   */}

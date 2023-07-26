@@ -119,10 +119,15 @@ if (error) {
 
     return (<>
     
-        <div className="positionation">
+        <div className="positionation reset_margin_top">
+            <div className="positionation__displayPage">
+
                 <Datepicker key={'datePicker'}
+                    containerClassName="relative w-full text-gray-700" 
+                    toggleClassName="toogle_calendar absolute rounded-r-lg text-white right-0 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed" 
                     primaryColor={"orange"}
                     value={value}
+                    popoverDirection="up" 
                     onChange={handleValueChange} 
                     minDate={shortCuts.beforDate} 
                     // startFrom={date} 
@@ -133,7 +138,8 @@ if (error) {
                 <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations} digit={'second'} placeHolder={"Select ..."}/>
                 
                 
-                {/* <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button> */}
+                <button className="btn btn-orange" onClick={()=>setSearch(value)} >Book</button>
+                </div>
             
         </div>
     
