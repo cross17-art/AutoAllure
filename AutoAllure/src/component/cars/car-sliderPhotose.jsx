@@ -1,6 +1,6 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper";
+import { Navigation,Pagination,Scrollbar } from "swiper";
 import styleReviews from '../../assets/css/reviews.module.scss'
 
 const carSlider = ({photos}) => {
@@ -12,7 +12,7 @@ const carSlider = ({photos}) => {
               centeredSlides={true}
               pagination={{ clickable: true }}
               scrollbar={{ draggable: true }}
-              modules={[Navigation, Pagination, Scrollbar, A11y]}
+              modules={[Navigation, Pagination, Scrollbar]}
               className={styleReviews['reviews__clients--custom'] } 
     >
         {photos.map((item, index)=>{

@@ -21,7 +21,7 @@ const datePickerPage = ({locations,disabledDates}) => {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
-
+    const calendarRange = window.innerWidth >= 600
     // const [locations,setLocations] = useState(null)
 
     const [disableDatesArrayJson,setdisableDatesArrayJson] = useState()
@@ -126,6 +126,7 @@ if (error) {
                     containerClassName="relative w-full text-gray-700" 
                     toggleClassName="toogle_calendar absolute rounded-r-lg text-white right-0 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed" 
                     primaryColor={"orange"}
+                    useRange={calendarRange}
                     value={value}
                     popoverDirection="up" 
                     onChange={handleValueChange} 

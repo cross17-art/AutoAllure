@@ -37,13 +37,23 @@
                 margin-bottom: 5px;
             }
 
-        }  
+        } 
+       
+
+    }
+    &__specifications{
+        width: 100%;
+        h1{
+            margin-top: 0;
+        }
+     
     }
     &__line{
         border-bottom: 1px solid rgb(167, 165, 165);
         text-transform: uppercase;
         color: white;
         margin-bottom: 0px;
+        font-size: 3rem;
         a{
             color: orange;
             text-decoration: none;
@@ -54,7 +64,9 @@
 section[data='orderSteps']{
     background-color: black;
 }
-
+.spec {
+    min-height: 100px;
+} 
 @media only screen and (max-width: 767px) {
 
 }

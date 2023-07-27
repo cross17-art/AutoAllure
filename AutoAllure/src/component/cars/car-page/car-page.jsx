@@ -6,6 +6,7 @@ import CarSlider from '../car-sliderPhotose';
 import syleCarPage from "../../../assets/css/carPage.module.scss"
 
 import CalendarPage from "../../../component/ui/calendar-page";
+import CarPageSpecifications from "./car-page-specifications";
 
 function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
   {/* 
@@ -41,7 +42,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
       return (
         
       <>
-            <div className='wrapper'>
+        <div className='wrapper'>
           <div className={syleCarPage.carPage}>
               <div className={syleCarPage.carPage__pictures}>
                 <CarSlider key={"carPageSlider"} photos={car.thumbnails}/>
@@ -74,9 +75,10 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
 
               </div>
           </div>
-          {/* <CarPageSpecifications carData={car}/> */}
 
       </div>
+      <CarPageSpecifications carData={car} />
+
       </>
       );
     }
