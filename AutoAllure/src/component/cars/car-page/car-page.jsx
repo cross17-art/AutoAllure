@@ -7,6 +7,7 @@ import syleCarPage from "../../../assets/css/carPage.module.scss"
 
 import CalendarPage from "../../../component/ui/calendar-page";
 import CarPageSpecifications from "./car-page-specifications";
+import CarPageTariffs from "./car-page-tariffs";
 
 function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
   {/* 
@@ -78,6 +79,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
 
       </div>
       <CarPageSpecifications carData={car} />
+      <CarPageTariffs tariffs={car.periods_price} priceCar={car.price}/>
 
       </>
       );

@@ -16,7 +16,7 @@ const carPageSpecifications = ({carData}) => {
          })} */}
       </div>
 
-     <section data="orderSteps">
+     <section data="car-specifications">
             <h1 className={styleOrder.order__line}>Vehicle  <a>Characteristics</a></h1>
 
         <div className={`${styleOrder.order}`}>
@@ -28,8 +28,8 @@ const carPageSpecifications = ({carData}) => {
             </div>
             <div className={`${styleOrder['order__steps']} ${styleOrder['order__specifications']}`}>
                 <div className={`${styleOrder.spec} ${styleOrder['order__steps--element']}`}>
-                    <span>Fuel</span>
-                    <h1>{carData.fuel}</h1>
+                    <span>Body type</span>
+                    <h1>{carData.body_type}</h1>
 
                 </div>
 

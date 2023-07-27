@@ -64,6 +64,20 @@
 section[data='orderSteps']{
     background-color: black;
 }
+section[data='car-tariffs']{
+    background-color: black;
+    h1{
+        margin-right: 10px;
+        margin-top: 0px;
+        text-align: right;
+    }
+}
+section[data='car-specifications']{
+    background-color: black;
+    h1{
+        margin-left: 10px;
+    }
+}
 .spec {
     min-height: 100px;
 } 
