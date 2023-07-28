@@ -31,7 +31,7 @@ function App() {
               <Route path="/" element={<CarsList url={url} />} />
               <Route path="dates/:dates" element={<CarsDateList url={url} />} />
             </Route>
-            <Route path="/car-page/:id" element={<CarPageMain/>}>
+            <Route path="/car-page/:id" element={<CarPageMain url={url}/>}>
               {/* <Route path="/" element={<CarsList url={url} />} /> */}
               {/* <Route path="dates/:dates" element={<CarsDateList url={url} />} /> */}
             </Route>

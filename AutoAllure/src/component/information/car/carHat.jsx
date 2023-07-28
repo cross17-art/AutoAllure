@@ -7,7 +7,7 @@ function CarHat({carName}) {
   
   return (
         <div className={styleCarHat.carHat}>
-            <div>
+            <div className={styleCarHat.carHat__element}>
                 <h1>{carName.includes("undefined")?"":carName}</h1>
                 <p>LUXURY CLASS</p>
             </div>

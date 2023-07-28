@@ -8,7 +8,7 @@ import syleCarPage from "../../../assets/css/carPage.module.scss"
 import CalendarPage from "../../../component/ui/calendar-page";
 import CarPageSpecifications from "./car-page-specifications";
 import CarPageTariffs from "./car-page-tariffs";
-
+import CarWhyWe from '../../information/car/car-whyWe';
 function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
   {/* 
 
@@ -50,7 +50,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
               </div>
               <div className={syleCarPage.carPage__text}>
                   <div className={`${syleCarPage["carPage__text--hat"]} hat`}>  
-                    <span>{car.min_price}€/price</span>
+                    <span>{car.price}€/price</span>
 
                   </div>
                   <div className={syleCarPage["carPage__text--row"]}>
@@ -68,8 +68,17 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
                     <span className={`${syleCarPage["carPage__text--row-color"]}`} style={{'backgroundColor':carColor}}></span>
 
                   </div>
-                  <div className={syleCarPage["carPage__text--price"]}>
+                  {/* <div className={syleCarPage["carPage__text--price"]}>
                       <p>You take more you pay less</p>
+                  </div> */}
+                  <div className={syleCarPage["carPage__text--icon"]}>
+                      <span class="_footerContact__item--link_s23m4_26" href="tel: +35799667777">+357&nbsp;996&nbsp;7777</span>
+                      <a href="https://t.me/+35799667777">
+                          <img src={url+'/icons/telegram_icon.png'} />
+                      </a>
+                      <a href="https://wa.me/+35799667777">
+                          <img src={url+'/icons/whatsapp_icon.png'} />
+                      </a>
                   </div>
                   <CalendarPage key={'CarPageDatePicker'} locations={locations} disabledDates={busyDatesCar}/>
                   {/* <CarDatePicker key={'CarPageDatePicker'} classContainer={""}/>   */}
@@ -80,7 +89,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
       </div>
       <CarPageSpecifications carData={car} />
       <CarPageTariffs tariffs={car.periods_price} priceCar={car.price}/>
-
+      <CarWhyWe />
       </>
       );
     }

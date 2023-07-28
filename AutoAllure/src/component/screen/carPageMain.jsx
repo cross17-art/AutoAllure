@@ -9,7 +9,7 @@ import { useParams } from 'react-router-dom';
 // import DatePickerPage from "../../ui/calendar-page";
 import carPageSpecifications from "../cars/car-page/car-page-specifications";
 
-function carPageMain() {
+function carPageMain({url}) {
   
   const {id} = useParams(null);
   const [error, setError] = useState(false);
@@ -51,7 +51,7 @@ function carPageMain() {
     <>
         <CarHat key={"carInformationHat"} carName={items.brand+" "+items.mark}/>
         
-        <CarPage key={"carInformation"} error={error} isLoaded={isLoaded} car={items} locations={locations} busyDatesCar={busyDatesCar}/>
+        <CarPage key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} locations={locations} busyDatesCar={busyDatesCar}/>
 
         <div className="wrapper">
             <Outlet />
