@@ -8,7 +8,7 @@
     padding: 10px;
     padding-top: 50px;
     padding-bottom: 50px;
-    gap: 10px;
+    gap: 30px;
     background-color: black;
     color: white;
     &__steps{
@@ -16,7 +16,8 @@
         justify-content: center;
         align-self: center;
         flex-direction: column;
-        
+        width: 100%;
+        max-width: 340px;
         &--element{
             font-size: 1.2rem;
             border: 2px solid rgb(167, 165, 165);
@@ -50,7 +51,7 @@
         width: 100%;
         max-width: 300px;
         min-width: 240px;
-        max-height: 200px;
+        max-height: 240px;
         h1{
             margin-top: 0;
         }
@@ -62,6 +63,8 @@
         color: white;
         margin-bottom: 0px;
         font-size: 3rem;
+        text-align: center;
+        margin-top: 0px;
         a{
             color: orange;
             text-decoration: none;
@@ -75,43 +78,26 @@ section[data='orderSteps']{
 section[data='car-why-we']{
     background-color: black;
     
-    h1.order__line{
-        margin-left: 10px;
-        margin-top: 0px;
-    }
+    // h1.order__line{
+    //     margin-left: 10px;
+    //     margin-top: 0px;
+    // }
 }
 section[data='car-tariffs']{
     background-color: black;
+    margin-top: 10px;
 
     h1.order__line{
-        margin-right: 10px;
-        margin-top: 0px;
-        text-align: right;
+        padding-top: 10px;
     }
 }
-
-
-.running-items-container {
-    overflow: hidden;
-    width: 100%;
-    color: red;
-  }
-  
-  .running-items {
-    display: inline-flex;
-  }
-  
-  .item {
-    margin-right: 20px; /* Небольшое расстояние между элементами */
-    white-space: nowrap; /* Запрет переноса текста на новую строку */
-  }
 
 
 section[data='car-specifications']{
     background-color: black;
-    h1.order__line{
-        margin-left: 10px;
-    }
+    // h1.order__line{
+    //     margin-left: 10px;
+    // }
 }
 .spec {
     min-height: 150px;
@@ -120,6 +106,16 @@ section[data='car-specifications']{
 .whyWe{
     &__element{
         width: 100%;
+        min-height: 240px;
+        h1{
+            color: orange;
+        }
+        p{
+            color: white;
+            line-height: 110%;
+            font-size: 1.4rem;
+            text-align: left;
+        }
     }
     // flex-wrap: wrap !important;
 }
@@ -132,6 +128,9 @@ section[data='car-specifications']{
   
   .order{
     flex-direction: row;
+    &__steps{
+        max-width: 300px;
+    }
   }
 
 }
@@ -145,5 +144,8 @@ section[data='car-specifications']{
     }
     .order{
         flex-direction: row;
+        &__steps{
+            max-width: 300px;
+        }
     }
 }

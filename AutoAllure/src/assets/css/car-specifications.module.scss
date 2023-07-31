@@ -1,0 +1,27 @@
+.scrolSpec{
+    width: 100%;
+    flex-direction: row !important;
+    flex-wrap: unset;
+    overflow-y: scroll;
+
+  &__element{
+    text-align:center;
+    color:#fff;
+    text-transform: uppercase;
+    padding-top: 35px;
+    animation: text 5s infinite linear;
+    padding-left: 100%;
+    white-space: nowrap;
+    }
+}
+  @keyframes text {
+    0%{
+      transform: translate(0, 0);
+    }
+    
+    100%{
+      transform: translate(-160%, 0);
+    }
+  }
+
+

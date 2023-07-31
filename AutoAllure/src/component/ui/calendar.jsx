@@ -60,8 +60,8 @@ const carDatePicker = ({classContainer}) => {
         if(search!=null){
             if(search.startDate!=null){
                 // startDate = search.toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ search.toLocaleDateString("en-US", { month: 'numeric' })+ "-" + search.toLocaleDateString("en-US", { year: 'numeric' })
-                let locationGet = document.querySelector('[name=first] [name=dropdownTextLocationGet]').textContent
-                let locationReturn = document.querySelector('[name=second] [name=dropdownTextLocationReturn]').textContent
+                let locationGet = document.querySelector('[name=first] [name=dropdownTextLocationGet]').textContent.trim()
+                let locationReturn = document.querySelector('[name=second] [name=dropdownTextLocationReturn]').textContent.trim()
                 let timeGet = document.querySelector('[name=first] [name=dropdownTextTimeGet]').textContent
                 let timeReturn = document.querySelector('[name=second] [name=dropdownTextTimeReturn]').textContent
 

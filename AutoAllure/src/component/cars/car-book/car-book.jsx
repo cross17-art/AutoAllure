@@ -41,7 +41,7 @@ function carBook({url}) {
     if (error) {
       return <div>Error: {error}</div>;
     } else if (!isLoaded) {
-      return <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
+      return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     } else {
       return (<>
       {/* <CarDatePicker key={'CarListDatePicker'} locations={items.locations }/> */}

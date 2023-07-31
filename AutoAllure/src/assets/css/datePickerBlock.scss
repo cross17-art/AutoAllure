@@ -157,6 +157,10 @@
 .positionation.p-hidden .positionation__display .relative.w-full.text-gray-700 div{
   z-index: 300000;
 }
+.relative.w-full.text-gray-700 button[disabled]{
+  color: red;
+  // document.querySelector(".relative.w-full.text-gray-700 button[disabled].line-through")
+}
 .toogle_calendar{
   height: 67px;
 }

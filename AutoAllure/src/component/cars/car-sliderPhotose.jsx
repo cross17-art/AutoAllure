@@ -17,7 +17,7 @@ const carSlider = ({photos}) => {
     >
         {photos.map((item, index)=>{
           return (
-            <SwiperSlide>
+            <SwiperSlide key={`carpageSwiper_Element_${index}`}>
                 <div className={styleReviews['reviews--swiper']}>
                       <img src={item} alt={"asd"} key={index} />
                 </div>

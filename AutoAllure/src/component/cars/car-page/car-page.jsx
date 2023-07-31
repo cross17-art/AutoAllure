@@ -38,7 +38,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
     if (error) {
       return <div>Error: {error}</div>;
     } else if (!isLoaded) {
-      return <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
+      return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     } else {
       return (
         
@@ -61,18 +61,28 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
                   <div className={syleCarPage["carPage__text--row"]}>
                     <p>Year</p>
                     <span>{car.year}</span>
-
+                  </div>
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Transmission</p>
+                    <span>{car.transmission.split(" ")[0]}</span>
+                  </div>
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Body type</p>
+                    <span>{car.body_type}</span>
+                  </div>
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Volume engine</p>
+                    <span>{car.volume_engine}</span>
                   </div>
                   <div className={syleCarPage["carPage__text--row"]}>
                     <p>Color</p>
                     <span className={`${syleCarPage["carPage__text--row-color"]}`} style={{'backgroundColor':carColor}}></span>
-
                   </div>
                   {/* <div className={syleCarPage["carPage__text--price"]}>
                       <p>You take more you pay less</p>
                   </div> */}
                   <div className={syleCarPage["carPage__text--icon"]}>
-                      <span class="_footerContact__item--link_s23m4_26" href="tel: +35799667777">+357&nbsp;996&nbsp;7777</span>
+                      <span className="_footerContact__item--link_s23m4_26" href="tel: +35799667777">+357&nbsp;996&nbsp;7777</span>
                       <a href="https://t.me/+35799667777">
                           <img src={url+'/icons/telegram_icon.png'} />
                       </a>
@@ -87,7 +97,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
           </div>
 
       </div>
-      <CarPageSpecifications carData={car} />
+      {/* <CarPageSpecifications carData={car} /> */}
       <CarPageTariffs tariffs={car.periods_price} priceCar={car.price}/>
       <CarWhyWe />
       </>

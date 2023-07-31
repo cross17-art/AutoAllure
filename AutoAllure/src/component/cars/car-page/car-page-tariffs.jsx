@@ -19,13 +19,13 @@ const carPageSpecifications = ({tariffs,priceCar}) => {
         <div className={`${styleOrder.order}`}>
 
             {
-                tariffs.map((item)=>{
+                tariffs.map((item,index)=>{
                     priceCar = parseFloat(priceCar)
                     let discount = item.discount;
                     discount = priceCar*discount/100;
                     let dayPrice = priceCar+discount;
                     return(
-                      <div className={`${styleOrder['order__steps']}`}>
+                      <div key={`tariff_${index}`} className={`${styleOrder['order__steps']}`}>
                           <div className={`${styleOrder['spec']} ${styleOrder['order__steps--element']}`}>
                               <span>Rent for {item.period_from}-{item.period_to} days </span>
                               <h1>{dayPrice} €</h1>
