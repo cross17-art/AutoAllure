@@ -19,6 +19,7 @@ import { Routes, Route, Link } from "react-router-dom";
 
 import MainPage from "./component/screen/mainPage";
 import CarPageMain from "./component/screen/carPageMain";
+import CarPageBook from "./component/screen/carPageBooking";
 function App() {
   const url = "http://localhost:5173/"
   
@@ -32,9 +33,12 @@ function App() {
               <Route path="dates/:dates" element={<CarsDateList url={url} />} />
             </Route>
             <Route path="/car-page/:id" element={<CarPageMain url={url}/>}>
+
               {/* <Route path="/" element={<CarsList url={url} />} /> */}
               {/* <Route path="dates/:dates" element={<CarsDateList url={url} />} /> */}
             </Route>
+            <Route path="/car-book/:id" element={<CarPageBook url={url}/>}/>
+            
         </Routes>
     <Footer />
     </>

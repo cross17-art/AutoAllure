@@ -54,6 +54,7 @@ const datePickerPage = ({locations,disabledDates}) => {
                 let timeReturn = document.querySelector('[name=second] [name=dropdownTextTimeReturn]').textContent
 
                 let dates = search.startDate+' '+timeGet + ' - ' + search.endDate+' '+timeReturn
+
                 Cookies.set('locationGet', locationGet, { expires: 7 });
                 Cookies.set('locationReturn', locationReturn, { expires: 7 });
                 Cookies.set('rentDate', dates, { expires: 7 });
