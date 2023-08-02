@@ -1,0 +1,66 @@
+.personal{
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-self: center;
+    flex-wrap: wrap;
+    padding: 5px;
+
+    &__element{
+        display: flex;
+        flex-direction: column;
+        line-height: 120%;
+        font-size: 1.5rem;
+        width: 100%;
+
+    }
+    &__birthday{
+        background-color: rgb(151, 148, 148);
+        width: 350px;
+        p{
+            padding-left: 5px;
+            margin-bottom: 2px;
+        }
+        &_error{
+            border: 3px solid red !important;
+        }
+
+    }
+    &__driver{
+        // background-color: rgb(151, 148, 148);
+        width: 100%;
+        font-size: 1.5rem;
+        &--block{
+            display: flex;
+            flex-direction: row;
+            gap: 10px;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+        p{
+            margin-left: 5px;
+            margin-bottom: 2px;
+        }
+        &_error{
+            border: 3px solid red !important;
+        }
+        input{
+            max-width: 410px;
+        }
+        &--width{
+            width: 100%;
+        }
+
+    }
+    input{
+        border-radius: 10px;
+        border: 2px solid black;
+        padding: 5px;
+        min-width: 200px
+    }
+    input:focus-visible{
+        border: 3px solid black;
+        outline: none;
+        box-shadow: 2px 1px 4px black;
+    }
+}

@@ -1,41 +1,38 @@
 // https://auto-allure.com:2053/cars_id/v2?id=${carId}&group=${type}
 
 import { useState,useEffect} from 'react'
-import Cookies from 'js-cookie';
 import { useParams } from 'react-router-dom';
+import CarSlider from '../car-sliderPhotose';
+import syleCarPage from "../../../assets/css/carPage.module.scss"
 
-function carBook({url}) {
-    const {id} = useParams(null);
-    const [error, setError] = useState(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [items, setItems] = useState([]);
+import CalendarPage from "../../../component/ui/calendar-page";
+import CarPageSpecifications from "../car-page/car-page-specifications";
+import CarPageTariffs from "../car-page/car-page-tariffs";
+import CarWhyWe from '../../information/car/car-whyWe';
+function carBook({url,error,isLoaded,car,locations,busyDatesCar}) {
+  {/* 
 
-  
-    useEffect(() => {
-      let company = Cookies.get("company") === '' ? undefined : Cookies.get("company")
-      if(id!=null && id!='' && company!=undefined){
-          fetch(`https://auto-allure.com:2053/cars_id/v2?id=${id}&group=${company}`)
-            .then(res => res.json())
-            .then(
-              (result) => {
-                setIsLoaded(true);
-                setItems(result);
-                Cookies.remove("company")
-              },
-              (error) => {
-                setIsLoaded(true);
-                setError(error);
-                Cookies.remove("company")
-              }
-          )
-      }else{
-        console.log("await cookies data")
-      }
+  https://premiercars.ru/auto/lamborghini-aventador/
+
+  photo - block 
+  text - block
+  specifications block
+  price -blocks
+
+  contact information
+  Условия аренды автомобиля
+  9 причин выбрать auto allure
+  другие похожие автомобили
+
+  */}  
+  const [carColor, setCarColor] = useState(true);
+  useEffect(()=>{
+        if(car.length!=0){
+          let color = car.color.code;
+          setCarColor(color)
+        }
         
-    }, [id])
-
-    
-
+    },[car])
 
   
     if (error) {
@@ -43,28 +40,55 @@ function carBook({url}) {
     } else if (!isLoaded) {
       return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     } else {
-      return (<>
-      {/* <CarDatePicker key={'CarListDatePicker'} locations={items.locations }/> */}
-      <div className='orderInformation'>
-
-
-
-        order information 
-        {items.busyDatesCar.status}
-         {/* {items.cars.map((element)=>{
-           
-           //create Full Name of Car
-           let brand = element.brand.toLowerCase()
-           brand = brand.replace(brand[0],brand[0].toUpperCase())
-            
-           let mark = element.mark.toLowerCase()
-           mark = mark.replace(mark[0],mark[0].toUpperCase())
-           element.fullName=brand+" "+mark;
-
-           return ( <CarItem key={element.id} carData={element} url={url} />)
-         })} */}
-
+      return (
+        
+      <>
+        <div className='wrapper'>
+          <div className={syleCarPage.carPage}>
+              <div className={syleCarPage.carPage__pictures}>
+                <CarSlider key={"carPageSlider"} photos={car.thumbnails}/>
+              </div>
+              <div className={syleCarPage.carPage__text}>
+                  {/* <div className={`${syleCarPage["carPage__text--hat"]} hat`}>  
+                    <span>{car.price}€/price</span>
+                  </div>
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Fuel</p>             
+                    <span>{car.fuel}</span>
+                  </div>
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Year</p>
+                    <span>{car.year}</span>
+                  </div>
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Transmission</p>
+                    <span>{car.transmission.split(" ")[0]}</span>
+                  </div>
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Body type</p>
+                    <span>{car.body_type}</span>
+                  </div>
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Volume engine</p>
+                    <span>{car.volume_engine}</span>
+                  </div>
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Color</p>
+                    <span className={`${syleCarPage["carPage__text--row-color"]}`} style={{'backgroundColor':carColor}}></span>
+                  </div>
+                  <div className={syleCarPage["carPage__text--icon"]}>
+                      <span className="_footerContact__item--link_s23m4_26" href="tel: +35799667777">+357&nbsp;996&nbsp;7777</span>
+                      <a href="https://t.me/+35799667777">
+                          <img src={url+'/icons/telegram_icon.png'} />
+                      </a>
+                      <a href="https://wa.me/+35799667777">
+                          <img src={url+'/icons/whatsapp_icon.png'} />
+                      </a>
+                  </div> */}
+              </div>
+          </div>
       </div>
+      <CarWhyWe />
       </>
       );
     }

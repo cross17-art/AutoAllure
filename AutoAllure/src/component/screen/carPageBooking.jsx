@@ -1,22 +1,20 @@
 import { useState,useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import CarPage from "../cars/car-page/car-page";
 import CarHat from "../information/car/carHat";
-
-
 import Cookies from 'js-cookie';
 import { useParams } from 'react-router-dom';
-// import DatePickerPage from "../../ui/calendar-page";
-import carPageSpecifications from "../cars/car-page/car-page-specifications";
+import CarBook from "../cars/car-book/car-book";
+
+
 
 function carPageBooking({url}) {
   
   const {id} = useParams(null);
+
   const [error, setError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
 
-  const [locations,setLocations] = useState(null)
   const [busyDatesCar,setBusyDatesCar] = useState(null)
 
   useEffect(() => {
@@ -27,17 +25,25 @@ function carPageBooking({url}) {
     let rentDate = Cookies.get('rentDate') === undefined ? '':Cookies.get('rentDate')
 
     console.log("carId "+carId+" company:"+company)
+    let body = {
+      "car_id":carId,
+      "group_car":company,
+      "locationGet":locationGet,
+      "locationReturn":locationReturn,
+      "rentalDates":rentDate
+    }
     if(id!=null && id!='' && company!=undefined){
-        fetch(`https://auto-allure.com:2053/booking-car/v2?car_id=${carId}&group_car=${company}&locationGet=${locationGet}&locationReturn=${locationReturn}&rentalDates=${rentDate}`)
+        fetch(`https://auto-allure.com:2053/booking-car/v2`,{
+          method: "POST",
+          body:JSON.stringify(body),
+          headers:{'Content-Type': 'application/json'}
+        })
           .then(res => res.json())
           .then(
             (result) => {
               setIsLoaded(true);
-              setItems(result);
-              setLocations(result.end.locations[0])
-            //   setBusyDatesCar(result.busyDatesCar)
-              // result.end.locations[0] 
-              // result.busyDatesCar.dates
+              setItems(result.order);
+              setBusyDatesCar(result.rent_time)
             },
             (error) => {
               setIsLoaded(true);
@@ -55,8 +61,8 @@ function carPageBooking({url}) {
     <>
         <CarHat key={"carInformationHatBooking"} carName={items.brand+" "+items.mark}/>
         
-        {/* <CarPage key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} locations={locations} busyDatesCar={busyDatesCar}/> */}
-
+        <CarBook key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} orderDate={busyDatesCar}/>
+        
         <div className="wrapper">
             <Outlet />
         </div>
