@@ -4,89 +4,71 @@ import { useState,useEffect} from 'react'
 import { useParams } from 'react-router-dom';
 import CarSlider from '../car-sliderPhotose';
 import syleCarPage from "../../../assets/css/carPage.module.scss"
+import styleCarBook from "../../../assets/css/carBook.module.scss"
+import styleOrder from '../../../assets/css/orderSteps.module.scss'
 
 import CalendarPage from "../../../component/ui/calendar-page";
 import CarPageSpecifications from "../car-page/car-page-specifications";
 import CarPageTariffs from "../car-page/car-page-tariffs";
+import CarPersonalDetailes from "../../../component/cars/car-book/car-book-personalDetailes";
+import CarPayment from "../../../component/cars/car-book/car-book-payment";
 import CarWhyWe from '../../information/car/car-whyWe';
-function carBook({url,error,isLoaded,car,locations,busyDatesCar}) {
-  {/* 
+function carBook({url,error,isLoaded,car,locations,orderDate}) {
 
-  https://premiercars.ru/auto/lamborghini-aventador/
-
-  photo - block 
-  text - block
-  specifications block
-  price -blocks
-
-  contact information
-  Условия аренды автомобиля
-  9 причин выбрать auto allure
-  другие похожие автомобили
-
-  */}  
-  const [carColor, setCarColor] = useState(true);
-  useEffect(()=>{
-        if(car.length!=0){
-          let color = car.color.code;
-          setCarColor(color)
-        }
-        
-    },[car])
+  
 
   
     if (error) {
-      return <div>Error: {error}</div>;
+      return <div>
+            We apologize, someone is already renting a car.  Try again in a couple of minutes
+        </div>;
     } else if (!isLoaded) {
       return <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>;
     } else {
       return (
         
       <>
-        <div className='wrapper'>
-          <div className={syleCarPage.carPage}>
-              <div className={syleCarPage.carPage__pictures}>
-                <CarSlider key={"carPageSlider"} photos={car.thumbnails}/>
+      <div className='wrapper'>
+          <div className={styleCarBook['book']}>
+              <div className={styleCarBook['book__info']}>
+                  <h1>Заголовок основной информации</h1>
+                  <p>Здесь размещается основная информация о продукте или услуге.</p>
+                  <p>Дополнительные детали и описание.</p>
+                  <CarPayment />
+                  <CarPersonalDetailes />
               </div>
-              <div className={syleCarPage.carPage__text}>
-                  {/* <div className={`${syleCarPage["carPage__text--hat"]} hat`}>  
-                    <span>{car.price}€/price</span>
-                  </div>
-                  <div className={syleCarPage["carPage__text--row"]}>
-                    <p>Fuel</p>             
-                    <span>{car.fuel}</span>
-                  </div>
-                  <div className={syleCarPage["carPage__text--row"]}>
-                    <p>Year</p>
-                    <span>{car.year}</span>
-                  </div>
-                  <div className={syleCarPage["carPage__text--row"]}>
-                    <p>Transmission</p>
-                    <span>{car.transmission.split(" ")[0]}</span>
-                  </div>
-                  <div className={syleCarPage["carPage__text--row"]}>
-                    <p>Body type</p>
-                    <span>{car.body_type}</span>
-                  </div>
-                  <div className={syleCarPage["carPage__text--row"]}>
-                    <p>Volume engine</p>
-                    <span>{car.volume_engine}</span>
-                  </div>
-                  <div className={syleCarPage["carPage__text--row"]}>
-                    <p>Color</p>
-                    <span className={`${syleCarPage["carPage__text--row-color"]}`} style={{'backgroundColor':carColor}}></span>
-                  </div>
-                  <div className={syleCarPage["carPage__text--icon"]}>
-                      <span className="_footerContact__item--link_s23m4_26" href="tel: +35799667777">+357&nbsp;996&nbsp;7777</span>
-                      <a href="https://t.me/+35799667777">
-                          <img src={url+'/icons/telegram_icon.png'} />
-                      </a>
-                      <a href="https://wa.me/+35799667777">
-                          <img src={url+'/icons/whatsapp_icon.png'} />
-                      </a>
-                  </div> */}
+              <div className={styleCarBook['book__payment']}>
+                <div className={styleCarBook['book__payment--sticky']}>
+                    <h2>Calculation Info</h2>
+                    <div className={syleCarPage["carPage__text--row"]}>
+                        <p> Start Date </p>             
+                        <span>{orderDate[0]}</span>
+                    </div>
+                    <div className={syleCarPage["carPage__text--row"]}>
+                        <p> End Date </p>             
+                        <span>{orderDate[1]}</span>
+                    </div>
+                    <div className={syleCarPage["carPage__text--row"]}>
+                        <p> Car Price </p>             
+                        <span>{car.total_price}</span>
+                    </div>
+                    <div className={syleCarPage["carPage__text--row"]}>
+                        <p> Service Fee </p>             
+                        <span>{car.taxes.taxesTotal}</span>
+                    </div>
+                    <div className={syleCarPage["carPage__text--row"]}>
+                        <p>  Pick-up Location  </p>             
+                        <span>{locations.get}</span>
+                    </div>
+                    <div className={syleCarPage["carPage__text--row"]}>
+                        <p> Drop-off Location</p>             
+                        <span>{locations.return}</span>
+                    </div>
+
+                </div>
+                  
               </div>
-          </div>
+        </div>    
       </div>
       <CarWhyWe />
       </>

@@ -1,0 +1,24 @@
+.book {
+    display: flex;
+    height: 20000px;
+    &__info {
+        flex: 2; /* Основная информация занимает всю доступную ширину */
+        padding: 20px;
+    }
+
+    /* Стили для блока оплаты, стики react и scss */
+    &__payment {
+        flex: 1; /* Блок оплаты занимает всю доступную ширину */
+        padding: 20px;
+
+
+       &--sticky{
+            position: sticky; /* Закрепляем блок при прокрутке */
+            top: 20px; /* Расстояние от верхней границы окна прокрутки */
+            border: 2px solid black;
+            border-radius: 20px;
+            padding: 15px;
+       }
+    }
+
+}

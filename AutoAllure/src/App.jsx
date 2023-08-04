@@ -21,6 +21,7 @@ import MainPage from "./component/screen/mainPage";
 import CarPageMain from "./component/screen/carPageMain";
 import CarPageBook from "./component/screen/carPageBooking";
 import CarPersonalDetailes from "./component/cars/car-book/car-book-personalDetailes";
+import CarPayment from "./component/cars/car-book/car-book-payment";
 function App() {
   const url = "http://localhost:5173/"
   
@@ -40,6 +41,7 @@ function App() {
             </Route>
             <Route path="/car-book/:id" element={<CarPageBook url={url}/>}/>
             <Route path="/personal/" element={<CarPersonalDetailes url={url}/>}/>
+            <Route path="/payment/" element={<CarPayment url={url}/>}/>
         </Routes>
     <Footer />
     </>

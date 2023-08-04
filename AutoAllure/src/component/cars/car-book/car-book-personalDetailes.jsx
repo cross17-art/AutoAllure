@@ -5,6 +5,7 @@ import styleSpecifications from '../../../assets/css/car-specifications.module.s
 import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 
 import CarDriverLicence from './car-book-driverLicence'
+import CarPhone from "./car-book-phone";
 const carPersonalDetailes = ({ carData }) => {
 
     const [formData, setFormData] = useState({
@@ -28,7 +29,7 @@ const carPersonalDetailes = ({ carData }) => {
             let { name, value } = e;
             setFormData((prevData) => ({
                 ...prevData,
-                [name]: value.startDate,
+                [name]: value,
             }));
             setErrors((prevErrors) => ({
                 ...prevErrors,
@@ -68,7 +69,12 @@ const carPersonalDetailes = ({ carData }) => {
     const validateEmail = (email) => {
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailRegex.test(email);
-      };
+    };
+    const validatePhone = (phoneNumber) => {
+        const phonePattern = /^[1-9]\d{0,2}\s?\d{1,4}\s?\d{1,4}$/;
+        return phonePattern.test(phoneNumber);
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -96,7 +102,7 @@ const carPersonalDetailes = ({ carData }) => {
             validationErrors.address = 'Enter your address';
         }
 
-        if (!formData.phone.trim()) {
+        if (!formData.phone.trim() || !validatePhone(formData.phone.trim())) {
             validationErrors.phone = 'Enter your phone number';
         }
 
@@ -133,7 +139,9 @@ const carPersonalDetailes = ({ carData }) => {
 
 
             <section data="car-personalDetailes" >
+                
                 <div className={stylePesonal.personal}>
+                    <CarPhone formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} inputName="phone" />
                     <CarDriverLicence formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} />
                     <div className={stylePesonal.personal__element}>
                         <label>Name:</label>
@@ -160,8 +168,6 @@ const carPersonalDetailes = ({ carData }) => {
                         <label>Address:</label>
                         <input className={errors.address != '' && errors.address != undefined ? stylePesonal.personal__birthday_error : ""} type="text" name="address" value={formData.address} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Address" />
                     </div>
-
-
                     <button onClick={handleSubmit}>Отправить</button>
                 </div>
 

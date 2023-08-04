@@ -20,7 +20,7 @@ const carDriverLicence = ({formData,handleInputChange,handleInputFocus,errors}) 
                     </div>
                     <div className={stylePesonal['personal__driver--width']}>
                         <p>Expiration Date</p>
-                        <PickUpDate />
+                        <PickUpDate handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} inputName="driverLicenceExpirationDate"/>
                     </div>
                     {/* <input className={errors.driverLicenceIssueDate!='' &&errors.driverLicenceIssueDate!=undefined?stylePesonal.personal__birthday_error:""} type="text" name="driverLicenceIssueDate" value={formData.driverLicenceIssueDate} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Issue Date 2002-12-24"/> */}
                     {/* <input className={errors.driverLicenceExpirationDate!='' &&errors.driverLicenceExpirationDate!=undefined?stylePesonal.personal__birthday_error:""} type="text" name="driverLicenceExpirationDate" value={formData.driverLicenceExpirationDate} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Expiration Date 2002-12-24" /> */}

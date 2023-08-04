@@ -46,3 +46,15 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+input.form-control{
+	max-width: 410px;
+	width: 100%;
+	font-size: 1.5rem;
+	height: unset !important;
+	border: 2px solid black !important;
+	font-size: 1.5rem !important;
+}
+.react-tel-input .flag-dropdown{
+	border: 2px solid black !important;
+	border-right: none !important;
+}

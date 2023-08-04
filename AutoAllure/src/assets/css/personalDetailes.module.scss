@@ -13,6 +13,7 @@
         font-size: 1.5rem;
         width: 100%;
 
+
     }
     &__birthday{
         background-color: rgb(151, 148, 148);
@@ -46,21 +47,26 @@
         }
         input{
             max-width: 410px;
+            width: 100% !important;
         }
         &--width{
             width: 100%;
         }
-
+        
     }
     input{
         border-radius: 10px;
         border: 2px solid black;
         padding: 5px;
-        min-width: 200px
+        min-width: 200px;
+        width: 100% !important;
     }
     input:focus-visible{
         border: 3px solid black;
         outline: none;
         box-shadow: 2px 1px 4px black;
     }
+    
 }
+
+

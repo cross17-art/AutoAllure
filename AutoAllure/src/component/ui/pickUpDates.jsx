@@ -7,7 +7,7 @@ const BirthdayPicker = ({handleInputChange,handleInputFocus,errors,inputName}) =
   const [stateError, setStateErrors] = useState(false);
 
   useEffect(()=>{
-    console.log(errors)
+    // console.log(errors)
     if(errors){
       errors[inputName]!='' &&errors[inputName]!=undefined?setStateErrors(true):setStateErrors(false)
     }
@@ -20,9 +20,8 @@ const BirthdayPicker = ({handleInputChange,handleInputFocus,errors,inputName}) =
 
   const handleValueChange = (newValue) => {
       console.log("newValue:", newValue);
-
       setValue(newValue);
-      handleInputChange({"name":inputName,"value":newValue})
+      handleInputChange({"name":inputName,"value":newValue.startDate})
       // event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector("input")
   }
   return (

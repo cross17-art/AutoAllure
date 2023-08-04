@@ -16,8 +16,9 @@ function carPageBooking({url}) {
   const [items, setItems] = useState([]);
 
   const [busyDatesCar,setBusyDatesCar] = useState(null)
+  const [locations,setLocations] = useState(null)
 
-  useEffect(() => {
+  useEffect( () => {
     let company = Cookies.get("company") === '' ? undefined : Cookies.get("company")
     let carId = Cookies.get("carId") === '' ? undefined : Cookies.get("carId")
     let locationGet=Cookies.get('locationGet') === undefined ? '':Cookies.get('locationGet')
@@ -33,7 +34,7 @@ function carPageBooking({url}) {
       "rentalDates":rentDate
     }
     if(id!=null && id!='' && company!=undefined){
-        fetch(`https://auto-allure.com:2053/booking-car/v2`,{
+         fetch(`https://auto-allure.com:2053/booking-car/v2`,{
           method: "POST",
           body:JSON.stringify(body),
           headers:{'Content-Type': 'application/json'}
@@ -41,12 +42,20 @@ function carPageBooking({url}) {
           .then(res => res.json())
           .then(
             (result) => {
+
+              if(result.order.code===0){
+                setError(true);
+              }else{
+                setItems(result.order);
+                setBusyDatesCar( result.rent_time.split(" - "))
+                setLocations({"get":locationGet,"return":locationReturn})
+
+              }
               setIsLoaded(true);
-              setItems(result.order);
-              setBusyDatesCar(result.rent_time)
+
             },
             (error) => {
-              setIsLoaded(true);
+              setIsLoaded(false);
               setError(error);
             }
         )
@@ -61,7 +70,7 @@ function carPageBooking({url}) {
     <>
         <CarHat key={"carInformationHatBooking"} carName={items.brand+" "+items.mark}/>
         
-        <CarBook key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} orderDate={busyDatesCar}/>
+        <CarBook key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} locations={locations} orderDate={busyDatesCar}/>
         
         <div className="wrapper">
             <Outlet />
