@@ -34,7 +34,7 @@ function carBook({url,error,isLoaded,car,locations,orderDate}) {
                   <h1>Заголовок основной информации</h1>
                   <p>Здесь размещается основная информация о продукте или услуге.</p>
                   <p>Дополнительные детали и описание.</p>
-                  <CarPayment />
+                  <CarPayment url={url} />
                   <CarPersonalDetailes />
               </div>
               <div className={styleCarBook['book__payment']}>

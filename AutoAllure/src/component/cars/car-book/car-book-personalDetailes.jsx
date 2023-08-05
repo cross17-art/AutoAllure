@@ -141,8 +141,7 @@ const carPersonalDetailes = ({ carData }) => {
             <section data="car-personalDetailes" >
                 
                 <div className={stylePesonal.personal}>
-                    <CarPhone formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} inputName="phone" />
-                    <CarDriverLicence formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} />
+                    <p>Personal Information</p>
                     <div className={stylePesonal.personal__element}>
                         <label>Name:</label>
                         <input className={errors.firstName != '' && errors.firstName != undefined ? stylePesonal.personal__birthday_error : ""} type="text" name="firstName" value={formData.firstName} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="First name" />
@@ -155,8 +154,7 @@ const carPersonalDetailes = ({ carData }) => {
                         <label>Email:</label>
                         <input className={errors.email != '' && errors.email != undefined ? stylePesonal.personal__birthday_error : ""} type="email" name="email" value={formData.email} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Email" />
                     </div>
-
-                    <div className={stylePesonal.personal__element}>
+                    {/* <div className={stylePesonal.personal__element}>
                         <label>Country:</label>
                         <input className={errors.country != '' && errors.country != undefined ? stylePesonal.personal__birthday_error : ""} type="text" name="country" value={formData.country} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Country" />
                     </div>
@@ -167,9 +165,14 @@ const carPersonalDetailes = ({ carData }) => {
                     <div className={stylePesonal.personal__element}>
                         <label>Address:</label>
                         <input className={errors.address != '' && errors.address != undefined ? stylePesonal.personal__birthday_error : ""} type="text" name="address" value={formData.address} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Address" />
-                    </div>
-                    <button onClick={handleSubmit}>Отправить</button>
+                    </div> */}
                 </div>
+                <div className={stylePesonal.personal}>
+                    <p>Additional Information</p>
+                    <CarPhone formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} inputName="phone" />
+                    <CarDriverLicence formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} />
+                </div>
+                <button onClick={handleSubmit}>Отправить</button>
 
             </section>
         </>

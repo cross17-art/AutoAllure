@@ -2,27 +2,30 @@ import { useState, useEffect, useRef } from "react";
 import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 import PickUpDate from "../../ui/pickUpDates";
 
-const carPayment = ({url}) => {
+const carPayment = ({ url }) => {
 
 
     return (
         <>
-            <div className={`${stylePesonal.personal__driver}`}>
-                <h1>Payment method</h1>
-                <div className={`${stylePesonal.personal__element} `}>
-                </div>
-                
-                <div className={stylePesonal['personal__driver--block']}>
-                    <div className={stylePesonal['personal__driver--width']}>
-                        <p>Pay by Cash 0% </p>
-                    </div>
-                    <div className={stylePesonal['personal__driver--width']}>
-                        <p>Pay by Card 3.5%</p>
+            <section data="paymentMethod">
+                <div className={stylePesonal['box']}>
+                    <p>Payment method</p>
+                    <div className={stylePesonal['personal__payment']}>
+                        <label>
+                            <img src={url+"/icons/credit-card.png"}></img>
+                            <input type="radio" className={`${stylePesonal["personal__payment--input-radio-on"]} ${stylePesonal["personal__payment--input-radio"]}`} name="pilih" /> 
+                            <span> Pay by Card</span>
+                        </label>
+                        <label>
+                            <img src={url+"/icons/money.png"}></img>
+                            <input type="radio" className={`${stylePesonal["personal__payment--input-radio-off"]} ${stylePesonal["personal__payment--input-radio"]}`} name="pilih" />  
+                            <span>Pay by Cash</span>
+                        </label>
                     </div>
 
                 </div>
-            </div>
-            
+    
+            </section>
         </>
     );
 };
