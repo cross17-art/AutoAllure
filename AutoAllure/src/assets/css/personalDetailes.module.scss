@@ -4,7 +4,7 @@
     // justify-content: center;
     align-self: center;
     flex-wrap: wrap;
-    padding: 5px;
+    padding: 25px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: 10px;
 
@@ -14,8 +14,6 @@
         line-height: 120%;
         font-size: 1.5rem;
         width: 100%;
-
-
     }
     &__birthday{
         background-color: rgb(151, 148, 148);
@@ -62,19 +60,26 @@
         justify-content: center;
         flex-wrap: wrap;
         label {
+            position: relative;
+            overflow: hidden;
             cursor: pointer;
             display: flex;
             margin: 10px;
-            padding: 10px;
+            padding: 25px;
             height: 100px;
             border: 2px solid black;
             border-radius: 20px;
             align-items: center;
+            width: 340px;
             img{
                 height: 50px;
+                display: none;
             }
             span{
                 align-self: center;
+                font-size: 1.5rem;
+            }
+            p{
                 font-size: 1.5rem;
             }
         }
@@ -137,4 +142,52 @@
     margin-top: 10px;
 }
 
-  
+.price{
+    position: absolute;
+    background: orange;
+    transform: rotate(40deg);
+    right: -45px;
+    top: 18px;
+    width: 157px;
+    height: 22px;
+    text-align: center;
+    margin: auto;
+    font-weight: bold;
+    color: black;
+    font-size: 1.2rem !important;
+}
+
+
+@media only screen and (max-width: 767px) {
+
+}
+
+// Стили для планшетного разрешения
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .personal
+    {
+        &__payment{
+            label{
+                img{
+                    display: unset;
+                }
+            }
+            
+        }
+    }
+}
+
+// Стили для десктопного разрешения
+@media only screen and (min-width: 1024px) {
+    .personal
+    {
+        &__payment{
+            label{
+                img{
+                    display: unset;
+                }
+            }
+            
+        }
+    }
+}

@@ -59,7 +59,11 @@ $grey: #dfe0df;
     width: 18px;
     margin-right: 6px;
   }
-
+  &_icon_Big {
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+  }
   &_additionalInfo {
     display: flex;
     flex-direction: row;

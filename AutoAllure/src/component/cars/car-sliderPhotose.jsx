@@ -14,17 +14,21 @@ const carSlider = ({photos}) => {
               scrollbar={{ draggable: true }}
               modules={[Navigation, Pagination, Scrollbar]}
               className={styleReviews['reviews__clients--custom'] } 
-    >
-        {photos.map((item, index)=>{
-          return (
-            <SwiperSlide key={`carpageSwiper_Element_${index}`}>
-                <div className={styleReviews['reviews--swiper']}>
-                      <img src={item} alt={"asd"} key={index} />
-                </div>
-            </SwiperSlide>
-            
-        )
-      })}
+    > 
+
+        {
+          
+          photos.map((item, index)=>{
+            return (
+              <SwiperSlide key={`carpageSwiper_Element_${index}`}>
+                  <div className={styleReviews['reviews--swiper']}>
+                        <img src={item} alt={"asd"} key={index} />
+                  </div>
+              </SwiperSlide>
+              
+          )
+          })
+        }
       </Swiper>
     </>
     

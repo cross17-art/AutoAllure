@@ -13,7 +13,7 @@ import {dayPropertyse} from '../../assets/js/formatedDate'
 
 
 
-const datePickerPage = ({locations,disabledDates}) => {
+const datePickerPage = ({locations,disabledDates,id}) => {
     
     const navigate = useNavigate()
     const [search,setSearch] = useState(null)
@@ -45,8 +45,9 @@ const datePickerPage = ({locations,disabledDates}) => {
     }
    
     useEffect(()=>{
+        console.log(search)
         if(search!=null){
-            if(search.startDate!=null){
+            if(search.startDate!=null && search.startDate!=""){
                 // startDate = search.toLocaleDateString("en-US", { day: 'numeric' })+ "-"+ search.toLocaleDateString("en-US", { month: 'numeric' })+ "-" + search.toLocaleDateString("en-US", { year: 'numeric' })
                 let locationGet = document.querySelector('[name=first] [name=dropdownTextLocationGet]').textContent.trim()
                 let locationReturn = document.querySelector('[name=second] [name=dropdownTextLocationReturn]').textContent.trim()
@@ -54,11 +55,13 @@ const datePickerPage = ({locations,disabledDates}) => {
                 let timeReturn = document.querySelector('[name=second] [name=dropdownTextTimeReturn]').textContent
 
                 let dates = search.startDate+' '+timeGet + ' - ' + search.endDate+' '+timeReturn
-
+                let company = Cookies.get('company')
+                Cookies.set('company', company, { expires: 7 });
+                Cookies.set('carId', id, { expires: 7 });
                 Cookies.set('locationGet', locationGet, { expires: 7 });
                 Cookies.set('locationReturn', locationReturn, { expires: 7 });
                 Cookies.set('rentDate', dates, { expires: 7 });
-                navigate(`/dates/${dates}`)
+                navigate(`/car-book/${id}`)
             }
         }
     },[search])

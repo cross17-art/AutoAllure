@@ -23,6 +23,8 @@ import CarPageBook from "./component/screen/carPageBooking";
 import CarPersonalDetailes from "./component/cars/car-book/car-book-personalDetailes";
 import CarPayment from "./component/cars/car-book/car-book-payment";
 import CarEquipment from "./component/cars/car-book/car-book-equipment";
+import CarPageOptions from "./component/cars/car-page/car-page-options";
+
 function App() {
   const url = "http://localhost:5173/"
   
@@ -43,7 +45,8 @@ function App() {
             <Route path="/car-book/:id" element={<CarPageBook url={url}/>}/>
             <Route path="/personal/" element={<CarPersonalDetailes url={url}/>}/>
             <Route path="/payment/" element={<CarPayment url={url}/>}/>
-            <Route path="/equipment/" element={<CarEquipment url={url}/>}/>
+            <Route path="/equipment/" element={<CarEquipment url={url} name={"driver"}/>}/>
+            <Route path="/options/" element={<CarPageOptions url={url} />}/>
             
         </Routes>
     <Footer />

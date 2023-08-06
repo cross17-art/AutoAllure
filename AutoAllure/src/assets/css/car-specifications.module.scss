@@ -25,3 +25,15 @@
   }
 
 
+.options{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  div{
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 10px;
+  }
+}

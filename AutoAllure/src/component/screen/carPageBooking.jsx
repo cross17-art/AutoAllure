@@ -14,6 +14,7 @@ function carPageBooking({url}) {
   const [error, setError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const [items, setItems] = useState([]);
+  const [car, setCar] = useState([]);
 
   const [busyDatesCar,setBusyDatesCar] = useState(null)
   const [locations,setLocations] = useState(null)
@@ -47,6 +48,7 @@ function carPageBooking({url}) {
                 setError(true);
               }else{
                 setItems(result.order);
+                setCar(result.car);
                 setBusyDatesCar( result.rent_time.split(" - "))
                 setLocations({"get":locationGet,"return":locationReturn})
 
@@ -70,7 +72,7 @@ function carPageBooking({url}) {
     <>
         <CarHat key={"carInformationHatBooking"} carName={items.brand+" "+items.mark}/>
         
-        <CarBook key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} locations={locations} orderDate={busyDatesCar}/>
+        <CarBook key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} locations={locations} orderDate={busyDatesCar} carDescriptions={car}/>
         
         <div className="wrapper">
             <Outlet />

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 import PickUpDate from "../../ui/pickUpDates";
 
-const carEquipment = () => {
+const carEquipment = ({url,option,name}) => {
     // let option = {
     //     "id": 2763,
     //     "title": "Baby Seat",
@@ -13,16 +13,16 @@ const carEquipment = () => {
     //     "type": "fix",
     //     "price": "0.00"
     //   }
-      let option = {
-        "id": 2765,
-        "title": "Extra Driver",
-        "icon": "driver-young",
-        "price_day": "5.00",
-        "max_quantity": 3,
-        "quantity": 0,
-        "type": "tariff",
-        "price": "0.00"
-      }
+    // let option = {
+    //   "id": 2765,
+    //   "title": "Extra Driver",
+    //   "icon": "driver-young",
+    //   "price_day": "5.00",
+    //   "max_quantity": 3,
+    //   "quantity": 0,
+    //   "type": "tariff",
+    //   "price": "0.00"
+    // }
     const [count, setCount] = useState(0);
     const handleIncrement = () => {
         if(count<option.max_quantity){
@@ -47,12 +47,11 @@ const carEquipment = () => {
   
     return (
   
-          <div className={stylePesonal['box']}>
-
-          <p>Payment method</p>
-          <div className={stylePesonal['personal__payment']}>
+       
               <label>
-                
+                    <span className={stylePesonal.price}>
+                       {option.type==="tarrif"?"€5/Day":" €5/Period"}
+                     </span>
                   {/* <input type="checkbox" className={`${stylePesonal["personal__payment--input-radio-on"]} ${stylePesonal["personal__payment--input-radio"]}`} name="pilih" onChange={handleCheckboxChange} />                    */}
                   <p>{option.title}</p>
                   <button onClick={handleDecrement}>
@@ -86,14 +85,10 @@ const carEquipment = () => {
                             <path d="M9 18l6-6-6-6" />
                         </svg>
                     </button>
-
-                    <img src={"/icons/driver.png"}></img>
-
+                    <img src={`/icons/${name}.png`}></img>
               </label>
 
-          </div>
 
-      </div>
     );
 };
 

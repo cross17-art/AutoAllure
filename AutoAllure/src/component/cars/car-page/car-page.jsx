@@ -9,6 +9,8 @@ import CalendarPage from "../../../component/ui/calendar-page";
 import CarPageSpecifications from "./car-page-specifications";
 import CarPageTariffs from "./car-page-tariffs";
 import CarWhyWe from '../../information/car/car-whyWe';
+import CarPageOptions from "../../../component/cars/car-page/car-page-options";
+
 function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
   {/* 
 
@@ -47,6 +49,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
           <div className={syleCarPage.carPage}>
               <div className={syleCarPage.carPage__pictures}>
                 <CarSlider key={"carPageSlider"} photos={car.thumbnails}/>
+                <CarPageOptions url={url} carData={car} />
               </div>
               <div className={syleCarPage.carPage__text}>
                   <div className={`${syleCarPage["carPage__text--hat"]} hat`}>  
@@ -88,7 +91,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
                           <img src={url+'/icons/whatsapp_icon.png'} />
                       </a>
                   </div>
-                  <CalendarPage key={'CarPageDatePicker'} locations={locations} disabledDates={busyDatesCar}/>
+                  <CalendarPage key={'CarPageDatePicker'} locations={locations} disabledDates={busyDatesCar} id = {car.id}/>
                   {/* <CarDatePicker key={'CarPageDatePicker'} classContainer={""}/>   */}
 
               </div>
