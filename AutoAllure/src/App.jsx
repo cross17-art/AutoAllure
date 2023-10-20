@@ -38,7 +38,7 @@ function App() {
               <Route path="dates/:dates" element={<CarsDateList url={url} />} />
             </Route>
             <Route path="/car-page/:id" element={<CarPageMain url={url}/>}>
-
+              9061
               {/* <Route path="/" element={<CarsList url={url} />} /> */}
               {/* <Route path="dates/:dates" element={<CarsDateList url={url} />} /> */}
             </Route>
