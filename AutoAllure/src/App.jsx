@@ -24,6 +24,7 @@ import CarPersonalDetailes from "./component/cars/car-book/car-book-personalDeta
 import CarPayment from "./component/cars/car-book/car-book-payment";
 import CarEquipment from "./component/cars/car-book/car-book-equipment";
 import CarPageOptions from "./component/cars/car-page/car-page-options";
+import CarUploadPhoto from "./component/cars/car-book/car-book-uploadPhoto";
 
 function App() {
   const url = "http://localhost:5173/"
@@ -47,7 +48,7 @@ function App() {
             <Route path="/payment/" element={<CarPayment url={url}/>}/>
             <Route path="/equipment/" element={<CarEquipment url={url} name={"driver"}/>}/>
             <Route path="/options/" element={<CarPageOptions url={url} />}/>
-            
+            <Route path="/photo/" element={<CarUploadPhoto url={url} />}/>
         </Routes>
     <Footer />
     </>

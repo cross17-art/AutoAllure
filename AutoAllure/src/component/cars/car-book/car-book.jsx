@@ -176,9 +176,12 @@ const handleSubmit = (e) => {
           driverLicenceIssueDate:driverLicenceIssueDate,
           driverLicenceExpirationDate:driverLicenceExpirationDate,
           birthday:birthday,
-          paymentType:paymentType
-
+          paymentType:paymentType,
+          equipment: equipment.filter(item => item.value!=undefined),
+          company: Cookies.get("company") === '' ? undefined : Cookies.get("company"),
+          order_id: car.order_id
         }
+
         fetch(`https://auto-allure.com:2053/booking-car/v2`,{
           method: "POST",
           body:JSON.stringify(body),
