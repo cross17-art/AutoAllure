@@ -7,7 +7,7 @@
     padding: 25px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: 10px;
-
+    box-sizing: border-box;
     &__element{
         display: flex;
         flex-direction: column;
@@ -129,8 +129,9 @@
         outline: none;
         box-shadow: 2px 1px 4px black;
     }
-    
+
 }
+
 
 .box{
     display: flex;
@@ -156,6 +157,9 @@
     color: black;
     font-size: 1.2rem !important;
 }
+
+
+
 
 
 @media only screen and (max-width: 767px) {

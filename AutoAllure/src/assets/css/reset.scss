@@ -3,6 +3,7 @@
    License: none (public domain)
 */
 
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -46,15 +47,19 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
+
+
 input.form-control{
 	max-width: 410px;
 	width: 100%;
 	font-size: 1.5rem;
 	height: unset !important;
-	border: 2px solid black !important;
+	border: 2px solid black ;
 	font-size: 1.5rem !important;
 }
 .react-tel-input .flag-dropdown{
-	border: 2px solid black !important;
+	border: 2px solid black ;
 	border-right: none !important;
+	background-color: white !important;
 }

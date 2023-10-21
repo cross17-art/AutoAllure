@@ -33,7 +33,7 @@ const carPhone = ({formData,handleInputChange,handleInputFocus,errors,inputName}
                     value={phoneNumber}
                     onChange={handleValueChange}
                     onFocus={handleInputFocus}
-        
+                    buttonClass={stateError?stylePesonal.personal__birthday_error:""}
                     inputClass={stateError?stylePesonal.personal__birthday_error:""}
                     placeholder="Enter phone number"
                     inputProps={{

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 import PickUpDate from "../../ui/pickUpDates";
 
-const carEquipment = ({url,option,name}) => {
+const carEquipment = ({url,option,equipment,title}) => {
     // let option = {
     //     "id": 2763,
     //     "title": "Baby Seat",
@@ -27,6 +27,11 @@ const carEquipment = ({url,option,name}) => {
     const handleIncrement = () => {
         if(count<option.max_quantity){
             setCount((prevCount) =>prevCount + 1);
+            let index = equipment.findIndex(obj => obj.title === title);
+            equipment[index].value=count + 1;
+
+            if(option.type==="tariff"){
+            }
         }
 
     };
@@ -34,6 +39,8 @@ const carEquipment = ({url,option,name}) => {
     const handleDecrement = () => {
        if(count>0){
             setCount((prevCount) =>prevCount-1);
+            let index = equipment.findIndex(obj => obj.title === title);
+            equipment[index].value=count - 1;
         }
     };
     const handleCheckboxChange = (event) => {
@@ -54,7 +61,7 @@ const carEquipment = ({url,option,name}) => {
                      </span>
                   {/* <input type="checkbox" className={`${stylePesonal["personal__payment--input-radio-on"]} ${stylePesonal["personal__payment--input-radio"]}`} name="pilih" onChange={handleCheckboxChange} />                    */}
                   <p>{option.title}</p>
-                  <button onClick={handleDecrement}>
+                  <button onClick={handleDecrement} price={option.price_day}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -70,7 +77,7 @@ const carEquipment = ({url,option,name}) => {
                         </svg>
                     </button>
                     <span className={stylePesonal['personal__payment--counter']}>{count}</span>
-                    <button onClick={handleIncrement}>
+                    <button onClick={handleIncrement} price={option.price_day}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
@@ -85,7 +92,7 @@ const carEquipment = ({url,option,name}) => {
                             <path d="M9 18l6-6-6-6" />
                         </svg>
                     </button>
-                    <img src={`/icons/${name}.png`}></img>
+                    <img src={`/icons/${title}.png`}></img>
               </label>
 
 

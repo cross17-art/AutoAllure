@@ -70,7 +70,7 @@ function carPageBooking({url}) {
 
   return (
     <>
-        <CarHat key={"carInformationHatBooking"} carName={items.brand+" "+items.mark}/>
+        <CarHat key={"carInformationHatBooking"} carName={car.brand+" "+car.mark}/>
         
         <CarBook key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} locations={locations} orderDate={busyDatesCar} carDescriptions={car}/>
         

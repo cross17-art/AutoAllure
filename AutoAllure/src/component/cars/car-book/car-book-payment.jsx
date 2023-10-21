@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 import PickUpDate from "../../ui/pickUpDates";
 
-const carPayment = ({ url }) => {
+const carPayment = ({ url,handleInputChange,handleInputFocus,errors,formData}) => {
 
 
     return (
@@ -11,14 +11,14 @@ const carPayment = ({ url }) => {
                 <div className={stylePesonal['box']}>
                     <p>Payment method</p>
                     <div className={stylePesonal['personal__payment']}>
-                        <label>
+                        <label className={errors.paymentType != '' && errors.paymentType != undefined ? stylePesonal.personal__birthday_error : ""} >
                             <img src={url+"/icons/credit-card.png"}></img>
-                            <input type="radio" className={`${stylePesonal["personal__payment--input-radio-on"]} ${stylePesonal["personal__payment--input-radio"]}`} name="pilih" /> 
+                            <input type="radio" className={`${stylePesonal["personal__payment--input-radio-on"]} ${stylePesonal["personal__payment--input-radio"]}`} name={"paymentType"} value={"cash"}  onClick={handleInputChange} /> 
                             <span> Pay by Card</span>
                         </label>
-                        <label>
+                        <label className={errors.paymentType != '' && errors.paymentType != undefined ? stylePesonal.personal__birthday_error : ""} >
                             <img src={url+"/icons/money.png"}></img>
-                            <input type="radio" className={`${stylePesonal["personal__payment--input-radio-off"]} ${stylePesonal["personal__payment--input-radio"]}`} name="pilih" />  
+                            <input type="radio" className={`${stylePesonal["personal__payment--input-radio-off"]} ${stylePesonal["personal__payment--input-radio"]}`} name={"paymentType"} value={"card"} onClick={handleInputChange} />  
                             <span>Pay by Cash</span>
                         </label>
                     </div>

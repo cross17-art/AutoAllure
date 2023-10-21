@@ -3,137 +3,12 @@ import styleOrder from '../../../assets/css/orderSteps.module.scss'
 import styleInformation from '../../../assets/css/Information.module.scss'
 import styleSpecifications from '../../../assets/css/car-specifications.module.scss'
 import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
-
+import PickUpDate from "../../ui/pickUpDates";
 import CarDriverLicence from './car-book-driverLicence'
 import CarPhone from "./car-book-phone";
-const carPersonalDetailes = ({ carData }) => {
+const carPersonalDetailes = ({handleInputChange,handleInputFocus,errors,formData}) => {
 
-    const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        country: '',
-        city: '',
-        address: '',
-        phone: '',
-        driverLicenceNumber: '',
-        driverLicenceIssueDate: '',
-        driverLicenceExpirationDate: '',
-        birthday: ''
-    });
-
-    const [errors, setErrors] = useState({ ..."" });
-
-    const handleInputChange = (e) => {
-        if(e.target === undefined){
-            let { name, value } = e;
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: value,
-            }));
-            setErrors((prevErrors) => ({
-                ...prevErrors,
-                [name]: '',
-            }));
-        }else{
-            let { name, value } = e.target;
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: value,
-            }));
-        }
-        
-       
-    };
-
-    const handleInputFocus = (e) => {
-        const { name, value } = e.target;
-
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: '',
-        }));
-
-    };
-    const isDrivingLicenseValid = (licenseNumber) => {
-        // Проверяем формат номера прав "N000NNNNN" с помощью регулярного выражения
-        const validationResult = validateLicense(licenseNumber);
-        return validationResult.isValid;
-    };
-
-    const isDateValid = (dateString) => {
-        // Проверяем формат даты "YYYY-MM-DD" с помощью регулярного выражения
-        const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
-        return dateRegex.test(dateString);
-    };
-    const validateEmail = (email) => {
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        return emailRegex.test(email);
-    };
-    const validatePhone = (phoneNumber) => {
-        const phonePattern = /^[1-9]\d{0,2}\s?\d{1,4}\s?\d{1,4}$/;
-        return phonePattern.test(phoneNumber);
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Проверяем, все ли поля заполнены
-        const validationErrors = {};
-        if (!formData.firstName.trim()) {
-            validationErrors.firstName = 'Enter your name';
-        }
-        if (!formData.lastName.trim()) {
-            validationErrors.lastName = 'Enter your last name';
-        }
-        if (!formData.email.trim() || !validateEmail(formData.email.trim())) {
-            validationErrors.email = 'Enter your email address';
-        }
-
-        if (!formData.country.trim()) {
-            validationErrors.country = 'Enter your country';
-        }
-
-        if (!formData.city.trim()) {
-            validationErrors.city = 'Enter your city';
-        }
-
-        if (!formData.address.trim()) {
-            validationErrors.address = 'Enter your address';
-        }
-
-        if (!formData.phone.trim() || !validatePhone(formData.phone.trim())) {
-            validationErrors.phone = 'Enter your phone number';
-        }
-
-        if (!formData.driverLicenceNumber.trim()) {
-            validationErrors.driverLicenceNumber = 'Enter number';
-        }
-
-        if (!formData.driverLicenceIssueDate.trim()) {
-            validationErrors.driverLicenceIssueDate = 'Issue date';
-        }
-
-        if (!formData.driverLicenceExpirationDate.trim()) {
-            validationErrors.driverLicenceExpirationDate = 'Expiration date';
-        }
-
-        if (!formData.birthday.trim()) {
-            validationErrors.birthday = 'Enter your birthday';
-        }
-
-
-        // Если есть ошибки, устанавливаем их в состояние, иначе выполняем действия после успешной отправки
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
-
-        } else {
-
-            // Здесь можно выполнять действия после успешной отправки формы
-            // Например, отправка данных на сервер
-            console.log('Форма отправлена успешно!');
-        }
-    };
+   
     return (
         <>
 
@@ -151,10 +26,14 @@ const carPersonalDetailes = ({ carData }) => {
                         <input className={errors.lastName != '' && errors.lastName != undefined ? stylePesonal.personal__birthday_error : ""} type="text" name="lastName" value={formData.lastName} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Last name" />
                     </div>
                     <div className={stylePesonal.personal__element}>
+                        <label>Birthday:</label>
+                        <PickUpDate handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} inputName="birthday"/>
+                    </div>
+                    <div className={stylePesonal.personal__element}>
                         <label>Email:</label>
                         <input className={errors.email != '' && errors.email != undefined ? stylePesonal.personal__birthday_error : ""} type="email" name="email" value={formData.email} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Email" />
                     </div>
-                    {/* <div className={stylePesonal.personal__element}>
+                    <div className={stylePesonal.personal__element}>
                         <label>Country:</label>
                         <input className={errors.country != '' && errors.country != undefined ? stylePesonal.personal__birthday_error : ""} type="text" name="country" value={formData.country} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Country" />
                     </div>
@@ -165,14 +44,14 @@ const carPersonalDetailes = ({ carData }) => {
                     <div className={stylePesonal.personal__element}>
                         <label>Address:</label>
                         <input className={errors.address != '' && errors.address != undefined ? stylePesonal.personal__birthday_error : ""} type="text" name="address" value={formData.address} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Address" />
-                    </div> */}
+                    </div> 
                 </div>
                 <div className={stylePesonal.personal}>
                     <p>Additional Information</p>
                     <CarPhone formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} inputName="phone" />
                     <CarDriverLicence formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} />
                 </div>
-                <button onClick={handleSubmit}>Отправить</button>
+                
 
             </section>
         </>

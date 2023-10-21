@@ -38,11 +38,11 @@ function App() {
               <Route path="dates/:dates" element={<CarsDateList url={url} />} />
             </Route>
             <Route path="/car-page/:id" element={<CarPageMain url={url}/>}>
-              9061
               {/* <Route path="/" element={<CarsList url={url} />} /> */}
               {/* <Route path="dates/:dates" element={<CarsDateList url={url} />} /> */}
             </Route>
             <Route path="/car-book/:id" element={<CarPageBook url={url}/>}/>
+            
             <Route path="/personal/" element={<CarPersonalDetailes url={url}/>}/>
             <Route path="/payment/" element={<CarPayment url={url}/>}/>
             <Route path="/equipment/" element={<CarEquipment url={url} name={"driver"}/>}/>
