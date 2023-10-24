@@ -6,7 +6,7 @@ import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 import PickUpDate from "../../ui/pickUpDates";
 import CarDriverLicence from './car-book-driverLicence'
 import CarPhone from "./car-book-phone";
-const carPersonalDetailes = ({handleInputChange,handleInputFocus,errors,formData}) => {
+const carPersonalDetailes = ({handleFileChange,handleInputChange,handleInputFocus,errors,formData}) => {
 
    
     return (
@@ -49,7 +49,7 @@ const carPersonalDetailes = ({handleInputChange,handleInputFocus,errors,formData
                 <div className={stylePesonal.personal}>
                     <p>Additional Information</p>
                     <CarPhone formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} inputName="phone" />
-                    <CarDriverLicence formData={formData} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} />
+                    <CarDriverLicence formData={formData} handleFileChange={handleFileChange} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} />
                 </div>
                 
 

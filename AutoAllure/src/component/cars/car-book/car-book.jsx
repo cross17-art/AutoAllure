@@ -34,27 +34,44 @@ function carBook({ url, error, isLoaded, car, locations, orderDate, carDescripti
     driverLicenceIssueDate: '',
     driverLicenceExpirationDate: '',
     birthday: '',
-    paymentType: ''
+    paymentType: '',
+    photo:''
 });
 
 const equipment = car.options;
-
-
 const [errors, setErrors] = useState({ ..."" });
 
+
+const handleFileChange = (event) => {
+  const file = event.target.files[0];
+  setFormData((prevData)=>({
+    ...prevData,
+    photo:file
+  }))
+  setErrors((prevData)=>({
+    ...prevData,
+    photo:''
+  }))
+};
+
+const handlePaymentTypeChange = (e) => {
+
+  if(e.target.getAttribute("name") === "paymentType"){
+    let name = e.target.getAttribute("name");
+    let value = e.target.getAttribute("value");
+      setFormData((prevData) => ({
+          ...prevData,
+          [name]: value,
+      }));
+      setErrors((prevErrors) => ({
+          ...prevErrors,
+          [name]: '',
+      }));
+  }
+};
+
+
 const handleInputChange = (e) => {
-    if(e.target.parentElement.getAttribute("name") === "paymentType"){
-      let name = e.target.parentElement.getAttribute("name");
-      let value = e.target.parentElement.getAttribute("value");
-        setFormData((prevData) => ({
-            ...prevData,
-            [name]: value,
-        }));
-        setErrors((prevErrors) => ({
-            ...prevErrors,
-            [name]: '',
-        }));
-    }
 
     if(e.target === undefined){
         let { name, value } = e;
@@ -72,6 +89,7 @@ const handleInputChange = (e) => {
             ...prevData,
             [name]: value,
         }));
+        
     }
 };
 
@@ -155,6 +173,10 @@ const handleSubmit = (e) => {
       validationErrors.paymentType = 'Chouse your payment type';
     }
 
+    if (formData.photo.size<=0) {
+      validationErrors.photo = 'Upload your photo';
+    }
+
 
     // Если есть ошибки, устанавливаем их в состояние, иначе выполняем действия после успешной отправки
     if (Object.keys(validationErrors).length > 0) {
@@ -165,21 +187,22 @@ const handleSubmit = (e) => {
         // Например, отправка данных на сервер
 
         let body ={
-          firstName:firstName,
-          lastName:lastName,
-          email:email,
-          country:country,
-          city:city,
-          address:address,
-          phone:phone,
-          driverLicenceNumber:driverLicenceNumber,
-          driverLicenceIssueDate:driverLicenceIssueDate,
-          driverLicenceExpirationDate:driverLicenceExpirationDate,
-          birthday:birthday,
-          paymentType:paymentType,
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          country: formData.country,
+          city: formData.city,
+          address: formData.address,
+          phone: formData.phone,
+          driverLicenceNumber: formData.driverLicenceNumber,
+          driverLicenceIssueDate: formData.driverLicenceIssueDate,
+          driverLicenceExpirationDate: formData.driverLicenceExpirationDate,
+          birthday: formData.birthday,
+          paymentType: formData.paymentType,
           equipment: equipment.filter(item => item.value!=undefined),
           company: Cookies.get("company") === '' ? undefined : Cookies.get("company"),
-          order_id: car.order_id
+          order_id: car.order_id,
+          photo: formData.photo
         }
 
         fetch(`https://auto-allure.com:2053/booking-car/v2`,{
@@ -251,9 +274,9 @@ const handleSubmit = (e) => {
                 </div>
               </div>
               {/* <CarEquipment url={url} name={"driver"}/> */}
-              <CarPayment url={url} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} formData={formData}/>
-              <CarPersonalDetailes handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} formData={formData}/>
-              <button onClick={handleSubmit}>Отправить</button>
+              <CarPayment url={url} handlePaymentTypeChange={handlePaymentTypeChange} handleInputFocus={handleInputFocus} errors={errors} formData={formData}/>
+              <CarPersonalDetailes handleFileChange={handleFileChange} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} formData={formData}/>
+             
             </div>
             <div className={styleCarBook["book__payment"]}>
               <div className={styleCarBook["book__payment--sticky"]}>
@@ -282,6 +305,7 @@ const handleSubmit = (e) => {
                   <p> Drop-off Location</p>
                   <span>{locations.return}</span>
                 </div>
+                <button className="btn btn-orange" onClick={handleSubmit}>Отправить</button>
               </div>
             </div>
           </div>

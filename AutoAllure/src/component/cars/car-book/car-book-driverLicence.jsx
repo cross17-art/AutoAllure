@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 import PickUpDate from "../../ui/pickUpDates";
+import CarUploadPhoto from "../../../component/cars/car-book/car-book-uploadPhoto";
 
-const carDriverLicence = ({formData,handleInputChange,handleInputFocus,errors}) => {
+const carDriverLicence = ({formData,handleInputChange,handleFileChange,handleInputFocus,errors}) => {
 
 
     return (
@@ -24,7 +25,10 @@ const carDriverLicence = ({formData,handleInputChange,handleInputFocus,errors}) 
                     </div>
                     {/* <input className={errors.driverLicenceIssueDate!='' &&errors.driverLicenceIssueDate!=undefined?stylePesonal.personal__birthday_error:""} type="text" name="driverLicenceIssueDate" value={formData.driverLicenceIssueDate} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Issue Date 2002-12-24"/> */}
                     {/* <input className={errors.driverLicenceExpirationDate!='' &&errors.driverLicenceExpirationDate!=undefined?stylePesonal.personal__birthday_error:""} type="text" name="driverLicenceExpirationDate" value={formData.driverLicenceExpirationDate} onChange={handleInputChange} onFocus={handleInputFocus} placeholder="Expiration Date 2002-12-24" /> */}
-
+                    <div className={stylePesonal['personal__driver--width']}>
+                        <p>Driver Licence Photo</p>
+                        <CarUploadPhoto formData={formData} handleFileChange={handleFileChange} handleInputFocus={handleInputFocus} errors={errors}/>
+                    </div>
                 </div>
             </div>
             

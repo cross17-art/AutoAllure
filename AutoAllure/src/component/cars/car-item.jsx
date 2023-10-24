@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import Cookies from 'js-cookie';
 import "../../assets/css/carItem.scss";
 
-const CarItemNew = ({ carData, url, type,button }) => {
+const CarItemNew = ({ additionalStyle,carData, url, type,button }) => {
   // const url = "http://localhost:5173/";
   const navigate = useNavigate()
   const [request,setRequest] = useState(false)
@@ -26,7 +26,7 @@ const CarItemNew = ({ carData, url, type,button }) => {
   },[request])
 
   return (
-    <div className="carItem" id={carData.id} company={carData.company}>
+    <div className={"carItem"+" "+additionalStyle} id={carData.id} company={carData.company}>
       <img
         className="carItem_img"
         alt={carData.fullName}
