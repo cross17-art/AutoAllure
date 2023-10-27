@@ -9,6 +9,7 @@
         background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
         color: black;
         font-size: 60px;
+        
     }
     &+.info{
         background: #222;
@@ -86,15 +87,14 @@
 }
 
 .footer{
-    background-color: #FBAB7E;
-    background-image: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
-    color: black;
+    background-color: black;
+    color: white;
     font-size: 60px;
     margin: auto;
     
     // @todo fix: you can have only one h1 title per page, seo recommendation 
     h1{
-        color: black;
+        color: orange;
         position: relative;
         display: block;
         width: 100%;

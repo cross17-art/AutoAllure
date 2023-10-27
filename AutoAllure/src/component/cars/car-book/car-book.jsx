@@ -245,12 +245,11 @@ const handleSubmit = (e) => {
         <div className="wrapper">
           <div className={styleCarBook["book"]}>
             <div className={styleCarBook["book__info"]}>
-              <h1>Заголовок основной информации</h1>
               <div>
                 <img src={carDescriptions.thumbnail}/>
                 <CarPageOptions url={url} carData={carDescriptions} />
               </div>
-              <p>Дополнительные детали и описание.</p>
+              <br></br>
               <div className={stylePesonal["box"]}>
                 <p>Equipment</p>
                 <div className={stylePesonal["personal__payment"]}>
@@ -305,7 +304,7 @@ const handleSubmit = (e) => {
                   <p> Drop-off Location</p>
                   <span>{locations.return}</span>
                 </div>
-                <button className="btn btn-orange" onClick={handleSubmit}>Отправить</button>
+                <button className="carItem_btn carItem_booking btn booking btn-orange" onClick={handleSubmit}>Send</button>
               </div>
             </div>
           </div>

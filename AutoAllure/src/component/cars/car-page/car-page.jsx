@@ -82,6 +82,9 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
                   {/* <div className={syleCarPage["carPage__text--price"]}>
                       <p>You take more you pay less</p>
                   </div> */}
+
+                  <CalendarPage key={'CarPageDatePicker'} locations={locations} disabledDates={busyDatesCar} id = {car.id}/>
+                  {/* <CarDatePicker key={'CarPageDatePicker'} classContainer={""}/>   */}
                   <div className={syleCarPage["carPage__text--icon"]}>
                       <span className="_footerContact__item--link_s23m4_26" href="tel: +35799667777">+357&nbsp;996&nbsp;7777</span>
                       <a href="https://t.me/+35799667777">
@@ -91,9 +94,6 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
                           <img src={url+'/icons/whatsapp_icon.png'} />
                       </a>
                   </div>
-                  <CalendarPage key={'CarPageDatePicker'} locations={locations} disabledDates={busyDatesCar} id = {car.id}/>
-                  {/* <CarDatePicker key={'CarPageDatePicker'} classContainer={""}/>   */}
-
               </div>
           </div>
 

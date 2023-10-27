@@ -50,7 +50,7 @@ function carPageMain({url}) {
   return (
     <>
         <CarHat key={"carInformationHat"} carName={items.brand+" "+items.mark}/>
-        
+
         <CarPage key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} locations={locations} busyDatesCar={busyDatesCar}/>
 
         <div className="wrapper">

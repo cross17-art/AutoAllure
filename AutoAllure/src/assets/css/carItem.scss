@@ -17,6 +17,16 @@ $grey: #dfe0df;
       transform: none;
       background-color: #ffca29;
     }
+    
+  }
+  
+  &_booking{
+    font-size: 1.5rem;
+    margin: auto;
+    margin-top: auto;
+    text-align: center;
+    display: flex;
+    margin-top: 20px;
   }
 
   &_info {
