@@ -8,6 +8,7 @@ import styleCarBook from "../../../assets/css/carBook.module.scss";
 import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 
 import styleOrder from "../../../assets/css/orderSteps.module.scss";
+import Cookies from 'js-cookie';
 
 import CalendarPage from "../../../component/ui/calendar-page";
 import CarPageSpecifications from "../car-page/car-page-specifications";
@@ -185,31 +186,39 @@ const handleSubmit = (e) => {
 
         // Здесь можно выполнять действия после успешной отправки формы
         // Например, отправка данных на сервер
+        const data = new FormData();
+        let human = []
 
-        let body ={
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          country: formData.country,
-          city: formData.city,
-          address: formData.address,
-          phone: formData.phone,
-          driverLicenceNumber: formData.driverLicenceNumber,
-          driverLicenceIssueDate: formData.driverLicenceIssueDate,
-          driverLicenceExpirationDate: formData.driverLicenceExpirationDate,
-          birthday: formData.birthday,
-          paymentType: formData.paymentType,
-          equipment: equipment.filter(item => item.value!=undefined),
-          company: Cookies.get("company") === '' ? undefined : Cookies.get("company"),
-          order_id: car.order_id,
-          photo: formData.photo
-        }
-
-        fetch(`https://auto-allure.com:2053/booking-car/v2`,{
-          method: "POST",
-          body:JSON.stringify(body),
-          headers:{'Content-Type': 'application/json'}
+          human.push({
+            "firstName": formData.firstName,
+            "lastName": formData.lastName,
+            "email": formData.email,
+            "country": formData.country,
+            "city": formData.city,
+            "address": formData.address,
+            "phone": formData.phone,
+            "driverLicenceNumber": formData.driverLicenceNumber,
+            "driverLicenceIssueDate": formData.driverLicenceIssueDate,
+            "driverLicenceExpirationDate": formData.driverLicenceExpirationDate,
+            "birthday": formData.birthday
         })
+        data.append("humans",JSON.stringify(human))
+        data.append("paymentType", formData.paymentType)
+        data.append("equipment", JSON.stringify(equipment.filter(item => item.value!=undefined)))
+        data.append("insurances_id", car.insurances[0].id.toString())
+        data.append("company", Cookies.get("company") === '' ? undefined : Cookies.get("company"))
+        data.append("order_id", car.order_id)
+        data.append("file", formData.photo)
+
+        fetch(`https://auto-allure.com:2053/confirm-order/v2`,{
+          method: "POST",
+          body: data,
+        }).then(res=>res.json())
+        .then(
+          (result)=>{
+            console.log(result)
+          }
+        )
          
 
         console.log('Форма отправлена успешно!');

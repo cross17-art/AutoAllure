@@ -2,7 +2,9 @@
 @import url("./normalize.scss");
 @import "_media";
 // @import "rsuite/dist/rsuite.css";
-
+html{
+  scroll-behavior: smooth;
+}
 body {
   font-family: 'Oswald', sans-serif;
   font-size: 42px
@@ -53,4 +55,22 @@ body {
 @media only screen and (min-width: 1024px) {
   // Ваши стили для десктопного разрешения
 
+}
+
+#scrollTopButton {
+  display: none; /* Изначально скрываем кнопку */
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  font-size: 16px;
+  padding: 30px 20px;
+  background-color: orange;
+  color: #ffffff;
+  border: none;
+  border-radius: 80%;
+  cursor: pointer;
+  z-index: 9999999999;
+  &.show {
+    display: block; /* Показываем кнопку, когда нужно прокрутить */
+  }
 }
