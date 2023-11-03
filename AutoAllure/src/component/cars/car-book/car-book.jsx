@@ -17,6 +17,7 @@ import CarPayment from "../../../component/cars/car-book/car-book-payment";
 import CarEquipment from "../../../component/cars/car-book/car-book-equipment";
 import CarWhyWe from "../../information/car/car-whyWe";
 import CarPageOptions from "../../../component/cars/car-page/car-page-options";
+import Cookies from 'js-cookie';
 
 function carBook({ url, error, isLoaded, car, locations, orderDate, carDescriptions }) {
 
@@ -205,11 +206,18 @@ const handleSubmit = (e) => {
           photo: formData.photo
         }
 
-        fetch(`https://auto-allure.com:2053/booking-car/v2`,{
+        
+
+        fetch(`https://auto-allure.com:2053/confirm_order/v2`,{
           method: "POST",
           body:JSON.stringify(body),
           headers:{'Content-Type': 'application/json'}
-        })
+        })          .then(res => res.json())
+        .then(
+          (result) => {
+              console.log(result)
+
+          })
          
 
         console.log('Форма отправлена успешно!');
