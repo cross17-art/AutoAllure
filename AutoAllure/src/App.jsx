@@ -16,7 +16,7 @@ import Footer from "./component/screen/Footer";
 import "./assets/css/Main.scss";
 import { Routes, Route, Link } from "react-router-dom";
 
-
+import ScrollTopButton from "./component/ui/ScrollTopButton";
 import MainPage from "./component/screen/mainPage";
 import CarPageMain from "./component/screen/carPageMain";
 import CarPageBook from "./component/screen/carPageBooking";
@@ -50,6 +50,7 @@ function App() {
             <Route path="/options/" element={<CarPageOptions url={url} />}/>
             <Route path="/photo/" element={<CarUploadPhoto url={url} />}/>
         </Routes>
+        <ScrollTopButton/>
     <Footer />
     </>
   );

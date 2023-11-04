@@ -1,9 +1,9 @@
 .book {
-    display: flex;
+    display: block;
     height: 20000px;
     &__info {
         flex: 2; /* Основная информация занимает всю доступную ширину */
-        padding: 20px;
+        padding: 5px;
     }
 
     /* Стили для блока оплаты, стики react и scss */
@@ -17,8 +17,47 @@
             top: 20px; /* Расстояние от верхней границы окна прокрутки */
             border: 2px solid black;
             border-radius: 20px;
-            padding: 15px;
+            padding: 5px;
+            // padding: 15px;
        }
     }
 
+}
+
+
+
+
+
+@media only screen and (max-width: 767px) {
+
+}
+
+// Стили для планшетного разрешения
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .book{
+        &__info {
+            padding: 20px;
+        }
+        display: flex;
+        &__payment {
+            &--sticky{
+                padding: 15px;
+            }
+        }
+    }
+}
+
+// Стили для десктопного разрешения
+@media only screen and (min-width: 1024px) {
+    .book{
+        &__info {
+            padding: 20px;
+        }
+        display: flex;
+        &__payment {
+            &--sticky{
+                padding: 15px;
+            }
+        }
+    }
 }

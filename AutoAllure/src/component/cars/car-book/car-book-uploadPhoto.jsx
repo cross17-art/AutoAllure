@@ -11,7 +11,7 @@ const carUploadPhoto = ({ url,handleFileChange,handleInputFocus,errors,formData}
             <div className="photo-upload-form">
                 <label className={stylePhoto["input-file"]}>
                     <input type="file" name="file" accept=".jpg, .png" onChange={handleFileChange} />		
-                    <span className="btn btn-orange">{formData.photo ? formData.photo.name : 'Uload photo'}</span>
+                    <span className="carItem_btn carItem_booking btn booking btn-orange">{formData.photo ? formData.photo.name : 'Uload photo'}</span>
                 </label>
             </div>
         </>

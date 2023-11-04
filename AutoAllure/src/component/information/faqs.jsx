@@ -13,7 +13,7 @@ function FAQS() {
 
 
   return (
-    <section data="faqs">
+    <section data="faqs" id="comapny">
         <div className="w-100">
               <div className="blockFAQS">
                 <h1 >FAQS</h1>

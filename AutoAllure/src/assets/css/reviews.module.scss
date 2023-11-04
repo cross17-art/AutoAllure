@@ -30,6 +30,9 @@
             // height: 100%;
             // object-fit: contain;
             // object-position: top;
+            width: 100%;
+            height: 100%; /* Например, задаем высоту блока */
+            background-size: cover;
         }
     }
     &__clients{

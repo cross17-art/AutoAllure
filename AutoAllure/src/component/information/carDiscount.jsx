@@ -8,7 +8,7 @@ import styleBanner from  '../../assets/css/banner.module.scss'
 // import AboutUs from './aboutUs'
 
 function carDiscount({url}) {
-  
+    // ебани отдельный запрос на лучшие машины 
     return(
      <section data="carSales">
         

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 // import '../../assets/css/popup.scss'
 import '../../assets/css/datePickerBlock.scss'
 import Cookies from 'js-cookie';
-
-
 import Datepicker from "react-tailwindcss-datepicker"
 import Dropdown from "./Dropdown";
 import {dayPropertyse} from '../../assets/js/formatedDate'
@@ -21,7 +19,7 @@ const carDatePicker = ({classContainer}) => {
 
     const navigate = useNavigate()
     const [search,setSearch] = useState(null)
-    
+
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
@@ -45,7 +43,10 @@ const carDatePicker = ({classContainer}) => {
         console.log("newValue:", newValue);
         setValue(newValue);
     }
-
+    
+    const handleResetSearch = () => {
+        navigate(`/`)
+    }
     const calendarRange = window.innerWidth >= 600
     // const [shouldSticky, setShouldSticky] = useState(false);
     // const handleScroll = () => {
@@ -97,8 +98,8 @@ const carDatePicker = ({classContainer}) => {
             .then(res => res.json())
             .then(
                 (result) => {
-                setIsLoaded(true);
-                setLocations(result);
+                    setIsLoaded(true);
+                    setLocations(result);
                 
                 },
                 (error) => {
@@ -181,13 +182,15 @@ if (error) {
                         
                         }}
                     ></Datepicker>
+                    {/* //${styleBanner.btnBanner__orange} */}
                         <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations.locations} digit={'first'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_2"}/>
                         <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations.locations} digit={'second'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_3"}/>
-                        <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_4`}  onClick={()=>setSearch(value)} >
+                        <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_4 carItem_btn btn btn-orang`}  onClick={()=>setSearch(value)} >
                                 Search
                         </button>    
-                    
-                    {/* <button className="btn btn-orange" onClick={()=>setSearch(value)} >Search</button> */}
+                        <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_5 carItem_btn btn btn-orang`}  onClick={()=>handleResetSearch()} >
+                                Reset
+                        </button>  
             </div>
                 
             
