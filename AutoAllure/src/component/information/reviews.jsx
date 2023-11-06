@@ -14,62 +14,68 @@ function Reviews({url}) {
 
     useEffect(() => {
         function handleScroll() {
-            const block = blockRef.current;
-            const blockBottom = block.getBoundingClientRect().bottom
-            const windowBottom = window.innerHeight;
 
-            if (blockBottom <= windowBottom) {
-                console.log('Блок прокручен до видимости!');
-                // counter
-                const targetValue = 2310;
-                const duration = 2000;
-                const step = targetValue / (duration / 100);
+            if(blockRef.current!=null){
+                
+                const block = blockRef.current;
+                const blockBottom = block.getBoundingClientRect().bottom
+                // const blockBottom = 564;
+                const windowBottom = window.innerHeight;
 
-                const intervalOrders = setInterval(() => {
-                    setCountOrders((prevCount) => {
-                        
-                        const newCount = prevCount + step;
-                        if (newCount >= 1950) {
-                         clearInterval(intervalOrders);
-                         window.removeEventListener('scroll', handleScroll);
-                        }
-                        return Math.floor(newCount);
-                    });
-                }, 10);
-                const intervalClients = setInterval(() => {
-                    setCountClients((prevCount) => {
-                        const newCount = prevCount + 1;
-                        if (newCount >= 78) {
-                            clearInterval(intervalClients);
+                if (blockBottom <= windowBottom) {
+                    console.log('Блок прокручен до видимости!');
+                    // counter
+                    const targetValue = 2310;
+                    const duration = 2000;
+                    const step = targetValue / (duration / 100);
+
+                    const intervalOrders = setInterval(() => {
+                        setCountOrders((prevCount) => {
+                            
+                            const newCount = prevCount + step;
+                            if (newCount >= 1950) {
+                            clearInterval(intervalOrders);
                             window.removeEventListener('scroll', handleScroll);
-                        }
-                        return newCount;
-                    });
-                }, 10);
-                const intervalCars = setInterval(() => {
-                    setCountCars((prevCount) => {
-                        const newCount = prevCount + 1;
-                        if (newCount >= 42) {
-                            clearInterval(intervalCars);
-                            window.removeEventListener('scroll', handleScroll);
-                        }
-                        return newCount;
-                    });
-                }, 10);
-                const intervalPartners = setInterval(() => {
-                    setCountPartners((prevCount) => {
-                        const newCount = prevCount + 1;
-                        if (newCount >= 3) {
-                            clearInterval(intervalPartners);
-                            window.removeEventListener('scroll', handleScroll);
-                        }
-                        return newCount;
-                    });
-                }, 10);
-                setTimeout(()=>{
-                   
-                },1500)
+                            }
+                            return Math.floor(newCount);
+                        });
+                    }, 10);
+                    const intervalClients = setInterval(() => {
+                        setCountClients((prevCount) => {
+                            const newCount = prevCount + 1;
+                            if (newCount >= 78) {
+                                clearInterval(intervalClients);
+                                window.removeEventListener('scroll', handleScroll);
+                            }
+                            return newCount;
+                        });
+                    }, 10);
+                    const intervalCars = setInterval(() => {
+                        setCountCars((prevCount) => {
+                            const newCount = prevCount + 1;
+                            if (newCount >= 42) {
+                                clearInterval(intervalCars);
+                                window.removeEventListener('scroll', handleScroll);
+                            }
+                            return newCount;
+                        });
+                    }, 10);
+                    const intervalPartners = setInterval(() => {
+                        setCountPartners((prevCount) => {
+                            const newCount = prevCount + 1;
+                            if (newCount >= 3) {
+                                clearInterval(intervalPartners);
+                                window.removeEventListener('scroll', handleScroll);
+                            }
+                            return newCount;
+                        });
+                    }, 10);
+                    setTimeout(()=>{
+                    
+                    },1500)
+                }
             }
+
         }
 
         window.addEventListener('scroll', handleScroll);
@@ -77,7 +83,7 @@ function Reviews({url}) {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [url]);
 
 
 

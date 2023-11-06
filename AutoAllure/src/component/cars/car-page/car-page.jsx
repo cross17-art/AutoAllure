@@ -1,7 +1,7 @@
 // https://auto-allure.com:2053/cars_id/v2?id=${carId}&group=${type}
 
 import { useState,useEffect} from 'react'
-import { useParams } from 'react-router-dom';
+import { useAsyncError, useParams } from 'react-router-dom';
 import CarSlider from '../car-sliderPhotose';
 import syleCarPage from "../../../assets/css/carPage.module.scss"
 
@@ -27,11 +27,24 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
   другие похожие автомобили
 
   */}  
-  const [carColor, setCarColor] = useState(true);
-  useEffect(()=>{
-        if(car.length!=0){
-          let color = car.color.code;
-          setCarColor(color)
+  const [carColor, setCarColor] = useState({});
+  const [carOptions,setCarOptions] = useState({});
+  const [carFuel,setCarFuel] = useState();
+
+  // useEffect(()=>{
+  //       if(isLoaded){
+  //         // let color = car.color.code;
+  //         // setCarColor(color)
+  //         setCarOptions(car.options[0])
+  //         setCarFuel(car.fuel)
+  //       }
+        
+  //   },[car])
+ useEffect(()=>{
+        if(isLoaded){
+          // let color = car.color.code;
+          // setCarColor(color)
+          setCarOptions(car.options[0])
         }
         
     },[car])
@@ -49,7 +62,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
           <div className={syleCarPage.carPage}>
               <div className={syleCarPage.carPage__pictures}>
                 <CarSlider key={"carPageSlider"} photos={car.thumbnails}/>
-                <CarPageOptions url={url} carData={car} />
+                <CarPageOptions key={"carPageOptions"} url={url} carOptions={car.options} fuel = {car.fuel} transmission ={car.transmission} number_seats={car.number_seats} id_block={"carPage"}/>
               </div>
               <div className={syleCarPage.carPage__text}>
                   <div className={`${syleCarPage["carPage__text--hat"]} hat`}>  
@@ -77,14 +90,11 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
                   </div>
                   <div className={syleCarPage["carPage__text--row"]}>
                     <p>Color</p>
-                    <span className={`${syleCarPage["carPage__text--row-color"]}`} style={{'backgroundColor':carColor}}></span>
+                    <span className={`${syleCarPage["carPage__text--row-color"]}`} style={{'backgroundColor':car.color.code}}></span>
                   </div>
-                  {/* <div className={syleCarPage["carPage__text--price"]}>
-                      <p>You take more you pay less</p>
-                  </div> */}
+                
 
                   <CalendarPage key={'CarPageDatePicker'} locations={locations} disabledDates={busyDatesCar} id = {car.id}/>
-                  {/* <CarDatePicker key={'CarPageDatePicker'} classContainer={""}/>   */}
                   <div className={syleCarPage["carPage__text--icon"]}>
                       <span className="_footerContact__item--link_s23m4_26" href="tel: +35799667777">+357&nbsp;996&nbsp;7777</span>
                       <a href="https://t.me/+35799667777">
@@ -98,7 +108,6 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
           </div>
 
       </div>
-      {/* <CarPageSpecifications carData={car} /> */}
       <CarPageTariffs tariffs={car.periods_price} priceCar={car.price}/>
       <CarWhyWe />
       </>

@@ -256,7 +256,8 @@ const handleSubmit = (e) => {
             <div className={styleCarBook["book__info"]}>
               <div>
                 <img src={carDescriptions.thumbnail}/>
-                <CarPageOptions url={url} carData={carDescriptions} />
+                {/* <CarPageOptions url={url} carData={carDescriptions} /> */}
+                {/* <CarPageOptions key={"carPageOptionsBookNumberoNE"} url={url} carOptions={car.options[0]} fuel = {carDescriptions.fuel} transmission ={carDescriptions.transmission} number_seats={carDescriptions.number_seats} id_block={"carBook"}/> */}
               </div>
               <br></br>
               <div className={stylePesonal["box"]}>
@@ -271,7 +272,7 @@ const handleSubmit = (e) => {
 
                     return (
                       <CarEquipment
-                        key={element.id}
+                        key={element.id+"_carBook"}
                         url={url}
                         option={element}
                         equipment={equipment}

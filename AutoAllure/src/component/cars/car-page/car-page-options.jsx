@@ -2,7 +2,8 @@ import { useState,useEffect,useRef  } from "react";
 import styleOrder from '../../../assets/css/orderSteps.module.scss'
 import styleInformation from '../../../assets/css/Information.module.scss'
 import styleSpecifications from '../../../assets/css/car-specifications.module.scss'
-const carPageOptions = ({url,carData}) => {
+import Options from "../../ui/options";
+const carPageOptions = ({url,carOptions,fuel,transmission,number_seats,id_block}) => {
 
   return (
     <>
@@ -14,29 +15,27 @@ const carPageOptions = ({url,carData}) => {
         <div className="carItem_additionalInfo">
             <div className="carItem_additionalInfo-item">
                 <img className="carItem_icon_Big" src={url + "car/gas.svg"}></img>
-                <span>{carData.fuel}</span>
+                <span>{fuel}</span>
             </div>
             <div className="carItem_additionalInfo-item">
-                <img
-                className="carItem_icon_Big"
-                src={carData.transmission.includes('Manual') ? url + "car/manual.svg" : url + "car/automatic.svg"}
-                ></img>
-                <span>{carData.transmission.split(" ")[0]}</span>
+                <img className="carItem_icon_Big" src={transmission.includes('Manual') ? url + "car/manual.svg" : url + "car/automatic.svg"}></img>
+                <span>{transmission.split(" ")[0]}</span>
             </div>
             <div className="carItem_additionalInfo-item">
                 <img className="carItem_icon_Big" src={url + "car/seat.svg"}></img>
-                <span>{carData.number_seats} {carData.number_seats < 2 ? 'seat' : 'seats'}</span>
+                <span>{number_seats} {number_seats < 2 ? 'seat' : 'seats'}</span>
             </div>
         </div>
         <div className={styleSpecifications.options}>
-            {carData.options[0].map((element)=>{
-                    return ( 
-                        <div className="carItem_additionalInfo-item">
-                            {/* <i class="fa fa-check-square" aria-hidden="true"></i> */}
-                            <span>{element.name}</span>
-                        </div>
-                    )
-                })}
+            {carOptions.map((element)=>{
+                let Nameid = element.name+"_"+id_block;
+
+                return ( 
+                    <div key={Nameid} className="carItem_additionalInfo-item">
+                        <span>{element.name}</span>
+                    </div>
+                )
+            })}
         </div>
         
      </section>
