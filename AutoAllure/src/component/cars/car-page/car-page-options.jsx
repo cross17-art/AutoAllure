@@ -27,15 +27,14 @@ const carPageOptions = ({url,carOptions,fuel,transmission,number_seats,id_block}
             </div>
         </div>
         <div className={styleSpecifications.options}>
-            {carOptions.map((element)=>{
+            {/* {carOptions.map((element)=>{
                 let Nameid = element.name+"_"+id_block;
-
                 return ( 
                     <div key={Nameid} className="carItem_additionalInfo-item">
                         <span>{element.name}</span>
                     </div>
                 )
-            })}
+            })} */}
         </div>
         
      </section>

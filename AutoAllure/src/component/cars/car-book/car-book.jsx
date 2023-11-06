@@ -257,7 +257,7 @@ const handleSubmit = (e) => {
               <div>
                 <img src={carDescriptions.thumbnail}/>
                 {/* <CarPageOptions url={url} carData={carDescriptions} /> */}
-                {/* <CarPageOptions key={"carPageOptionsBookNumberoNE"} url={url} carOptions={car.options[0]} fuel = {carDescriptions.fuel} transmission ={carDescriptions.transmission} number_seats={carDescriptions.number_seats} id_block={"carBook"}/> */}
+                <CarPageOptions key={"carPageOptionsBookNumberoNE"} url={url} carOptions={car.options} fuel = {carDescriptions.fuel} transmission ={carDescriptions.transmission} number_seats={carDescriptions.number_seats} id_block={"carBook"}/>
               </div>
               <br></br>
               <div className={stylePesonal["box"]}>
