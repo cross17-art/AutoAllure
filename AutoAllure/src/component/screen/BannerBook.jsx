@@ -12,20 +12,21 @@ import Cookies from 'js-cookie';
 function BannerBook() {
   const navigate = useNavigate()
 
+
+
   function showAllCars(){
     Cookies.remove('locationGet');
     Cookies.remove('locationReturn');
     Cookies.remove('rentDate');
-
-    navigate('/#allCars')
+    document.getElementById('allCars').scrollIntoView({ behavior: 'smooth' })
+    navigate(`/#allCars`)
   }
 
   function showAboutCompany(){
     Cookies.remove('locationGet');
     Cookies.remove('locationReturn');
     Cookies.remove('rentDate');
-
-    navigate('/#comapny')
+    ChildComponent.scrollTo();
   }
 
   function orderNextMonth(){
@@ -48,7 +49,9 @@ function BannerBook() {
     Cookies.set('locationGet', locationGet, { expires: 7 });
     Cookies.set('locationReturn', locationReturn, { expires: 7 });
     Cookies.set('rentDate', dates, { expires: 7 });
-
+    window.location.href.includes("dates")?
+      document.getElementById('dateCars').scrollIntoView({ behavior: 'smooth' }):
+      document.getElementById('allCars').scrollIntoView({ behavior: 'smooth' })
     navigate(`/dates/${dates}`)
   }
   return (

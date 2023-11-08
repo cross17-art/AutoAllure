@@ -32,10 +32,10 @@ function cars({url}) {
             (result) => {
               setIsLoaded(true);
               setItems(result);
-              const targetElement = document.getElementById('dateCars'); 
-              if (targetElement) {
-                targetElement.scrollIntoView({ behavior: 'smooth' });
-              }
+              // const targetElement = document.getElementById('dateCars'); 
+              // if (targetElement) {
+              //   targetElement.scrollIntoView({ behavior: 'smooth' });
+              // }
 
               // setRentDateInformation({
               //   "dates":dates,

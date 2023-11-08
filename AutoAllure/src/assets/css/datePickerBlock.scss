@@ -18,7 +18,10 @@
         height: 55px;
         padding: 0px;
       }
-  }
+    }
+    &__dark{
+      // background: black !important;
+    }
     &__display{
       position: relative;
       width: 100%;  
@@ -59,8 +62,8 @@
         padding: 0px !important;
       }
       &--item_5{
-        grid-column-start: 5;
-        grid-column-end: 4;
+        grid-column-start: 1;
+        grid-column-end: 5;
         margin: 0px !important;
         padding: 0px !important;
       }
@@ -87,14 +90,14 @@
     color: #777;
   }
   &_time{
-    z-index: 900;
+    z-index: 99999999;
     position: absolute;
     min-width: 40%;
     bottom: 110%;
     text-align: center;
     align-self: flex-end;
     background-color: white;
-    width: 30%;
+    // width: 30%;
     right: 0%;
     height: 300px;
     overflow-y: scroll;
@@ -102,9 +105,9 @@
     border:2px solid black;
     
     &-item{
-      min-width: 50px;
-            padding: 10px;
-            cursor: pointer;
+      // min-width: 50px;
+      padding: 10px;
+      cursor: pointer;
         
     }
   }
@@ -127,7 +130,7 @@
   }
   &_content {
     position: absolute;
-    z-index: 1000;
+    z-index: 199999999;
     bottom: 110%;
     left: 0;
     min-width: 100%;
@@ -183,6 +186,7 @@
   .positionation
   {
     &__display{
+      grid-template-columns:  minmax(20%,400px) minmax(10px,250px) minmax(10px,250px) 130px 130px;
       &--item_1{
         grid-column-start: unset;
         grid-column-end: unset;
@@ -218,6 +222,7 @@
   .positionation
   {
     &__display{
+      grid-template-columns:  minmax(20%,400px) minmax(10px,250px) minmax(10px,250px) 130px 130px;
       &--item_1{
         grid-column-start: unset;
         grid-column-end: unset;
@@ -231,6 +236,10 @@
         grid-column-end: unset;
       }
       &--item_4{
+        grid-column-start: unset;
+        grid-column-end: unset;
+      }
+      &--item_5{
         grid-column-start: unset;
         grid-column-end: unset;
       }

@@ -20,10 +20,12 @@
         color: $black;
         background-color: $orange;
     }
+    &-unset{
+        font-weight: unset !important;
+    }
     &:hover,
     &:focus {
-        transform: scale(1.1);
-        // background-color:  black;
+        // transform: scale(1.1);
         cursor: pointer;
 
     }

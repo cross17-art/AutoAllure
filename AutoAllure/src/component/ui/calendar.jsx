@@ -24,6 +24,8 @@ const carDatePicker = ({classContainer}) => {
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
 
+    const [showShortcuts, setShowShortCuts] = useState(null);
+
     const [locations,setLocations] = useState(null)
 
     const [shortCuts,setShortCuts] = useState({
@@ -45,9 +47,15 @@ const carDatePicker = ({classContainer}) => {
     }
     
     const handleResetSearch = () => {
+        Cookies.remove('locationGet');
+        Cookies.remove('locationReturn');
+        Cookies.remove('rentDate');
+        window.location.href.includes("dates")?
+            document.getElementById('dateCars').scrollIntoView({ behavior: 'smooth' }):
+            document.getElementById('allCars').scrollIntoView({ behavior: 'smooth' })
         navigate(`/`)
     }
-    const calendarRange = window.innerWidth >= 600
+    const calendarRange = window.innerWidth >= 700
     // const [shouldSticky, setShouldSticky] = useState(false);
     // const handleScroll = () => {
     //     const targetBlock = document.getElementById('allCars');
@@ -70,12 +78,16 @@ const carDatePicker = ({classContainer}) => {
                 Cookies.set('locationGet', locationGet, { expires: 7 });
                 Cookies.set('locationReturn', locationReturn, { expires: 7 });
                 Cookies.set('rentDate', dates, { expires: 7 });
+                window.location.href.includes("dates")?
+                    document.getElementById('dateCars').scrollIntoView({ behavior: 'smooth' }):
+                    document.getElementById('allCars').scrollIntoView({ behavior: 'smooth' })
                 navigate(`/dates/${dates}`)
             }
         }
     },[search])
 
     useEffect(()=>{
+
 
         let date = new Date();
         date.setDate(date.getDate() - 1);
@@ -138,6 +150,7 @@ if (error) {
         <div className={`positionation ${classContainer}`}>
             <div className="positionation__display">
                 <Datepicker key={'datePicker'}
+                        inputClassName="relative transition-all duration-300 py-2.5 pl-4 pr-14 w-full border-gray-300 dark:bg-slate-800 dark:text-white/80 dark:border-slate-600 rounded-lg tracking-wide font-light text-sm placeholder-gray-400 bg-white focus:ring disabled:opacity-40 disabled:cursor-not-allowed focus:border-orange-500 focus:ring-orange-500/20 positionation__dark"
                         containerClassName="relative w-full text-gray-700 positionation__display--item_1" 
                         toggleClassName="toogle_calendar absolute rounded-r-lg text-white right-0 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed" 
                         useRange={calendarRange}
@@ -147,7 +160,7 @@ if (error) {
                         minDate={shortCuts.beforDate} 
                         popoverDirection="up" 
                         // startFrom={date} 
-                        showShortcuts={true}
+                        showShortcuts={calendarRange}
                         configs={
                             {shortcuts:{
                                 Next3days:{
@@ -182,12 +195,14 @@ if (error) {
                         
                         }}
                     ></Datepicker>
-                    {/* //${styleBanner.btnBanner__orange} */}
                         <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations.locations} digit={'first'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_2"}/>
                         <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations.locations} digit={'second'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_3"}/>
+                        
                         <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_4 carItem_btn btn btn-orang`}  onClick={()=>setSearch(value)} >
-                                Search
-                        </button>    
+                            Search
+                        </button> 
+  
+                         
                         <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_5 carItem_btn btn btn-orang`}  onClick={()=>handleResetSearch()} >
                                 Reset
                         </button>  

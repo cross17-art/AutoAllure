@@ -147,6 +147,11 @@
         background-position-y: top 25%;
         background-size: contain;
     }
+    .btnBanner{
+        &__orange {
+            border: unset;
+        }
+    }
   }
   
   // Стили для десктопного разрешения
@@ -158,5 +163,10 @@
         background-position-x: center;
         background-position-y: top 25%;
         background-size: contain;
+    }
+    .btnBanner{
+        &__orange {
+            border: unset;
+        }
     }
   }

@@ -61,7 +61,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
         <div className='wrapper'>
           <div className={syleCarPage.carPage}>
               <div className={syleCarPage.carPage__pictures}>
-                <CarSlider key={"carPageSlider"} photos={car.thumbnails}/>
+                <CarSlider key={"carPageSlider"} photos={car.photos}/>
                 <CarPageOptions key={"carPageOptions"} url={url} carOptions={car.options[0]} fuel = {car.fuel} transmission ={car.transmission} number_seats={car.number_seats} id_block={"carPage"}/>
               </div>
               <div className={syleCarPage.carPage__text}>
