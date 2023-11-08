@@ -38,7 +38,6 @@
         &__info {
             padding: 20px;
         }
-        display: flex;
         &__payment {
             &--sticky{
                 padding: 15px;
@@ -50,10 +49,10 @@
 // Стили для десктопного разрешения
 @media only screen and (min-width: 1024px) {
     .book{
+        display: flex;
         &__info {
             padding: 20px;
         }
-        display: flex;
         &__payment {
             &--sticky{
                 padding: 15px;

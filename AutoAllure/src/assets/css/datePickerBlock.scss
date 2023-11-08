@@ -149,7 +149,9 @@
   }
  
 }
-
+// .minH-carPage{
+//   min-height: 310px;
+// }
 .reset_margin_top{
   margin-top: 0px;
 }
@@ -177,11 +179,16 @@
 
 
 @media only screen and (max-width: 767px) {
-
+ 
 }
-
-// Стили для планшетного разрешения
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .w-12{
+    width: unset !important;
+  }
+}
+// Стили для планшетного разрешения
+@media only screen and (min-width: 860px) and (max-width: 1023px) {
+
 
   .positionation
   {

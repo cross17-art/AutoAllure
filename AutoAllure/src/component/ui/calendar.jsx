@@ -55,7 +55,7 @@ const carDatePicker = ({classContainer}) => {
             document.getElementById('allCars').scrollIntoView({ behavior: 'smooth' })
         navigate(`/`)
     }
-    const calendarRange = window.innerWidth >= 700
+    const calendarRange = window.innerWidth >= 1000
     // const [shouldSticky, setShouldSticky] = useState(false);
     // const handleScroll = () => {
     //     const targetBlock = document.getElementById('allCars');

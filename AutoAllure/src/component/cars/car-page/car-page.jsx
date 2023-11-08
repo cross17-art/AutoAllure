@@ -92,7 +92,11 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
                     <p>Color</p>
                     <span className={`${syleCarPage["carPage__text--row-color"]}`} style={{'backgroundColor':car.color.code}}></span>
                   </div>
-                
+                  <div className={syleCarPage["carPage__text--row"]}>
+                    <p>Volume Tank</p>
+                    <span>{car.volume_tank}</span>
+                  </div>
+
 
                   <CalendarPage key={'CarPageDatePicker'} locations={locations} disabledDates={busyDatesCar} id = {car.id}/>
                   <div className={syleCarPage["carPage__text--icon"]}>
