@@ -216,6 +216,7 @@ const handleSubmit = (e) => {
         }).then(res=>res.json())
         .then(
           (result)=>{
+            // pay.payment_link+"?payment_id="+pay.payment_id 
             console.log(result)
           }
         )
@@ -253,36 +254,7 @@ const handleSubmit = (e) => {
       <>
         <div className="wrapper">
           <div className={styleCarBook["book"]}>
-          <div className={styleCarBook["book__payment"]}>
-              <div className={styleCarBook["book__payment--sticky"]}>
-                <h2>Calculation Info</h2>
-                <div className={syleCarPage["carPage__text--row"]}>
-                  <p> Start Date </p>
-                  <span>{orderDate[0]}</span>
-                </div>
-                <div className={syleCarPage["carPage__text--row"]}>
-                  <p> End Date </p>
-                  <span>{orderDate[1]}</span>
-                </div>
-                <div className={syleCarPage["carPage__text--row"]}>
-                  <p> Car Price </p>
-                  <span>{car.total_price}</span>
-                </div>
-                <div className={syleCarPage["carPage__text--row"]}>
-                  <p> Service Fee </p>
-                  <span>{car.taxes.taxesTotal}</span>
-                </div>
-                <div className={syleCarPage["carPage__text--row"]}>
-                  <p> Pick-up Location </p>
-                  <span>{locations.get}</span>
-                </div>
-                <div className={syleCarPage["carPage__text--row"]}>
-                  <p> Drop-off Location</p>
-                  <span>{locations.return}</span>
-                </div>
-                <button className="carItem_btn carItem_booking btn booking btn-orange" onClick={handleSubmit}>Send</button>
-              </div>
-            </div>
+        
             <div className={styleCarBook["book__info"]}>
               <div>
                 <img src={carDescriptions.thumbnail}/>
@@ -317,7 +289,36 @@ const handleSubmit = (e) => {
               <CarPersonalDetailes handleFileChange={handleFileChange} handleInputChange={handleInputChange} handleInputFocus={handleInputFocus} errors={errors} formData={formData}/>
              
             </div>
-       
+            <div className={styleCarBook["book__payment"]}>
+              <div className={styleCarBook["book__payment--sticky"]}>
+                <h2>Calculation Info</h2>
+                <div className={syleCarPage["carPage__text--row"]}>
+                  <p> Start Date </p>
+                  <span>{orderDate[0]}</span>
+                </div>
+                <div className={syleCarPage["carPage__text--row"]}>
+                  <p> End Date </p>
+                  <span>{orderDate[1]}</span>
+                </div>
+                <div id="carPrice" className={syleCarPage["carPage__text--row"]}>
+                  <p> Car Price </p>
+                  <span>{car.total_price}</span>
+                </div>
+                <div className={syleCarPage["carPage__text--row"]}>
+                  <p> Service Fee </p>
+                  <span>{car.taxes.taxesTotal}</span>
+                </div>
+                <div className={syleCarPage["carPage__text--row"]}>
+                  <p> Pick-up Location </p>
+                  <span>{locations.get}</span>
+                </div>
+                <div className={syleCarPage["carPage__text--row"]}>
+                  <p> Drop-off Location</p>
+                  <span>{locations.return}</span>
+                </div>
+                <button className="carItem_btn carItem_booking btn booking btn-orange" onClick={handleSubmit}>Send</button>
+              </div>
+            </div>
           </div>
         </div>
         
