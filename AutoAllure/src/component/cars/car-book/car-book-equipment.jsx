@@ -36,11 +36,22 @@ const carEquipment = ({url,option,equipment,title}) => {
 
     };
     
-    const handleDecrement = () => {
+    const handleDecrement = (price_day) => {
        if(count>0){
             setCount((prevCount) =>prevCount-1);
             let index = equipment.findIndex(obj => obj.title === title);
             equipment[index].value=count - 1;
+
+            let carPrice = document.querySelector("#carPrice span").innerText
+            carPrice = parseFloat(carPrice.replace(/\s/g, ''))
+
+            carPrice+=price_day
+            const newSpan = carPrice.toLocaleString('en-US', {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2,
+            }).replace(',', ' ');
+
+            document.querySelector("#carPrice span").innerText = newSpan
         }
     };
     const handleCheckboxChange = (event) => {
@@ -61,7 +72,7 @@ const carEquipment = ({url,option,equipment,title}) => {
                      </span>
                   {/* <input type="checkbox" className={`${stylePesonal["personal__payment--input-radio-on"]} ${stylePesonal["personal__payment--input-radio"]}`} name="pilih" onChange={handleCheckboxChange} />                    */}
                   <p>{option.title}</p>
-                  <button onClick={handleDecrement} price={option.price_day}>
+                  <button onClick={handleDecrement(option.price_day)} price={option.price_day}>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
