@@ -101,8 +101,8 @@ const datePickerPage = ({locations,disabledDates,id}) => {
         let disableDatesArray = []
         for(let i=0;i<dates.length;i++){
             let disabledDate = {
-                startDate: dates[i].from,
-                endDate: dates[i].to,
+                startDate: dates[i].from.split(" ")[0],
+                endDate: dates[i].to.split(" ")[0],
             }
             disableDatesArray.push(disabledDate)
         }

@@ -19,6 +19,9 @@ function carPageBooking({url}) {
   const [busyDatesCar,setBusyDatesCar] = useState(null)
   const [locations,setLocations] = useState(null)
 
+
+  const [stateOfPage, setStateOfPage] = useState(sessionStorage.getItem('yourState') || '');
+
   useEffect( () => {
     let company = Cookies.get("company") === '' ? undefined : Cookies.get("company")
     let carId = Cookies.get("carId") === '' ? undefined : Cookies.get("carId")
@@ -51,10 +54,18 @@ function carPageBooking({url}) {
                 setCar(result.car);
                 setBusyDatesCar( result.rent_time.split(" - "))
                 setLocations({"get":locationGet,"return":locationReturn})
-
+                // sessionStorage.setItem('carBookingData', JSON.stringify({
+                //   order: result.order,
+                //   car: result.car,
+                //   busyDatesCar: result.rent_time.split(" - "),
+                //   locations: { "get": locationGet, "return": locationReturn }
+                // }));
               }
               setIsLoaded(true);
-
+              // setTimeout(() => {
+              //   console.log("delete session storage")
+              //   sessionStorage.removeItem('carBookingData');
+              // }, 5 * 60 * 1000);
             },
             (error) => {
               setIsLoaded(false);
@@ -67,6 +78,18 @@ function carPageBooking({url}) {
       
   }, [id])
 
+  // useEffect(() => {
+  //   // Проверка наличия данных в sessionStorage при загрузке страницы
+  //   const storedData = sessionStorage.getItem('carBookingData');
+  //   if (storedData) {
+  //     const parsedData = JSON.parse(storedData);
+  //     setItems(parsedData.order);
+  //     setCar(parsedData.car);
+  //     setBusyDatesCar(parsedData.busyDatesCar);
+  //     setLocations(parsedData.locations);
+  //     setIsLoaded(true);
+  //   }
+  // }, []);
 
   return (
     <>
