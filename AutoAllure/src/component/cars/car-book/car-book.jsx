@@ -42,7 +42,7 @@ function carBook({ url, error, isLoaded, car, locations, orderDate, carDescripti
 
 const equipment = car.options;
 const [errors, setErrors] = useState({ ..."" });
-
+const [buttonLoading,setButtonLoading] = useState(true);
 const navigate = useNavigate()
 const handleFileChange = (event) => {
   const file = event.target.files[0];
@@ -184,6 +184,7 @@ const handleSubmit = (e) => {
     if (Object.keys(validationErrors).length > 0) {
         setErrors(validationErrors);
     } else {
+        setButtonLoading(false)
 
         // Здесь можно выполнять действия после успешной отправки формы
         // Например, отправка данных на сервер
@@ -210,7 +211,6 @@ const handleSubmit = (e) => {
         data.append("company", Cookies.get("company") === '' ? undefined : Cookies.get("company"))
         data.append("order_id", car.order_id)
         data.append("file", formData.photo)
-
         fetch(`https://auto-allure.com:2053/confirm-order/v2`,{
           method: "POST",
           body: data,
@@ -220,7 +220,9 @@ const handleSubmit = (e) => {
             let pay = JSON.parse(result.end)
             pay= pay.payment_link+"?payment_id="+pay.payment_id 
             // "https://pay.rentsyst.com/?payment_id=AQBLOEFKU"
+            setButtonLoading(true)
             Cookies.set('paymentLink', pay, { expires: 7 });
+            Cookies.set('payment_type',formData.paymentType,{ expires: 7 })
             navigate("/car-payment")
           }
         )
@@ -315,7 +317,22 @@ const handleSubmit = (e) => {
                   <p> Drop-off Location</p>
                   <span>{locations.return}</span>
                 </div>
-                <button className="carItem_btn carItem_booking btn booking btn-orange" onClick={handleSubmit}>Send</button>
+                {buttonLoading?
+                  <button className="carItem_btn carItem_booking btn booking btn-orange" onClick={handleSubmit}>Complete</button>
+                  :
+                  <div className="lds-roller">
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+              }
+
+
               </div>
             </div>
           </div>

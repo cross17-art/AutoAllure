@@ -1,5 +1,6 @@
 .book {
     display: block;
+
     &__info {
         flex: 2; /* Основная информация занимает всю доступную ширину */
         padding: 5px;
@@ -21,9 +22,19 @@
        }
     }
 
+  
 }
 
-
+.payment{
+    height: 700px;
+    &_text{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Выравнивание по центру по вертикали */
+        text-align: center;
+    }
+    
+}
 
 
 
