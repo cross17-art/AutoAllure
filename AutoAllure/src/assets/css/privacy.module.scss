@@ -1,0 +1,40 @@
+.privacy{
+    padding: 20px;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+    margin: auto;
+    p{
+        margin-bottom: 5px;
+        font-size: 1.3rem;
+        font-weight: 100;
+    }
+    h3{
+        font-size: 1.7rem;
+        font-weight: bolder;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    ul {
+        font-size: 1.3rem;
+        padding-left: 16px; 
+        list-style: none; // Убираем маркеры списка
+        padding: 0;       // Убираем внутренний отступ
+        margin: 0;        // Убираем внешний отступ
+      }
+      
+      // Стили для отдельных элементов списка (li)
+      ul li {
+        margin-bottom: 8px; // Пример отступа между элементами списка
+        // Дополнительные стили, которые вы хотите применить к каждому элементу списка
+      }
+      
+      // Стили для ссылок внутри элементов списка
+      a {
+        text-decoration: none; // Убираем подчеркивание у ссылок
+        color: orange;           // Цвет текста
+        // Дополнительные стили для ссылок внутри элементов списка
+      }
+}

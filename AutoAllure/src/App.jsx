@@ -18,7 +18,7 @@ import MainPage from "./component/screen/mainPage";
 import CarPageMain from "./component/screen/carPageMain";
 import CarPageBook from "./component/screen/carPageBooking";
 import CarPaymentEnd from "./component/cars/car-payment/car-payment";
-
+import PrivacyPolicy from "./component/screen/privacyPolicy";
 
 
 
@@ -46,7 +46,7 @@ function App() {
             </Route>
             <Route path="/car-book/:id" element={<CarPageBook url={url}/>}/>
             <Route path="/car-payment/" element={<CarPaymentEnd/>}/>
-
+            <Route path="/privacy-policy/" element={<PrivacyPolicy/>}/>
             {/* <Route path="/personal/" element={<CarPersonalDetailes url={url}/>}/>
             <Route path="/payment/" element={<CarPayment url={url}/>}/>
             <Route path="/equipment/" element={<CarEquipment url={url} name={"driver"}/>}/>
