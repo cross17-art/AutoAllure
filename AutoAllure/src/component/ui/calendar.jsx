@@ -150,7 +150,7 @@ if (error) {
         <div className={`positionation ${classContainer}`}>
             <div className="positionation__display">
                 <Datepicker key={'datePicker'}
-                        inputClassName="relative transition-all duration-300 py-2.5 pl-4 pr-14 w-full border-gray-300 dark:bg-slate-800 dark:text-white/80 dark:border-slate-600 rounded-lg tracking-wide font-light text-sm placeholder-gray-400 bg-white focus:ring disabled:opacity-40 disabled:cursor-not-allowed focus:border-orange-500 focus:ring-orange-500/20 positionation__dark"
+                        inputClassName="relative transition-all duration-300 py-2.5 pl-4 pr-14 w-full border-gray-300 dark:bg-slate-800 dark:text-white/80 dark:border-slate-600 tracking-wide font-light text-sm placeholder-gray-400 bg-white focus:ring disabled:opacity-40 disabled:cursor-not-allowed focus:border-orange-500 focus:ring-orange-500/20 positionation__dark"
                         containerClassName="relative w-full text-gray-700 positionation__display--item_1" 
                         toggleClassName="toogle_calendar absolute rounded-r-lg text-white right-0 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed" 
                         useRange={calendarRange}
@@ -198,14 +198,16 @@ if (error) {
                         <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations.locations} digit={'first'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_2"}/>
                         <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations.locations} digit={'second'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_3"}/>
                         
-                        <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_4 carItem_btn btn btn-orang`}  onClick={()=>setSearch(value)} >
+                        <div className={`${styleBanner.banner_btns}`}>
+                        <button type='button' className={`${styleBanner.banner_btn} positionation__display--item_4 btn btn-outline primary`}  onClick={()=>setSearch(value)} >
                             Search
                         </button> 
   
                          
-                        <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_5 carItem_btn btn btn-orang`}  onClick={()=>handleResetSearch()} >
+                        <button type='button' className={`${styleBanner.banner_btn} positionation__display--item_5 btn btn-outline secondary`}  onClick={()=>handleResetSearch()} >
                                 Reset
-                        </button>  
+                        </button> 
+                        </div>
             </div>
                 
             

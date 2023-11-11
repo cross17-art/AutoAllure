@@ -269,7 +269,7 @@ const handleSubmit = (e) => {
               </div>
               <br></br>
               <div className={stylePesonal["box"]}>
-                <p>Equipment</p>
+                <p className={stylePesonal['box__title']}>Equipment</p>
                 <div className={stylePesonal["personal__payment"]}>
                   {car.options.map((element) => {
 

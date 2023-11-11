@@ -1,3 +1,4 @@
+@import "./abstracts/media.scss";
 
 .positionation{
     // position: absolute;
@@ -86,8 +87,11 @@
     padding: 10px;
     background: white;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    color: #777;
+    // border-radius: 5px;
+    // color: #777;
+    @include mobile() {
+      font-size: 16px;
+    }
   }
   &_time{
     z-index: 99999999;

@@ -9,7 +9,7 @@ const carPayment = ({ url,handlePaymentTypeChange,handleInputFocus,errors,formDa
         <>
             <section data="paymentMethod">
                 <div className={stylePesonal['box']}>
-                    <p>Payment method</p>
+                    <p className={stylePesonal['box__title']}>Payment method</p>
                     <div className={stylePesonal['personal__payment']}>
                         <label className={errors.paymentType != '' && errors.paymentType != undefined ? stylePesonal.personal__birthday_error : ""} >
                             <img src={url+"/icons/credit-card.png"}></img>

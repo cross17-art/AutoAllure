@@ -1,3 +1,6 @@
+@import "./abstracts/colors.scss";
+@import "./abstracts/media.scss";
+
 .carPage{
     width: 100%;
 
@@ -22,8 +25,8 @@
         flex-direction: column;
         flex-wrap: wrap;
         // background-color: rgba(19, 0, 0, 0.1);
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        // border-top-left-radius: 10px;
+        // border-top-right-radius: 10px;
         overflow: hidden;
         &--info{
             font-size: 1.7rem;
@@ -33,7 +36,11 @@
             flex-direction: row;
             justify-content: space-between;
             color: black;
-            padding: 10px;
+            padding: 10px 10px 0 10px;
+
+            @include mobile() {
+                font-size: 20px;
+            }
 
         }
         &--row{
@@ -70,7 +77,7 @@
             justify-content: center;
             align-items: center;
 
-            background-color: orange;       
+            background-color: $orange;       
         }
         &--price{
             text-align: center;

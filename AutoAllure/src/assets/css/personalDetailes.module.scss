@@ -1,10 +1,13 @@
+@import "./abstracts/media";
+@import "./abstracts/colors.scss";
+
 .personal{
     display: flex;
     flex-direction: column;
     // justify-content: center;
     align-self: center;
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 25px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: 10px;
     box-sizing: border-box;
@@ -14,6 +17,12 @@
         line-height: 120%;
         font-size: 1.5rem;
         width: 100%;
+
+        label {
+            @include mobile() {
+                font-size: 18px;
+            }
+        }
     }
     &__birthday{
         background-color: rgb(151, 148, 148);
@@ -72,6 +81,14 @@
             align-items: center;
             min-width: 260px;
             // width: 300px;
+            @include mobile() {
+                margin: 0;
+
+                + label {
+                    margin-top: 10px;
+                }
+            }
+
             img{
                 height: 50px;
                 display: none;
@@ -98,8 +115,8 @@
             transition: background-color 0.3s, box-shadow 0.3s;
             align-self: center;
             &-on:checked {
-                box-shadow: 0px 0px 0px 4px orange;
-                background-color: orange;
+                box-shadow: 0px 0px 0px 4px $orange;
+                background-color: $orange;
             }
             &-off:checked {
                 box-shadow: 0px 0px 0px 4px black;
@@ -134,7 +151,7 @@
 }
 
 
-.box{
+.box {
     display: flex;
     flex-direction: column;
     align-self: center;
@@ -142,11 +159,18 @@
     padding: 25px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     margin-top: 10px;
+
+    &__title {
+        @include mobile() {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+    }
 }
 
-.price{
+.price {
     position: absolute;
-    background: orange;
+    background: $orange;
     transform: rotate(40deg);
     right: -45px;
     top: 18px;

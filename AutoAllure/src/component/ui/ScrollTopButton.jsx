@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const ScrollTopButton = () => {
+const ScrollTopButton = ({url}) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -27,13 +27,12 @@ const ScrollTopButton = () => {
   };
 
   return (
-    <button
-      id="scrollTopButton"
-      className={isVisible ? 'show' : ''}
-      onClick={scrollToTop}
-    >
-      Наверх
-    </button>
+    <div id="scrollTopButton"
+    className={isVisible ? 'show' : ''}
+    onClick={scrollToTop}>
+      <img scr={url+"icons/up-arrow.png"}></img>
+
+    </div>
   );
 };
 

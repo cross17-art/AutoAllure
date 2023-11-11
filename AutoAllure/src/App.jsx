@@ -53,7 +53,7 @@ function App() {
             <Route path="/options/" element={<CarPageOptions url={url} />}/>
             <Route path="/photo/" element={<CarUploadPhoto url={url} />}/> */}
         </Routes>
-        <ScrollTopButton/>
+        <ScrollTopButton url={url}/>
     <Footer />
     </>
   );
