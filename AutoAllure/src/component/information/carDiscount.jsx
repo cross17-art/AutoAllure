@@ -45,6 +45,7 @@ function carDiscount({ url, discountItems }) {
                 <div
                   key={index + "discountCar"}
                   className={`${styleCarDiscount["carDiscount__block--pictures"]}`}
+                  onClick={() => handelGetPage(item.id, item.company)}
                 >
                   <div
                     className={

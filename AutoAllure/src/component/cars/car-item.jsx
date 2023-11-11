@@ -28,6 +28,9 @@ const CarItemNew = ({ additionalStyle, carData, url, type, button }) => {
       className={"carItem" + " " + additionalStyle}
       id={carData.id}
       company={carData.company}
+      onClick={() =>
+        type === "page" ? setRequest("carPage") : setRequest("carBook")
+      }
     >
       <img
         className="carItem_img"

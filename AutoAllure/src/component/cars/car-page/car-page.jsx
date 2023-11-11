@@ -64,7 +64,7 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
               </div>
               <div className={syleCarPage.carPage__text}>
                   <div className={`${syleCarPage["carPage__text--hat"]} hat`}>  
-                    <span>{car.price}€/price</span>
+                    <span>{car.price}€/day</span>
                   </div>
                   <div className={syleCarPage["carPage__text--row"]}>
                     <p>Fuel</p>             

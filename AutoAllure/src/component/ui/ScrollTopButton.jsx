@@ -30,7 +30,6 @@ const ScrollTopButton = ({url}) => {
     <div id="scrollTopButton"
     className={isVisible ? 'show' : ''}
     onClick={scrollToTop}>
-      <img scr={url+"icons/up-arrow.png"}></img>
 
     </div>
   );

@@ -60,18 +60,29 @@ body {
 }
 
 #scrollTopButton {
-  display: none; /* Изначально скрываем кнопку */
+  z-index: 9999999999;
+  width: 90px;
+  height: 90px;
+
   position: fixed;
+  display: none;
+  border: none;
+  cursor: pointer;
+
+  background-color: #fbaf03;
+  background-image: url("/icons/arrow.svg");
+
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-size: 60px 60px;
+  background-position-y: center;
+  transform: rotate(180deg);
+
   bottom: 30px;
   right: 20px;
-  font-size: 16px;
-  padding: 30px 20px;
-  background-color: $orange;
-  color: #ffffff;
-  border: none;
   border-radius: 80%;
-  cursor: pointer;
-  z-index: 9999999999;
+
+
   &.show {
     display: block; /* Показываем кнопку, когда нужно прокрутить */
   }
