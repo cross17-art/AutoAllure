@@ -72,7 +72,7 @@ function carDiscount({ url, discountItems }) {
                       <span>€{item.monthPrice}/month</span>
                       <button
                         type="button"
-                        className={styleBanner["btnBanner__orange--discount"]}
+                        className={`${styleCarDiscount["carDiscount__block--btn"]} btn btn-wh-outline` }
                         onClick={() => handelGetPage(item.id, item.company)}
                       >
                         Learn more

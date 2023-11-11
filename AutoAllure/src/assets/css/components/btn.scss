@@ -5,9 +5,24 @@
 .btn {
   border: none;
   line-height: 1;
+  outline: none;
   padding: 1em 2em;
   text-transform: uppercase;
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
   cursor: pointer;
+
+  &-wh-outline {
+    padding: 5px;
+    color: white;
+    border: 1px solid white;
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      color: $black;
+    }
+  }
 
   // button on the main banner: white/orange on mobile, black on desktop
   &-outline {
@@ -26,6 +41,12 @@
       color: $orange;
       border: 2px solid $orange;
 
+      &:hover,
+      &:focus {
+        background-color: $orange;
+        color: $white;
+      }
+
       @include desktop() {
         &:hover,
         &:focus {
@@ -38,6 +59,12 @@
     &.secondary {
       color: white;
       border: 2px solid white;
+
+      &:hover,
+      &:focus {
+        background-color: $white;
+        color: $black;
+      }
 
       @include desktop() {
         color: black;
@@ -59,6 +86,10 @@
   &-orange {
     color: $black;
     background-color: $orange;
+
+    &:hover {
+      background-color: #ffca29;
+    }
   }
   &-unset {
     font-weight: unset !important;
