@@ -6,6 +6,8 @@
   border: none;
   line-height: 1;
   padding: 1em 2em;
+  text-transform: uppercase;
+  cursor: pointer;
 
   // button on the main banner: white/orange on mobile, black on desktop
   &-outline {
@@ -15,8 +17,6 @@
     align-self: center;
     height: 44px;
 
-
-
     @include desktop() {
       color: black;
       border: 1px solid black;
@@ -25,6 +25,14 @@
     &.primary {
       color: $orange;
       border: 2px solid $orange;
+
+      @include desktop() {
+        &:hover,
+        &:focus {
+          background-color: $orange;
+          color: white;
+        }
+      }
     }
 
     &.secondary {
@@ -34,6 +42,12 @@
       @include desktop() {
         color: black;
         border: 1px solid black;
+
+        &:hover,
+        &:focus {
+          background-color: black;
+          color: white;
+        }
       }
     }
   }
@@ -48,10 +62,5 @@
   }
   &-unset {
     font-weight: unset !important;
-  }
-  &:hover,
-  &:focus {
-    // transform: scale(1.1);
-    cursor: pointer;
   }
 }

@@ -1,155 +1,154 @@
 @import "./abstracts/colors.scss";
 
-.carDiscount{
+.carDiscount {
+  width: 100%;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  // background-color: black;
+  color: white;
+  &__block {
     width: 100%;
-    height: 600px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    // background-color: black;
-    color: white;
-    &__block{
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+    &--text {
+      display: flex;
+      flex-direction: column;
+      max-width: 400px;
+
+      h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        color: $orange;
+        margin: 0;
+        text-transform: uppercase;
+      }
+      span {
+        color: white;
+        display: block;
+        text-transform: uppercase;
+      }
+      p {
+        font-size: 1.3rem;
+      }
+      div {
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+    }
+    &--pictures {
+      //
+      // Renault Kadjar 2022
+      // €1550/month
+      position: relative;
+      // background-image: url("https://rentsyst.com/static/cache/vehicle/21455/vehicle_list_35613.jpg");
+      // background-repeat: no-repeat;
+      // background-position-x: center;
+      // background-size: cover;
+      // background-position-y: center;
+      width: 100%;
+      height: 250px;
+      max-width: 400px;
+      &-carImg {
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-size: cover;
+        background-position-y: center;
+        position: absolute;
         width: 100%;
+        height: 100%;
+        min-width: 250px;
+        img {
+          max-height: 250px;
+          -o-object-fit: contain;
+          object-fit: contain;
+          width: 100%;
+        }
+      }
+      &-carImg2 {
+        background-image: url("https://rentsyst.com/static/cache/vehicle/18889/vehicle_list_26247.jpg");
+        background-repeat: no-repeat;
+        background-position-x: center;
+        background-size: cover;
+        background-position-y: center;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      &_item {
+        color: $orange;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        gap: 20px;
-        padding: 20px;
-        &--text{
-            display: flex;
-            flex-direction: column;
-            max-width: 400px;
-
-            h1{
-                font-size: 2rem;
-                font-weight: bold;
-                color: $orange;
-                margin: 0;
-                text-transform: uppercase;
-            }
-            span{
-                color: white;
-                display: block;
-                text-transform: uppercase;
-            }
-            p{
-                font-size: 1.3rem;
-            }
-            div{
-                margin-top: 10px;
-                margin-bottom: 20px;
-            }
-
+        align-self: center;
+        p,
+        span {
+          color: white;
         }
-        &--pictures{
-            // 
-            // Renault Kadjar 2022
-            // €1550/month
-            position: relative;
-            // background-image: url("https://rentsyst.com/static/cache/vehicle/21455/vehicle_list_35613.jpg");
-            // background-repeat: no-repeat;
-            // background-position-x: center;
-            // background-size: cover;
-            // background-position-y: center;
-            width: 100%;
-            height: 250px;
-            max-width: 400px;
-            &-carImg{
-                background-repeat: no-repeat;
-                background-position-x: center;
-                background-size: cover;
-                background-position-y: center;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                min-width: 250px;
-                img{
-                    max-height: 250px;
-                    -o-object-fit: contain;
-                    object-fit: contain;
-                    width: 100%;
-                }
-            }
-            &-carImg2{
-                background-image: url("https://rentsyst.com/static/cache/vehicle/18889/vehicle_list_26247.jpg");
-                background-repeat: no-repeat;
-                background-position-x: center;
-                background-size: cover;
-                background-position-y: center;
-                position: absolute;
-                width: 100%;
-                height: 100%;
-            }
-            
-            &_item{
-                color: $orange;
-                display: flex;
-                flex-direction: column;
-                align-self: center;
-                h1{
-                    font-size: 2rem;
-                    font-weight: bold;
-                    color: white;
 
-                    margin: 0;
-                    text-transform: uppercase;
-                    margin-bottom: 20px;
-                }
-                span{
-                    display: block;
-                    text-transform: uppercase;
-                    font-size: 1.5rem;
-                    margin-bottom: 20px;
-                }
-
-            }
+        &-name {
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
         }
+  
+        span {
+          display: block;
+          text-transform: uppercase;
+          font-size: 1.5rem;
+          margin-bottom: 20px;
+        }
+      }
     }
-
+  }
 }
 
-.carDiscount__block--pictures-carImg::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 50%;
+.carDiscount__block--pictures-carImg::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 50%;
 }
-.carDiscount__block--pictures-carImg2::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: black;
-    opacity: 50%;
+.carDiscount__block--pictures-carImg2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 50%;
 }
 
 @media only screen and (max-width: 767px) {
-    // Ваши стили для мобильного разрешения
-  }
-  
-  // Стили для планшетного разрешения
-  @media only screen and (min-width: 768px) and (max-width: 1023px) {
-    .carDiscount{
-        height: 400px;
-        &__block{
-            flex-direction: row;
-        }
+  // Ваши стили для мобильного разрешения
+}
+
+// Стили для планшетного разрешения
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .carDiscount {
+    height: 400px;
+    &__block {
+      flex-direction: row;
     }
   }
-  
-  // Стили для десктопного разрешения
-  @media only screen and (min-width: 1024px) {
-    .carDiscount{
-        height: 400px;
-        &__block{
-            flex-direction: row;
-        }
+}
+
+// Стили для десктопного разрешения
+@media only screen and (min-width: 1024px) {
+  .carDiscount {
+    height: 400px;
+    &__block {
+      flex-direction: row;
     }
   }
+}
