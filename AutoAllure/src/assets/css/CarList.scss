@@ -1,6 +1,8 @@
-@import "_mixins";
-@import "_media";
-@import "./btn.scss";
+@import "./abstracts/mixins";
+@import "./abstracts/media";
+@import "./components/btn.scss";
+@import "./abstracts/colors.scss";
+
 // @import url("./calendar.scss");
 .carList {
   display: grid;
@@ -30,7 +32,7 @@
       gap: 5px;
      
       &_item1{
-        background: orange;
+        background: $orange;
         height: 100%;
         width: 50px;
         transform: skew(-40deg, 0deg);
@@ -39,7 +41,7 @@
         animation: fadeInText 2s forwards;
       }
       &_item2{
-        background: orange;
+        background: $orange;
         width: 30px;
         height: 100%;
         display: inline;

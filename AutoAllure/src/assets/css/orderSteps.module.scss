@@ -1,3 +1,5 @@
+@import "./abstracts/colors.scss";
+
 .order{
     display: flex;
     justify-content: center;
@@ -66,7 +68,7 @@
         text-align: center;
         margin-top: 0px;
         a{
-            color: orange;
+            color: $orange;
             text-decoration: none;
         }
     }
@@ -108,7 +110,7 @@ section[data='car-specifications']{
         width: 100%;
         min-height: 240px;
         h1{
-            color: orange;
+            color: $orange;
         }
         p{
             color: white;

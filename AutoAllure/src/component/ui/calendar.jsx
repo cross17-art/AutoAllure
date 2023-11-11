@@ -198,14 +198,16 @@ if (error) {
                         <Dropdown key={"locationGet"} locationType = "Get" locationsDelivery={locations.locations} digit={'first'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_2"}/>
                         <Dropdown key={"locationReturn"} locationType = "Return" locationsDelivery={locations.locations} digit={'second'} placeHolder={"Select ..."} containerClass ={" positionation__display--item_3"}/>
                         
-                        <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_4 carItem_btn btn btn-orang`}  onClick={()=>setSearch(value)} >
+                        <div className={`${styleBanner.banner_btns}`}>
+                        <button type='button' className={`${styleBanner.banner_btn} positionation__display--item_4 btn btn-outline primary`}  onClick={()=>setSearch(value)} >
                             Search
                         </button> 
   
                          
-                        <button type='button' className={`${styleBanner.btnBanner__orange} positionation__display--item_5 carItem_btn btn btn-orang`}  onClick={()=>handleResetSearch()} >
+                        <button type='button' className={`${styleBanner.banner_btn} positionation__display--item_5 btn btn-outline secondary`}  onClick={()=>handleResetSearch()} >
                                 Reset
-                        </button>  
+                        </button> 
+                        </div>
             </div>
                 
             

@@ -1,8 +1,6 @@
-@import "_media";
+@import "./abstracts/media";
+@import "./abstracts/colors.scss";
 //colors
-$orange: #fbaf03;
-$brown: #a88d5c;
-$grey: #dfe0df;
 
 .carItem {
   display: flex;
@@ -86,6 +84,10 @@ $grey: #dfe0df;
     flex-wrap: wrap;
     gap: 10px;
     margin-top: 10px;
+
+    @include mobile() {
+      font-size: 20px;
+    }
 
     &-item {
       display: flex;

@@ -1,3 +1,5 @@
+@import "./abstracts/colors.scss";
+
 .carPage{
     width: 100%;
 
@@ -70,7 +72,7 @@
             justify-content: center;
             align-items: center;
 
-            background-color: orange;       
+            background-color: $orange;       
         }
         &--price{
             text-align: center;

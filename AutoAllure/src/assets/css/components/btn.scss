@@ -1,0 +1,51 @@
+@import "../abstracts/colors";
+@import "../abstracts/media";
+
+// Basic button styles
+.btn {
+  border: none;
+  line-height: 1;
+  padding: 1em 2em;
+  border-radius: 8px;
+
+  // button on the main banner: white/orange on mobile, black on desktop
+  &-outline {
+    font-size: 1rem;
+    padding: 5px;
+    width: 130px;
+    align-self: center;
+    height: 40px;
+
+    @include desktop() {
+      color: black;
+      border: 1px solid black;
+    }
+
+    &.primary {
+      color: $orange;
+      border: 2px solid $orange;
+    }
+
+    &.secondary {
+      color: white;
+      border: 2px solid white;
+    }
+  }
+
+  &-black {
+    color: $wheat;
+    background-color: $black;
+  }
+  &-orange {
+    color: $black;
+    background-color: $orange;
+  }
+  &-unset {
+    font-weight: unset !important;
+  }
+  &:hover,
+  &:focus {
+    // transform: scale(1.1);
+    cursor: pointer;
+  }
+}
