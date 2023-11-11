@@ -9,15 +9,7 @@
   cursor: pointer;
 
   &_btn {
-    background: $orange;
-    font-weight: bold;
-    margin: 0;
-
-    &:hover {
-      transform: none;
-      background-color: #ffca29;
-    }
-    
+    margin-top: 10px;
   }
   
   &_booking{
@@ -87,6 +79,7 @@
 
     @include mobile() {
       font-size: 20px;
+      justify-content: center;
     }
 
     &-item {
