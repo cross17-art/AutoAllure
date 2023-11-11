@@ -27,27 +27,25 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
   другие похожие автомобили
 
   */}  
+
+
+
   const [carColor, setCarColor] = useState({});
   const [carOptions,setCarOptions] = useState({});
   const [carFuel,setCarFuel] = useState();
 
-  // useEffect(()=>{
-  //       if(isLoaded){
-  //         // let color = car.color.code;
-  //         // setCarColor(color)
-  //         setCarOptions(car.options[0])
-  //         setCarFuel(car.fuel)
-  //       }
-        
-  //   },[car])
- useEffect(()=>{
-        if(isLoaded){
-          // let color = car.color.code;
-          // setCarColor(color)
-          setCarOptions(car.options[0])
-        }
-        
-    },[car])
+  const [formData, setFormData] = useState({
+    calendarDate:''
+  });
+  const [errors, setErrors] = useState({ ..."" });
+
+
+
+  useEffect(()=>{
+          if(isLoaded){
+            setCarOptions(car.options[0])
+          }        
+  },[car])
 
   
     if (error) {
@@ -96,8 +94,10 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
                     <p>Volume Tank</p>
                     <span>{car.volume_tank}</span>
                   </div>
-
-
+                  <div className={syleCarPage["carPage__text--info"]}>
+                    <p>Please select the desired date and time</p>
+                
+                  </div>
                   <CalendarPage key={'CarPageDatePicker'} locations={locations} disabledDates={busyDatesCar} id = {car.id}/>
                   <div className={syleCarPage["carPage__text--icon"]}>
                       <span className="_footerContact__item--link_s23m4_26" href="tel: +35799667777">+357&nbsp;996&nbsp;7777</span>

@@ -9,6 +9,7 @@ import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 
 import styleOrder from "../../../assets/css/orderSteps.module.scss";
 import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
 
 import CalendarPage from "../../../component/ui/calendar-page";
 import CarPageSpecifications from "../car-page/car-page-specifications";
@@ -42,7 +43,7 @@ function carBook({ url, error, isLoaded, car, locations, orderDate, carDescripti
 const equipment = car.options;
 const [errors, setErrors] = useState({ ..."" });
 
-
+const navigate = useNavigate()
 const handleFileChange = (event) => {
   const file = event.target.files[0];
   setFormData((prevData)=>({
@@ -216,8 +217,11 @@ const handleSubmit = (e) => {
         }).then(res=>res.json())
         .then(
           (result)=>{
-            // pay.payment_link+"?payment_id="+pay.payment_id 
-            console.log(result)
+            let pay = JSON.parse(result.end)
+            pay= pay.payment_link+"?payment_id="+pay.payment_id 
+            // "https://pay.rentsyst.com/?payment_id=AQBLOEFKU"
+            Cookies.set('paymentLink', pay, { expires: 7 });
+            navigate("/car-payment")
           }
         )
          
@@ -266,15 +270,10 @@ const handleSubmit = (e) => {
                 <p>Equipment</p>
                 <div className={stylePesonal["personal__payment"]}>
                   {car.options.map((element) => {
-                    //create Full Name of Car
-                    // let name = element.title.includes("Driver")
-                    //   ? "driver"
-                    //   : "baby-car-seat";
-                    
 
                     return (
                       <CarEquipment
-                        key={element.id+"_carBook"}
+                        key={element.id+"_2carBook"}
                         url={url}
                         option={element}
                         equipment={equipment}

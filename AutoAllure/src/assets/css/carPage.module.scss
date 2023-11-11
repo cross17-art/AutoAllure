@@ -25,6 +25,17 @@
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         overflow: hidden;
+        &--info{
+            font-size: 1.7rem;
+            font-weight:lighter;
+            text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            color: black;
+            padding: 10px;
+
+        }
         &--row{
             font-size: 1.4rem;
             font-weight:lighter;
