@@ -150,9 +150,9 @@ if (error) {
         <div className={`positionation ${classContainer}`}>
             <div className="positionation__display">
                 <Datepicker key={'datePicker'}
-                        inputClassName="relative transition-all duration-300 py-2.5 pl-4 pr-14 w-full border-gray-300 dark:bg-slate-800 dark:text-white/80 dark:border-slate-600 tracking-wide font-light text-sm placeholder-gray-400 bg-white focus:ring disabled:opacity-40 disabled:cursor-not-allowed focus:border-orange-500 focus:ring-orange-500/20 positionation__dark"
+                        inputClassName="relative transition-all duration-300 py-2.5 pl-4 pr-14 w-full border-black-300 border-2 h-44px dark:bg-slate-800 dark:text-white/80 dark:border-slate-600 border-slate-600 tracking-wide font-light text-sm placeholder-gray-400 bg-white disabled:opacity-40 disabled:cursor-not-allowed positionation__dark"
                         containerClassName="relative w-full text-gray-700 positionation__display--item_1" 
-                        toggleClassName="toogle_calendar absolute rounded-r-lg text-white right-0 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed" 
+                        toggleClassName="toogle_calendar absolute rounded-r-lg text-black dark:text-white right-0 px-3 text-gray-400 focus:outline-none disabled:opacity-40 disabled:cursor-not-allowed" 
                         useRange={calendarRange}
                         primaryColor={"orange"}
                         value={value}
