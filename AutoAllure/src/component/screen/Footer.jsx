@@ -10,11 +10,10 @@ function Footer() {
           <div className={`${styleInfromation['information__row--blockFooter']}`}>
             <h1>We are always ready to help</h1>
             <p>
-              You can always contact us if you need help with a car or housing
-              in general. We are always happy to help you with the hotel, the
-              organization of any events, excursions and generally fulfill any
-              of your wishes. Our managers and support service are always happy
-              to help.
+              Feel free to reach out to us for any assistance related to car rentals.
+              We are here to help you with vehicle arrangements, ensuring a smooth rental experience.
+              Our team is dedicated to meeting your rental needs and providing support throughout the process.
+              Contact our managers and support services for any inquiries or assistance you may require.
             </p>
           </div>
         </div>

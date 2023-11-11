@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,8 +11,33 @@ import Cookies from 'js-cookie';
 
 function BannerBook() {
   const navigate = useNavigate()
+  const [discountItems,setDiscountItem] = useState()
+  
+  useEffect(()=>{
+    fetch(`https://auto-allure.com:2053/top-cars?amount=${2}`)
+    .then(res => res.json())
+    .then(
+      (result) => {
 
+        result.cars.forEach(element => {
+            let brand = element.brand.toLowerCase()
+            brand = brand.replace(brand[0],brand[0].toUpperCase())
+              
+            let mark = element.mark.toLowerCase()
+            mark = mark.replace(mark[0],mark[0].toUpperCase())
+            element.fullName=brand+" "+mark;
 
+            //search max discount
+            let maxDiscount = 0;
+            element.periods_price.forEach((item)=>{if(parseFloat(item.discount)<maxDiscount)maxDiscount=parseFloat(item.discount)})
+            element.maxDiscount = maxDiscount;
+            
+            element.monthPrice = (element.price-(element.price*(maxDiscount*-1)/100))*31
+        });
+        setDiscountItem(result.cars)
+      })
+
+  },[])
 
   function showAllCars(){
     Cookies.remove('locationGet');
@@ -69,7 +94,7 @@ function BannerBook() {
                       <SwiperSlide>
                         <div className={styleBanner['banner__infromation--swiper']}>
                             <h1>Premium transportation services </h1>
-                            <p>Invest in comfort and convenience and enjoy the ultimate limousine travel experience with a professional chauffeur in Cyprus </p>
+                            <p>Invest in comfort and convenience and enjoy the ultimate limousine travel experience with a professional chauffeur in Cyprus</p>
                             <button type='button' className={styleBanner.btnBanner__white} >
                                 <a lng="eng" href='#allCars' onClick={()=>showAllCars()}>Choose a car</a>
                             </button>
@@ -78,20 +103,19 @@ function BannerBook() {
                       </SwiperSlide>
                       <SwiperSlide>
                       <div className={styleBanner['banner__infromation--swiper']}>
-                          <h1>Chauffeur Service in Moscow </h1>
-                          <p>Car rental business, premium and luxury class in Cyprus and the Cyprus region</p>
+                          <h1>Chauffeur Service in Cyprus </h1>
+                          <p>Car rental services available for Family Class, Business Class, and Premium Class vehicles in Cyprus and the surrounding region</p>
                           <button type='button' className={styleBanner.btnBanner__white}>
                             <a lng="eng"  onClick={()=>orderNextMonth()}> Order for a month</a>
                           </button>
                       </div>
-                      
                       </SwiperSlide>
                 
                       <SwiperSlide>
                         <div className={styleBanner['banner__infromation--swiper']}>
-                            <h1>Exclusive Service </h1>
+                            <h1>Exclusive Service</h1>
                             <p> 
-                              Rent luxury cars and minibuses with driver. Chauffeur service since 2022.  
+                              Rent luxury cars and minibuses with driver. Chauffeur service since 2023.  
                             </p>
                             <button type='button' className={styleBanner.btnBanner__white}>
                               <a lng="eng" href='#comapny' onClick={()=>showAboutCompany()}>About company</a>
@@ -102,7 +126,7 @@ function BannerBook() {
               </Swiper>    
       </div>
     <CarDatePicker key={'CarListDatePicker'} classContainer={"p-open"}/>    
-    <CarDiscount />
+    <CarDiscount key={'CarDiscountT'} discountItems={discountItems}/>
 
 
     </div>

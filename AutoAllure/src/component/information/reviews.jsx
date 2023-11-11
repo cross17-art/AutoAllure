@@ -108,17 +108,17 @@ function Reviews({url}) {
                                 <SwiperSlide>
                                     <div className={styleReviews['reviews__clients--swiper']}>
                                         <div className={styleReviews['client__img']}>
-                                            <img src='/clients/mr.jpg'></img>
+                                            <img src='/clients/user_4.png'></img>
                                         </div>
                                         <h1>Maria Novikova</h1>
-                                        <p>“Due to the cancellation of the plane, we had to quickly look for a car to another airport, a simple taxi did not fit, we turned to the Autoallure, were pleasantly surprised by the quick delivery and the trip itself!”</p>
+                                        <p>“I am extremely pleased with the car rental services! The prompt and professional assistance made my journey incredibly comfortable. The car was in impeccable condition, spotlessly clean, and fully prepared for any adventure. The value for money was excellent. Thank you for your meticulous attention to detail and outstanding service. I will not hesitate to recommend your services to all my friends!”</p>
                                     </div>
                                     
                                 </SwiperSlide>
                                 <SwiperSlide>
                                 <div className={styleReviews['reviews__clients--swiper']}>
                                     <div className={styleReviews['client__img']}>
-                                        <img src='/clients/dm.jpg'></img>
+                                        <img src='/clients/user_4.png'></img>
                                     </div>
                                     <h1>Maxim Dolgov</h1>
                                     <p>“Due to the cancellation of the plane, we had to quickly look for a car to another airport, a simple taxi did not fit, we turned to the Autoallure, were pleasantly surprised by the quick delivery and the trip itself!”</p>
@@ -129,12 +129,10 @@ function Reviews({url}) {
                                 <SwiperSlide>
                                     <div className={styleReviews['reviews__clients--swiper']}>
                                         <div className={styleReviews['client__img']}>
-                                            <img src='/clients/ev.jpg'></img>
+                                            <img src='/clients/user_4.png'></img>
                                         </div>
                                         <h1>Ekaterina Volkova </h1>
-                                        <p> 
-                                        “We rented a Renault for a vacation, the whole family was just delighted! The car was perfect for traveling around the island. You have made our little vacation comfortable and enjoyable!”
-                                        </p>
+                                        <p>“We rented a Renault for a vacation, the whole family was just delighted! The car was perfect for traveling around the island. You have made our little vacation comfortable and enjoyable!”</p>
                                     </div>
                                     
                                 </SwiperSlide>

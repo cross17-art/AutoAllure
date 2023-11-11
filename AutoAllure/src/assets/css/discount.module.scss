@@ -54,7 +54,6 @@
             height: 250px;
             max-width: 400px;
             &-carImg{
-                background-image: url("https://rentsyst.com/static/cache/vehicle/21455/vehicle_list_35613.jpg");
                 background-repeat: no-repeat;
                 background-position-x: center;
                 background-size: cover;
@@ -62,6 +61,13 @@
                 position: absolute;
                 width: 100%;
                 height: 100%;
+                min-width: 250px;
+                img{
+                    max-height: 250px;
+                    -o-object-fit: contain;
+                    object-fit: contain;
+                    width: 100%;
+                }
             }
             &-carImg2{
                 background-image: url("https://rentsyst.com/static/cache/vehicle/18889/vehicle_list_26247.jpg");

@@ -3,12 +3,22 @@ import { useState,useEffect } from 'react'
 import styleCarDiscount from '../../assets/css/discount.module.scss'
 import styleReviews from '../../assets/css/reviews.module.scss'
 import styleBanner from  '../../assets/css/banner.module.scss'
+import Cookies from 'js-cookie';
+import { useNavigate } from "react-router-dom";
 
 // import FAQS from './faqs'
 // import AboutUs from './aboutUs'
 
-function carDiscount({url}) {
-    // ебани отдельный запрос на лучшие машины 
+function carDiscount({url,discountItems}) {
+    const navigate = useNavigate()    
+    const handelGetPage = (car_id,company) =>{
+        Cookies.set('company', company, { expires: 7 });
+        Cookies.set('carId', car_id, { expires: 7 });
+        navigate(`/car-page/${car_id}`)        
+    }
+
+    if (discountItems) {
+        
     return(
      <section data="carSales">
         
@@ -26,23 +36,37 @@ function carDiscount({url}) {
                         We have the most interesting and profitable offers on discounts and tariffs. It is worth noting that the long term rental will save your budget.
                     </p>
                 </div>
-                <div className={`${styleCarDiscount["carDiscount__block--pictures"]}`}>
-                   <div className={styleCarDiscount[`carDiscount__block--pictures-carImg`]}></div>
 
-                    <div className={styleReviews['reviews__results--counter']}>
-                        <div className={styleCarDiscount[`carDiscount__block--pictures_item`]}>
-                            <h1>
-                                Renault Captur 2022
-                            </h1>
-                            <span>
-                                €1395/month
-                            </span>
-                            <button type='button' className={styleBanner['btnBanner__orange--discount']}>
-                                Learn more
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                {
+          
+                discountItems.map((item, index)=>{
+                        return (
+                            <div key={index+"discountCar"} className={`${styleCarDiscount["carDiscount__block--pictures"]}`}>
+
+                                <div className={styleCarDiscount[`carDiscount__block--pictures-carImg`]}>
+                                    <img src={item.thumbnail}></img>
+                                </div>
+                                    
+                                <div className={styleReviews['reviews__results--counter']}>
+                                    <div className={styleCarDiscount[`carDiscount__block--pictures_item`]}>
+                                        <h1>
+                                            {item.fullName}
+                                        </h1>
+                                        <span>
+                                            €{item.monthPrice}/month
+                                        </span>
+                                        <button type='button' className={styleBanner['btnBanner__orange--discount']} onClick={()=>handelGetPage(item.id,item.company)} >
+                                            Learn more 
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        )
+                    })
+                }
+{/* 
+
                 <div className={`${styleCarDiscount["carDiscount__block--pictures"]}`}>
                     <div className={styleCarDiscount[`carDiscount__block--pictures-carImg2`]}></div>
                     <div className={styleReviews['reviews__results--counter']}>
@@ -59,12 +83,14 @@ function carDiscount({url}) {
                         </div>
                     </div>
                 </div>
+                 */}
             </div>
             
         </div>
 
      </section>
     )
+}
     
     
 }
