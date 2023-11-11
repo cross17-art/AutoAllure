@@ -6,7 +6,6 @@
   border: none;
   line-height: 1;
   padding: 1em 2em;
-  border-radius: 8px;
 
   // button on the main banner: white/orange on mobile, black on desktop
   &-outline {
@@ -14,7 +13,9 @@
     padding: 5px;
     width: 130px;
     align-self: center;
-    height: 40px;
+    height: 44px;
+
+
 
     @include desktop() {
       color: black;
@@ -29,6 +30,11 @@
     &.secondary {
       color: white;
       border: 2px solid white;
+
+      @include desktop() {
+        color: black;
+        border: 1px solid black;
+      }
     }
   }
 
