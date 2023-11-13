@@ -55,7 +55,7 @@ const Dropdown = ({ locationType,locationsDelivery,digit,containerClass }) => {
 
   return (
       <div className={`dropdown ${containerClass}`} name={digit}>
-        <div className="dropdown_btn" name='dropdownText'  >
+        <button type="button" className="dropdown_btn" name='dropdownText'  >
           
           <span name={'dropdownTextLocation'+locationType} onClick={(e) => {setIsActive(!isActive);}}> {selected}</span>
           <span name={'dropdownTextTime'+locationType} onClick={(e) => {setIsTimeActive(!isActiveTime);}}>{selectedTime}</span>
@@ -67,7 +67,7 @@ const Dropdown = ({ locationType,locationsDelivery,digit,containerClass }) => {
           <div ref={toolTipTimeRef} className="dropdown_time" style={{ display: isActiveTime ? "block" : "none" }}>
              <TimeList key={"timeList"} setIsTimeSelected={setIsTimeSelected} setIsTimeActive={setIsTimeActive} isActiveTime={isActiveTime}   />
           </div>  
-        </div>
+        </button>
       </div>
   );
 };
