@@ -29,7 +29,7 @@ import PrivacyPolicy from "./component/screen/privacyPolicy";
 // import CarUploadPhoto from "./component/cars/car-book/car-book-uploadPhoto";
 
 function App() {
-  const url = "http://localhost:5173/"
+  const url = "https://auto-allure.com/"
   
   return (
 
