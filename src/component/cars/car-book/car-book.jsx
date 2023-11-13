@@ -37,22 +37,25 @@ function carBook({ url, error, isLoaded, car, locations, orderDate, carDescripti
     driverLicenceExpirationDate: '',
     birthday: '',
     paymentType: '',
-    photo:''
+    photoFront:'',
+    photoBack:''
 });
 
 const equipment = car.options;
 const [errors, setErrors] = useState({ ..."" });
 const [buttonLoading,setButtonLoading] = useState(true);
 const navigate = useNavigate()
+
 const handleFileChange = (event) => {
   const file = event.target.files[0];
+  const name = event.target.getAttribute("name")
   setFormData((prevData)=>({
     ...prevData,
-    photo:file
+    [name]:file
   }))
   setErrors((prevData)=>({
     ...prevData,
-    photo:''
+    [name]:''
   }))
 };
 
@@ -175,10 +178,12 @@ const handleSubmit = (e) => {
       validationErrors.paymentType = 'Chouse your payment type';
     }
 
-    if (formData.photo.size<=0) {
-      validationErrors.photo = 'Upload your photo';
+    if (formData.photoFront.size<=0 || formData.photoFront.size === undefined)  {
+      validationErrors.photoFront = 'Upload your photo';
     }
-
+    if (formData.photoBack.size<=0 || formData.photoBack.size === undefined) {
+      validationErrors.photoBack = 'Upload your photo';
+    }
 
     // Если есть ошибки, устанавливаем их в состояние, иначе выполняем действия после успешной отправки
     if (Object.keys(validationErrors).length > 0) {
@@ -210,7 +215,8 @@ const handleSubmit = (e) => {
         data.append("insurances_id", car.insurances[0].id.toString())
         data.append("company", Cookies.get("company") === '' ? undefined : Cookies.get("company"))
         data.append("order_id", car.order_id)
-        data.append("file", formData.photo)
+        data.append("fileFront", formData.photoFront)
+        data.append("fileBack", formData.photoBack)
         fetch(`https://auto-allure.com:2053/confirm-order/v2`,{
           method: "POST",
           body: data,

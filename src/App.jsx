@@ -26,7 +26,7 @@ import PrivacyPolicy from "./component/screen/privacyPolicy";
 // import CarPayment from "./component/cars/car-book/car-book-payment";
 // import CarEquipment from "./component/cars/car-book/car-book-equipment";
 // import CarPageOptions from "./component/cars/car-page/car-page-options";
-// import CarUploadPhoto from "./component/cars/car-book/car-book-uploadPhoto";
+import CarUploadPhoto from "./component/cars/car-book/car-book-uploadPhoto";
 
 function App() {
   const url = "https://auto-allure.com/"
@@ -47,11 +47,13 @@ function App() {
             <Route path="/car-book/:id" element={<CarPageBook url={url}/>}/>
             <Route path="/car-payment/" element={<CarPaymentEnd/>}/>
             <Route path="/privacy-policy/" element={<PrivacyPolicy/>}/>
+
+            <Route path="/photo/" element={<CarUploadPhoto url={url} />}/>
             {/* <Route path="/personal/" element={<CarPersonalDetailes url={url}/>}/>
             <Route path="/payment/" element={<CarPayment url={url}/>}/>
             <Route path="/equipment/" element={<CarEquipment url={url} name={"driver"}/>}/>
             <Route path="/options/" element={<CarPageOptions url={url} />}/>
-            <Route path="/photo/" element={<CarUploadPhoto url={url} />}/> */}
+             */}
         </Routes>
         <ScrollTopButton url={url}/>
     <Footer />
