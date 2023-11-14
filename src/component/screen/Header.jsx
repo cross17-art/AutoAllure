@@ -11,7 +11,7 @@ function Header() {
 
         <div className='header_links'>
           <a lng="eng" href="https://auto-allure.com/" >Home</a>
-          <a lng="eng" href="https://auto-allure.com/directory/privacy-policy.php" >Privacy Policy</a>
+          <a lng="eng" href="https://auto-allure.com/privacy-policy/" >Privacy Policy</a>
           <a lng="eng" href="#our_tariffs" >Tariffs</a>
           <a lng="eng" href="#help" >Contacts</a>
         </div>
