@@ -21,14 +21,14 @@ function carPageBooking({url}) {
 
 
   const [stateOfPage, setStateOfPage] = useState(sessionStorage.getItem('yourState') || '');
-
+  const [carDataId,setCarDataId]=useState();
   useEffect( () => {
     let company = Cookies.get("company") === '' ? undefined : Cookies.get("company")
     let carId = Cookies.get("carId") === '' ? undefined : Cookies.get("carId")
     let locationGet=Cookies.get('locationGet') === undefined ? '':Cookies.get('locationGet')
     let locationReturn=Cookies.get('locationReturn') === undefined ? '':Cookies.get('locationReturn')
     let rentDate = Cookies.get('rentDate') === undefined ? '':Cookies.get('rentDate')
-
+    setCarDataId(carId)
     console.log("carId "+carId+" company:"+company)
     let body = {
       "car_id":carId,
@@ -37,7 +37,8 @@ function carPageBooking({url}) {
       "locationReturn":locationReturn,
       "rentalDates":rentDate
     }
-    if(id!=null && id!='' && company!=undefined){
+    const storedData = sessionStorage.getItem('carBookingData');
+    if(id!=null && id!='' && company!=undefined && !storedData){
          fetch(`https://auto-allure.com:2053/booking-car/v2`,{
           method: "POST",
           body:JSON.stringify(body),
@@ -54,18 +55,15 @@ function carPageBooking({url}) {
                 setCar(result.car);
                 setBusyDatesCar( result.rent_time.split(" - "))
                 setLocations({"get":locationGet,"return":locationReturn})
-                // sessionStorage.setItem('carBookingData', JSON.stringify({
-                //   order: result.order,
-                //   car: result.car,
-                //   busyDatesCar: result.rent_time.split(" - "),
-                //   locations: { "get": locationGet, "return": locationReturn }
-                // }));
+                sessionStorage.setItem('carBookingData', JSON.stringify({
+                  order: result.order,
+                  car: result.car,
+                  busyDatesCar: result.rent_time.split(" - "),
+                  locations: { "get": locationGet, "return": locationReturn }
+                }));
               }
               setIsLoaded(true);
-              // setTimeout(() => {
-              //   console.log("delete session storage")
-              //   sessionStorage.removeItem('carBookingData');
-              // }, 5 * 60 * 1000);
+
             },
             (error) => {
               setIsLoaded(false);
@@ -75,26 +73,31 @@ function carPageBooking({url}) {
     }else{
       console.log("await cookies data")
     }
-      
+    setTimeout(() => {
+      console.log("delete session storage")
+      sessionStorage.removeItem('carBookingData');
+    }, 1 * 60 * 1000);
   }, [id])
 
-  // useEffect(() => {
-  //   // Проверка наличия данных в sessionStorage при загрузке страницы
-  //   const storedData = sessionStorage.getItem('carBookingData');
-  //   if (storedData) {
-  //     const parsedData = JSON.parse(storedData);
-  //     setItems(parsedData.order);
-  //     setCar(parsedData.car);
-  //     setBusyDatesCar(parsedData.busyDatesCar);
-  //     setLocations(parsedData.locations);
-  //     setIsLoaded(true);
-  //   }
-  // }, []);
+  useEffect(() => {
+    // Проверка наличия данных в sessionStorage при загрузке страницы
+    
+    const storedData = sessionStorage.getItem('carBookingData');
+    if (storedData) {
+      const parsedData = JSON.parse(storedData);
+      setItems(parsedData.order);
+      setCar(parsedData.car);
+      setBusyDatesCar(parsedData.busyDatesCar);
+      setLocations(parsedData.locations);
+      setIsLoaded(true);
+    }
+  }, []);
 
   return (
     <>
         <CarHat key={"carInformationHatBooking"} carName={car.brand+" "+car.mark}/>
-        
+
+
         <CarBook key={"carInformation"} url={url} error={error} isLoaded={isLoaded} car={items} locations={locations} orderDate={busyDatesCar} carDescriptions={car}/>
         
         <div className="wrapper">

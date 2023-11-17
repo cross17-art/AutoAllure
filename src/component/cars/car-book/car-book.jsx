@@ -7,18 +7,19 @@ import syleCarPage from "../../../assets/css/carPage.module.scss";
 import styleCarBook from "../../../assets/css/carBook.module.scss";
 import stylePesonal from '../../../assets/css/personalDetailes.module.scss'
 
-import styleOrder from "../../../assets/css/orderSteps.module.scss";
+// import styleOrder from "../../../assets/css/orderSteps.module.scss";
 import Cookies from 'js-cookie';
 import { useNavigate } from "react-router-dom";
 
-import CalendarPage from "../../../component/ui/calendar-page";
-import CarPageSpecifications from "../car-page/car-page-specifications";
-import CarPageTariffs from "../car-page/car-page-tariffs";
+// import CalendarPage from "../../../component/ui/calendar-page";
+// import CarPageSpecifications from "../car-page/car-page-specifications";
+// import CarPageTariffs from "../car-page/car-page-tariffs";
 import CarPersonalDetailes from "../../../component/cars/car-book/car-book-personalDetailes";
 import CarPayment from "../../../component/cars/car-book/car-book-payment";
 import CarEquipment from "../../../component/cars/car-book/car-book-equipment";
 import CarWhyWe from "../../information/car/car-whyWe";
 import CarPageOptions from "../../../component/cars/car-page/car-page-options";
+import StepsForm from "../../ui/stepsForm";
 
 function carBook({ url, error, isLoaded, car, locations, orderDate, carDescriptions }) {
 
@@ -265,6 +266,7 @@ const handleSubmit = (e) => {
     return (
       <>
         <div className="wrapper">
+          <StepsForm/>
           <div className={styleCarBook["book"]}>
         
             <div className={styleCarBook["book__info"]}>

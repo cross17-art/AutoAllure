@@ -6,6 +6,28 @@ import Datepicker from "react-tailwindcss-datepicker"
 const BirthdayPicker = ({handleInputChange,handleInputFocus,errors,inputName}) => {
   const [stateError, setStateErrors] = useState(false);
 
+  const checkYearsOfClient = (date)=> {
+  
+
+    // Получаем текущую дату
+    const currentDate = new Date();
+
+    // Получаем дату рождения из строки
+    const birthDate = new Date(date);
+
+    // Вычисляем разницу в годах
+    const age = currentDate.getFullYear() - birthDate.getFullYear();
+
+    // Проверяем, что возраст не меньше 23
+    if (age >= 23) {
+      console.log("Клиент старше или равен 23 годам.");
+      return true
+    } else {
+      console.log("Клиент младше 23 лет.");
+      return false
+    }
+  }
+
   useEffect(()=>{
     // console.log(errors)
     if(errors){
@@ -20,8 +42,13 @@ const BirthdayPicker = ({handleInputChange,handleInputFocus,errors,inputName}) =
 
   const handleValueChange = (newValue) => {
       console.log("newValue:", newValue);
-      setValue(newValue);
-      handleInputChange({"name":inputName,"value":newValue.startDate})
+      if(checkYearsOfClient(newValue.startDate)){
+        setValue(newValue);
+        handleInputChange({"name":inputName,"value":newValue.startDate})
+      }else{
+        setStateErrors(true)
+      }
+      
       // event.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.querySelector("input")
   }
   return (
@@ -34,7 +61,7 @@ const BirthdayPicker = ({handleInputChange,handleInputFocus,errors,inputName}) =
           value={value}
           asSingle={true}
           onChange={handleValueChange} 
-          popoverDirection="down"
+          popoverDirection="up"
           inputName={inputName}
       ></Datepicker>
         

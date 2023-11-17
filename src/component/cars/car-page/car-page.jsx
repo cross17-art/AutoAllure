@@ -10,6 +10,7 @@ import CarPageSpecifications from "./car-page-specifications";
 import CarPageTariffs from "./car-page-tariffs";
 import CarWhyWe from '../../information/car/car-whyWe';
 import CarPageOptions from "../../../component/cars/car-page/car-page-options";
+import StepsForm from "../../ui/stepsForm";
 
 function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
   {/* 
@@ -57,6 +58,8 @@ function carPage({url,error,isLoaded,car,locations,busyDatesCar}) {
         
       <>
         <div className='wrapper'>
+          <StepsForm carDataId={car.id}/>
+
           <div className={syleCarPage.carPage}>
               <div className={syleCarPage.carPage__pictures}>
                 <CarSlider key={"carPageSlider"} photos={car.photos}/>

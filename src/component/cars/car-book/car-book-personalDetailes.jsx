@@ -6,6 +6,8 @@ import stylePesonal from "../../../assets/css/personalDetailes.module.scss";
 import PickUpDate from "../../ui/pickUpDates";
 import CarDriverLicence from "./car-book-driverLicence";
 import CarPhone from "./car-book-phone";
+import ToolTip from "../../ui/tooltip";
+
 const carPersonalDetailes = ({
   handleFileChange,
   handleInputChange,
@@ -51,7 +53,9 @@ const carPersonalDetailes = ({
             />
           </div>
           <div className={stylePesonal.personal__element}>
-            <label>Birthday:</label>
+            <label>Birthday:
+              <ToolTip text="The client must be over 23 years old"/>
+            </label>
             <PickUpDate
               handleInputChange={handleInputChange}
               handleInputFocus={handleInputFocus}

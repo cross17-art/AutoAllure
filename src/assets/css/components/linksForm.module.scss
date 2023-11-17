@@ -1,0 +1,12 @@
+.linksForm{
+    position: absolute;
+    font-size: 1.4rem;
+    color: gray;
+    &__active{
+        color: black;
+    }
+    &__disable{
+        text-decoration: none; // Подчеркивание ссылки
+        cursor: not-allowed; // Курсор "запрещено"
+    }
+}

@@ -31,7 +31,7 @@ import CarUploadPhoto from "./component/cars/car-book/car-book-uploadPhoto";
 
 function App() {
   const url = "https://auto-allure.com/"
-  
+  // sessionStorage.removeItem('carBookingData');
   return (
 
     <>
