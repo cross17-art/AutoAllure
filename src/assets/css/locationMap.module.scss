@@ -1,0 +1,47 @@
+@import "./abstracts/colors.scss";
+@import "./abstracts/media.scss";
+
+.locations{
+    display: flex;
+    background-color: $black;
+    color: $white;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    iframe{
+        width: 100%;
+        @include desktop() {
+           width: 60%;
+        }
+        height: 450px;
+    }
+    @include mobile() {
+        flex-direction: column;
+    }
+    @include tablet() {
+        flex-direction: column;
+    }
+    &__text{
+        
+        // width: 100%;
+        margin: 15px;
+        padding: 15px;
+        font-size: 1.3rem;
+        text-align: justify;
+        border: 1px solid $orange;
+        border-radius: 10px;  
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+        ul {
+            list-style-type: none;
+            padding: 10px;
+        
+            li {
+              margin-bottom: 15px;
+        
+              strong {
+                font-weight: bold;
+                color: $orange;
+              }
+            }
+        }
+    }
+}

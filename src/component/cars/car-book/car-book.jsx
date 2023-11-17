@@ -235,7 +235,6 @@ const handleSubmit = (e) => {
         )
          
 
-        console.log('Форма отправлена успешно!');
     }
 };
 

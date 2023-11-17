@@ -14,16 +14,23 @@ const StepsForm = ({carDataId}) => {
     const location = useLocation();
     const [page,setPage] = useState(false);
     const [carId,setCarId] = useState();
+    const [correctSessionStorage, setCorrectSessionStorage] = useState(false)
     useEffect(()=>{
         const currentUrl = location.pathname;
-        setCarId(currentUrl.split("/")[2])
-      
+        let dataId = currentUrl.split("/")[2]
+
+        if(sessionStorage.length!=0){
+            let carData = JSON.parse(sessionStorage.carBookingData)
+            carData.order.vehicle_id == dataId?
+            setCorrectSessionStorage(true):
+            sessionStorage.removeItem('carBookingData')
+        }
+        setCarId(dataId)
+        
 
     },[])
 
     const handelRedirect =(path,carId)=> {
-        console.log(path)
-        console.log(sessionStorage)
         if(path=="/"){
             sessionStorage.removeItem('carBookingData');
             navigate("/")
@@ -31,6 +38,9 @@ const StepsForm = ({carDataId}) => {
             navigate("/car-page/"+carId)
         }else if(sessionStorage.length!=0 && path.includes("car-book")){
             navigate("/car-book/"+carId)
+            // let carData = JSON.parse(sessionStorage.carBookingData)
+            // carData.order.vehicle_id == carId ? navigate("/car-book/"+carId) : sessionStorage.removeItem('carBookingData');
+
         }
     }
     return (
@@ -39,8 +49,7 @@ const StepsForm = ({carDataId}) => {
                 <span>/</span>
                 <p onClick={()=>handelRedirect("/car-page/",carId)} className={styleLink["linksForm__active"]} >Car Page</p>
                 <span>/</span>
-                
-                <p onClick = {()=>handelRedirect("/car-book/",carId)}className={sessionStorage ?styleLink["linksForm__active"]:styleLink["linksForm__disable"]}>Car Book</p>
+                <p onClick = {()=>handelRedirect("/car-book/",carId)}className={ correctSessionStorage ? styleLink["linksForm__active"]:styleLink["linksForm__disable"]}>Car Book</p>
             
         </div>
     );

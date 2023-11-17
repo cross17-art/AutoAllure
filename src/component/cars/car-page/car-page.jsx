@@ -6,7 +6,7 @@ import CarSlider from '../car-sliderPhotose';
 import syleCarPage from "../../../assets/css/carPage.module.scss"
 
 import CalendarPage from "../../../component/ui/calendar-page";
-import CarPageSpecifications from "./car-page-specifications";
+// import CarPageSpecifications from "./car-page-specifications";
 import CarPageTariffs from "./car-page-tariffs";
 import CarWhyWe from '../../information/car/car-whyWe';
 import CarPageOptions from "../../../component/cars/car-page/car-page-options";

@@ -8,17 +8,10 @@ const BirthdayPicker = ({handleInputChange,handleInputFocus,errors,inputName}) =
 
   const checkYearsOfClient = (date)=> {
   
-
-    // Получаем текущую дату
+    if(inputName.includes("driverLicence")) return true
     const currentDate = new Date();
-
-    // Получаем дату рождения из строки
     const birthDate = new Date(date);
-
-    // Вычисляем разницу в годах
     const age = currentDate.getFullYear() - birthDate.getFullYear();
-
-    // Проверяем, что возраст не меньше 23
     if (age >= 23) {
       console.log("Клиент старше или равен 23 годам.");
       return true

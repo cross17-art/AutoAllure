@@ -36,6 +36,7 @@ function App() {
 
     <>
     <Header2 url={url}/>
+    
         <Routes>
             <Route path="/" element={<MainPage />}>
               <Route path="/" element={<CarsList url={url} />} />
